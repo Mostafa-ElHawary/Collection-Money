@@ -1,0 +1,390 @@
+/* Payment Details Page Styles */
+
+/* Card Layout */
+.payment-details-card {
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.payment-details-card .card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 0.75rem 0.75rem 0 0;
+    padding: 1.5rem;
+}
+
+.payment-details-card .card-header h4 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+/* Information Cards */
+.info-card {
+    border-radius: 0.5rem;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.075);
+    transition: box-shadow 0.2s ease;
+}
+
+.info-card:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+
+.info-card .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.info-card .card-header h6 {
+    margin: 0;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+/* Definition List Styling */
+.payment-details dl {
+    margin-bottom: 0;
+}
+
+.payment-details dt {
+    font-weight: 600;
+    color: #6c757d;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+}
+
+.payment-details dd {
+    margin-bottom: 1rem;
+    color: #212529;
+    font-size: 0.95rem;
+}
+
+.payment-details dd:last-child {
+    margin-bottom: 0;
+}
+
+/* Payment Amount Styling */
+.payment-amount-large {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #198754;
+    font-family: 'Courier New', monospace;
+}
+
+.payment-amount-medium {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #198754;
+}
+
+/* Badge Styling */
+.payment-badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+}
+
+.payment-badge.primary {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.payment-badge.success {
+    background-color: #198754;
+    color: white;
+}
+
+.payment-badge.info {
+    background-color: #0dcaf0;
+    color: #000;
+}
+
+.payment-badge.warning {
+    background-color: #ffc107;
+    color: #000;
+}
+
+/* Action Panel */
+.action-panel {
+    position: sticky;
+    top: 1rem;
+}
+
+.action-panel .card {
+    border-radius: 0.5rem;
+    border: 1px solid #e9ecef;
+}
+
+.action-panel .btn {
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.action-panel .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+/* Quick Stats */
+.quick-stats {
+    text-align: center;
+}
+
+.quick-stats h4,
+.quick-stats h5,
+.quick-stats h6 {
+    margin: 0;
+    font-weight: 700;
+}
+
+.quick-stats small {
+    color: #6c757d;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Receipt Information */
+.receipt-info {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border-left: 4px solid #0dcaf0;
+}
+
+.receipt-info .btn-group {
+    gap: 0.25rem;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0.75rem 0;
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    color: #6c757d;
+    font-weight: bold;
+}
+
+.breadcrumb-item a {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.breadcrumb-item a:hover {
+    color: #0a58ca;
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+    font-weight: 600;
+}
+
+/* Alert Styling */
+.alert {
+    border-radius: 0.5rem;
+    border: none;
+    padding: 1rem 1.25rem;
+}
+
+.alert-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border-left: 4px solid #198754;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-left: 4px solid #ffc107;
+}
+
+/* Code Styling */
+.payment-id-code {
+    font-family: 'Courier New', monospace;
+    background-color: #f8f9fa;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    color: #495057;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .payment-details-card .card-header {
+        padding: 1rem;
+    }
+    
+    .payment-details-card .card-header h4 {
+        font-size: 1.25rem;
+    }
+    
+    .payment-amount-large {
+        font-size: 1.5rem;
+    }
+    
+    .payment-amount-medium {
+        font-size: 1.25rem;
+    }
+    
+    .action-panel {
+        position: static;
+        margin-top: 1.5rem;
+    }
+    
+    .action-panel .d-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .payment-details dt {
+        font-size: 0.8rem;
+    }
+    
+    .payment-details dd {
+        font-size: 0.9rem;
+    }
+    
+    .payment-amount-large {
+        font-size: 1.25rem;
+    }
+    
+    .quick-stats h4 {
+        font-size: 1.5rem;
+    }
+    
+    .quick-stats h5 {
+        font-size: 1.25rem;
+    }
+    
+    .quick-stats h6 {
+        font-size: 1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .action-panel,
+    .breadcrumb,
+    .btn {
+        display: none !important;
+    }
+    
+    .payment-details-card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    .payment-details-card .card-header {
+        background: none !important;
+        color: #000 !important;
+        border-bottom: 2px solid #000 !important;
+    }
+    
+    .info-card {
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+    
+    .payment-amount-large,
+    .payment-amount-medium {
+        color: #000 !important;
+    }
+}
+
+/* Animation Effects */
+.payment-details-card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effects */
+.info-card:hover .card-header {
+    background-color: #e9ecef;
+}
+
+.payment-details a:hover {
+    text-decoration: none;
+    color: #0a58ca;
+}
+
+/* Status Indicators */
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.status-indicator.success {
+    background-color: #198754;
+}
+
+.status-indicator.warning {
+    background-color: #ffc107;
+}
+
+.status-indicator.danger {
+    background-color: #dc3545;
+}
+
+/* Loading States */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #0d6efd;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 

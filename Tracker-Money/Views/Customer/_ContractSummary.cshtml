@@ -1,0 +1,143 @@
+@model CollectionApp.Application.ViewModels.CustomerContractSummaryVM
+
+<link href="~/css/Customer/contract-summary.css" rel="stylesheet" />
+
+<div class="contract-summary-card">
+    <div class="contract-header">
+        <div class="contract-info">
+            <h5 class="contract-number">Contract #@Model.ContractNumber</h5>
+            <span class="contract-status @(Model.IsActive ? "status-active" : "status-inactive")">
+                <i class="fas @(Model.IsActive ? "fa-check-circle" : "fa-pause-circle")"></i>
+                @(Model.IsActive ? "Active" : "Inactive")
+            </span>
+        </div>
+        <div class="contract-actions">
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="/Contract/Details/@Model.ContractId">
+                            <i class="fas fa-eye"></i> View Details
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/Contract/Edit/@Model.ContractId">
+                            <i class="fas fa-edit"></i> Edit Contract
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item" href="/Payment/Create/@Model.ContractId">
+                            <i class="fas fa-credit-card"></i> Record Payment
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="contract-body">
+        <div class="contract-timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon start">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-label">Start Date</span>
+                    <span class="timeline-value">@Model.StartDate.ToShortDateString()</span>
+                </div>
+            </div>
+
+            @if (Model.EndDate.HasValue)
+            {
+                <div class="timeline-connector"></div>
+                <div class="timeline-item">
+                    <div class="timeline-icon end">
+                        <i class="fas fa-stop"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-label">End Date</span>
+                        <span class="timeline-value">@Model.EndDate.Value.ToShortDateString()</span>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="financial-grid">
+            <div class="financial-item total">
+                <div class="financial-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="financial-details">
+                    <span class="financial-label">Total Amount</span>
+                    <span class="financial-value">@Model.TotalAmount.ToString("C")</span>
+                </div>
+            </div>
+
+            <div class="financial-item paid">
+                <div class="financial-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="financial-details">
+                    <span class="financial-label">Paid Amount</span>
+                    <span class="financial-value">@Model.PaidAmount.ToString("C")</span>
+                </div>
+            </div>
+
+            <div class="financial-item remaining">
+                <div class="financial-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="financial-details">
+                    <span class="financial-label">Remaining</span>
+                    <span class="financial-value">@Model.RemainingAmount.ToString("C")</span>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.NextPaymentDueDate.HasValue)
+        {
+            <div class="payment-due">
+                <div class="due-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="due-content">
+                    <span class="due-label">Next Payment Due</span>
+                    <span class="due-date">@Model.NextPaymentDueDate.Value.ToShortDateString()</span>
+                </div>
+                @{
+                    var daysUntilDue = (Model.NextPaymentDueDate.Value - DateTime.Now).Days;
+                }
+                @if (daysUntilDue <= 7)
+                {
+                    <div class="due-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Due Soon</span>
+                    </div>
+                }
+            </div>
+        }
+
+        <!-- Payment Progress Bar -->
+        <div class="payment-progress">
+            @{
+                var progressPercentage = Model.TotalAmount > 0 ? (Model.PaidAmount / Model.TotalAmount * 100) : 0;
+            }
+            <div class="progress-header">
+                <span class="progress-label">Payment Progress</span>
+                <span class="progress-percentage">@progressPercentage.ToString("F1")%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: @progressPercentage.ToString("F1")%"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contract-footer">
+        <a href="/Contract/Details/@Model.ContractId" class="btn btn-primary btn-sm">
+            <i class="fas fa-eye"></i> View Details
+        </a>
+    </div>
+</div>

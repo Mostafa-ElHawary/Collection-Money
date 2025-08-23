@@ -1,0 +1,299 @@
+@using Tracker_Money.Helpers
+@model CollectionApp.Application.ViewModels.CustomerDetailVM
+
+@{
+    ViewData["Title"] = $"Customer Details - {Model.FullName}";
+}
+
+@section Styles {
+    <link href="~/css/Customer/Details.css" rel="stylesheet" />
+}
+
+<div class="dashboard-content">
+    <!-- Enhanced dashboard header -->
+    <div class="dashboard-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="dashboard-title">Customer Details</h1>
+                <p class="dashboard-subtitle">Comprehensive customer profile and financial overview</p>
+            </div>
+            <div class="d-flex gap-3">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+                    <i class="fas fa-edit"></i> Edit Customer
+                </a>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left column - Personal and Contact Information -->
+        <div class="col-lg-6">
+            <!-- Personal Information Card -->
+            <div class="info-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-user"></i>
+                        Personal Information
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Full Name</span>
+                            <span class="info-value">@Model.FullName</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">National ID</span>
+                            <span class="info-value">@Model.NationalId</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Customer ID</span>
+                            <span class="info-value">#@Model.Id</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Information Card -->
+            <div class="info-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-address-book"></i>
+                        Contact Information
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Email Address</span>
+                                <span class="contact-value">@Model.Email</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Phone Number</span>
+                                <span class="contact-value">@Model.PhoneDisplay</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Address</span>
+                                <span class="contact-value">@Model.AddressDisplay</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right column - Financial and Contract Information -->
+        <div class="col-lg-6">
+            <!-- Financial Summary Card -->
+            <div class="financial-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        Financial Summary
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="financial-grid">
+                        <div class="financial-item total">
+                            <div class="financial-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="financial-details">
+                                <span class="financial-label">Total Contract Value</span>
+                                <span class="financial-value">@CurrencyFormatter.Format(Model.TotalContractValue, "USD")</span>
+                            </div>
+                        </div>
+                        <div class="financial-item paid">
+                            <div class="financial-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="financial-details">
+                                <span class="financial-label">Total Paid Amount</span>
+                                <span class="financial-value">@CurrencyFormatter.Format(Model.TotalPaidAmount, "USD")</span>
+                            </div>
+                        </div>
+                        <div class="financial-item outstanding">
+                            <div class="financial-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="financial-details">
+                                <span class="financial-label">Outstanding Amount</span>
+                                <span class="financial-value">@CurrencyFormatter.Format(Model.TotalOutstandingAmount, "USD")</span>
+                            </div>
+                        </div>
+                        <div class="financial-item contracts">
+                            <div class="financial-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                            <div class="financial-details">
+                                <span class="financial-label">Active Contracts</span>
+                                <span class="financial-value">@Model.ActiveContractsCount</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Progress Bar -->
+                    <div class="payment-progress">
+                        <div class="progress-header">
+                            <span class="progress-label">Payment Progress</span>
+                            <span class="progress-percentage">
+                                @{
+                                    var percentage = Model.TotalContractValue > 0 ?
+                                    (Model.TotalPaidAmount / Model.TotalContractValue * 100) : 0;
+                                }
+                                @percentage.ToString("F1")%
+                            </span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: @percentage.ToString("F1")%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contracts Card -->
+            <div class="contracts-card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="card-title">
+                            <i class="fas fa-file-contract"></i>
+                            Customer Contracts
+                        </h5>
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-external-link-alt"></i> View All
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (Model.Contracts != null && Model.Contracts.Any())
+                    {
+                        <div class="contracts-list">
+                            @foreach (var contract in Model.Contracts)
+                            {
+                                <partial name="_ContractSummary" model="contract" />
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <i class="fas fa-inbox"></i>
+                            </div>
+                            <h6 class="empty-title">No Contracts Found</h6>
+                            <p class="empty-description">This customer doesn't have any contracts yet.</p>
+                            <a href="#" class="btn btn-primary btn-sm">
+                                <i class="fas fa-plus"></i> Create Contract
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Actions Row -->
+    <div class="row g-4 mt-2">
+        <div class="col-12">
+            <div class="actions-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-tools"></i>
+                        Customer Actions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="action-grid">
+                        <a href="#" class="action-item">
+                            <div class="action-icon">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                            <div class="action-content">
+                                <span class="action-title">Create Contract</span>
+                                <span class="action-desc">Add a new contract for this customer</span>
+                            </div>
+                        </a>
+                        <a href="#" class="action-item">
+                            <div class="action-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="action-content">
+                                <span class="action-title">Record Payment</span>
+                                <span class="action-desc">Add a payment to existing contracts</span>
+                            </div>
+                        </a>
+                        <a href="#" class="action-item">
+                            <div class="action-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="action-content">
+                                <span class="action-title">Generate Report</span>
+                                <span class="action-desc">Create customer financial report</span>
+                            </div>
+                        </a>
+                        <a href="#" class="action-item">
+                            <div class="action-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="action-content">
+                                <span class="action-title">Send Communication</span>
+                                <span class="action-desc">Email or message the customer</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Enhanced details view functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate financial cards on load
+            const financialItems = document.querySelectorAll('.financial-item');
+            financialItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            // Animate progress bar
+            const progressFill = document.querySelector('.progress-fill');
+            if (progressFill) {
+                const targetWidth = progressFill.style.width;
+                progressFill.style.width = '0%';
+                setTimeout(() => {
+                    progressFill.style.width = targetWidth;
+                }, 500);
+            }
+
+            // Add hover effects to action items
+            const actionItems = document.querySelectorAll('.action-item');
+            actionItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+}

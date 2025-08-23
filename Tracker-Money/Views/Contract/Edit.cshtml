@@ -1,0 +1,325 @@
+@using CollectionApp.Application.ViewModels
+@using CollectionApp.Domain.Enums
+@using Tracker_Money.Helpers
+@model ContractUpdateVM
+@{
+    ViewData["Title"] = $"Edit Contract - {Model.ContractNumber}";
+}
+@section Styles {
+    <link href="~/css/Contract/Edit.css" rel="stylesheet" />
+
+}
+<div class="dashboard-content">
+    <div class="dashboard-header mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="dashboard-title mb-1">Edit Contract</h1>
+                <p class="dashboard-subtitle">Editing Contract: @Model.ContractNumber</p>
+            </div>
+            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-light btn-futuristic">
+                <i class="fas fa-arrow-left me-2"></i>Back to Details
+            </a>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="futuristic-card">
+                <div class="card-body p-4">
+                     @if (Model.Status != ContractStatus.Draft)
+                    {
+                        <div class="alert alert-warning futuristic-alert">
+                            <strong>Warning:</strong> This contract is <strong>@Model.Status</strong> and has restricted editing.
+                        </div>
+                    }
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger futuristic-alert"></div>
+
+                        <div class="form-section">
+                            <div class="section-header">
+                                <h4 class="section-title"><i class="fas fa-info-circle me-2"></i>Basic Information</h4>
+                            </div>
+                             <div class="row g-3 p-4">
+                                <div class="col-md-6">
+                                    <div class="form-group-futuristic">
+                                        <label asp-for="ContractNumber" class="form-label-futuristic">Contract Number</label>
+                                        <input asp-for="ContractNumber" class="form-control-futuristic" readonly />
+                                        <span asp-validation-for="ContractNumber" class="validation-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group-futuristic">
+                                        <label asp-for="CustomerName" class="form-label-futuristic">Customer</label>
+                                        <input asp-for="CustomerName" class="form-control-futuristic" readonly />
+                                        <input asp-for="CustomerId" type="hidden" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group-futuristic">
+                                        <label asp-for="CustomerId" class="form-label-futuristic">Customer ID</label>
+                                        <input asp-for="CustomerId" class="form-control-futuristic" readonly />
+                                        <span asp-validation-for="CustomerId" class="validation-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group-futuristic">
+                                        <label asp-for="ContractType" class="form-label-futuristic">Contract Type</label>
+                                        <select asp-for="ContractType" class="form-control-futuristic" disabled="@(Model.Status != ContractStatus.Draft)">
+                                            <option value="Personal Loan">Personal Loan</option>
+                                            <option value="Business Loan">Business Loan</option>
+                                        </select>
+                                        <span asp-validation-for="ContractType" class="validation-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group-futuristic">
+                                        <label asp-for="StaffId" class="form-label-futuristic">Staff Assigned</label>
+                                        <select asp-for="StaffId" class="form-control-futuristic"><option value="">Select Staff</option></select>
+                                        <span asp-validation-for="StaffId" class="validation-error"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="section-header">
+                                <h4 class="section-title"><i class="fas fa-dollar-sign me-2"></i>Financial Terms</h4>
+                            </div>
+                            <div class="row g-3 p-4">
+                                <div class="col-md-6">
+                                     <div class="form-group-futuristic">
+                                        <label asp-for="PrincipalAmount" class="form-label-futuristic">Principal Amount</label>
+                                        <input asp-for="PrincipalAmount" class="form-control-futuristic" readonly="@(Model.Status != ContractStatus.Draft)" />
+                                        <span asp-validation-for="PrincipalAmount" class="validation-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                     <div class="form-group-futuristic">
+                                        <label asp-for="InterestRate" class="form-label-futuristic">Interest Rate (%)</label>
+                                        <input asp-for="InterestRate" class="form-control-futuristic" readonly="@(Model.Status != ContractStatus.Draft)" />
+                                        <span asp-validation-for="InterestRate" class="validation-error"></span>
+                                    </div>
+                                </div>
+                                 <div class="col-md-6">
+                                     <div class="form-group-futuristic">
+                                        <label asp-for="TermInMonths" class="form-label-futuristic">Term (Months)</label>
+                                        <input asp-for="TermInMonths" class="form-control-futuristic" readonly="@(Model.Status != ContractStatus.Draft)" />
+                                        <span asp-validation-for="TermInMonths" class="validation-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                     <div class="form-group-futuristic">
+                                        <label asp-for="PaymentFrequency" class="form-label-futuristic">Payment Frequency</label>
+                                        <select asp-for="PaymentFrequency" class="form-control-futuristic" disabled="@(Model.Status != ContractStatus.Draft)">
+                                            <option value="Monthly">Monthly</option>
+                                            <option value="Quarterly">Quarterly</option>
+                                        </select>
+                                        <span asp-validation-for="PaymentFrequency" class="validation-error"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary-futuristic" disabled="@(Model.Status != ContractStatus.Draft && Model.Status != ContractStatus.Active && Model.Status != ContractStatus.Suspended)"><i class="fas fa-save me-2"></i>Save Changes</button>
+                            <a asp-action="Index" class="btn btn-secondary-futuristic"><i class="fas fa-times me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <!-- Editing Guidelines Card -->
+            <div class="futuristic-card mb-4">
+                <div class="card-header-futuristic">
+                    <h5 class="card-title-futuristic"><i class="fas fa-info-circle me-2"></i>Editing Guidelines</h5>
+                </div>
+                <div class="card-body p-4">
+                    <p class="guidelines-intro">Please note the following while editing:</p>
+                    <ul class="guidelines-list">
+                        <li><i class="fas fa-check-circle me-2"></i>Contract number cannot be changed.</li>
+                        <li><i class="fas fa-check-circle me-2"></i>Customer cannot be changed after activation.</li>
+                        <li><i class="fas fa-check-circle me-2"></i>Financial terms are locked for active contracts.</li>
+                        <li><i class="fas fa-check-circle me-2"></i>Only non-financial details can be updated for active contracts.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Quick Actions Card -->
+            <div class="futuristic-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-bolt me-2"></i>
+                        Quick Actions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="customer-action-buttons">
+                        <a asp-action="Details" asp-route-id="@Model.Id" class="customer-action-btn info">
+                            <i class="fas fa-eye"></i>
+                            <div class="customer-action-content">
+                                <span class="customer-action-title">View Details</span>
+                                <span class="customer-action-desc">See complete contract information</span>
+                            </div>
+                        </a>
+                        <a asp-controller="Payment" asp-action="Create" asp-route-contractId="@Model.Id" class="customer-action-btn primary">
+                            <i class="fas fa-credit-card"></i>
+                            <div class="customer-action-content">
+                                <span class="customer-action-title">Record Payment</span>
+                                <span class="customer-action-desc">Add a payment to this contract</span>
+                            </div>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="customer-action-btn danger">
+                            <i class="fas fa-trash"></i>
+                            <div class="customer-action-content">
+                                <span class="customer-action-title">Delete Contract</span>
+                                <span class="customer-action-desc">Remove from system</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    
+    <script>
+        $(document).ready(function() {
+            // Initialize form calculations
+            calculateTotalAmount();
+            calculateNumberOfInstallments();
+            calculateEndDate();
+            
+            // Update currency symbols when currency changes
+            $('#Currency').change(function() {
+                updateCurrencySymbols();
+            });
+            
+            // Load customers via AJAX
+            loadCustomers();
+            
+            // Set initial currency symbol
+            updateCurrencySymbols();
+            
+            // Handle disabled fields for non-draft contracts
+            if ('@Model.Status' !== '@ContractStatus.Draft') {
+                $('input[readonly], select[disabled]').addClass('bg-light');
+            }
+        });
+
+        function calculateTotalAmount() {
+            const principal = parseFloat($('#PrincipalAmount').val()) || 0;
+            const interestRate = parseFloat($('#InterestRate').val()) || 0;
+            const total = principal + (principal * interestRate / 100);
+            $('#TotalAmount').val(total.toFixed(2));
+        }
+
+        function calculateNumberOfInstallments() {
+            const term = parseInt($('#TermInMonths').val()) || 0;
+            const frequency = $('#PaymentFrequency').val();
+            
+            let installments = 0;
+            switch(frequency) {
+                case 'Weekly':
+                    installments = term * 4; // Approximate weeks per month
+                    break;
+                case 'BiWeekly':
+                    installments = term * 2; // Approximate bi-weeks per month
+                    break;
+                case 'Monthly':
+                    installments = term;
+                    break;
+                case 'Quarterly':
+                    installments = Math.ceil(term / 3);
+                    break;
+                case 'SemiAnnually':
+                    installments = Math.ceil(term / 6);
+                    break;
+                case 'Annually':
+                    installments = Math.ceil(term / 12);
+                    break;
+                default:
+                    installments = 0;
+            }
+            
+            $('#NumberOfInstallments').val(installments);
+        }
+
+        function calculateEndDate() {
+            const startDate = $('#StartDate').val();
+            const term = parseInt($('#TermInMonths').val()) || 0;
+            
+            if (startDate && term > 0) {
+                const start = new Date(startDate);
+                const end = new Date(start.getFullYear(), start.getMonth() + term, start.getDate());
+                $('#EndDate').val(end.toISOString().split('T')[0]);
+            }
+        }
+
+        function updateCurrencySymbols() {
+            const currency = $('#Currency').val();
+            const symbols = {
+                'USD': '$',
+                'EUR': '€',
+                'GBP': '£',
+                'JPY': '¥',
+                'CAD': 'C$',
+                'AUD': 'A$',
+                'CHF': 'CHF',
+                'CNY': '¥'
+            };
+            
+            const symbol = symbols[currency] || '$';
+            $('#currencySymbol, #totalCurrencySymbol').text(symbol);
+        }
+
+        function loadCustomers() {
+            // This would typically make an AJAX call to load customers
+            // For now, we'll populate with sample data
+            const customers = [
+                { id: '1', name: 'John Smith' },
+                { id: '2', name: 'Jane Doe' },
+                { id: '3', name: 'Mike Johnson' },
+                { id: '4', name: 'Sarah Wilson' }
+            ];
+            
+            const select = $('#customerSelect');
+            customers.forEach(customer => {
+                const option = new Option(customer.name, customer.id);
+                if (customer.id === '@Model.CustomerId') {
+                    option.selected = true;
+                }
+                select.append(option);
+            });
+        }
+
+        // Form validation
+        $('#contractForm').submit(function(e) {
+            if (!this.checkValidity()) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            $(this).addClass('was-validated');
+        });
+
+        // Warn about unsaved changes
+        let formChanged = false;
+        $('input, select, textarea').on('change', function() {
+            formChanged = true;
+        });
+
+        $(window).on('beforeunload', function() {
+            if (formChanged) {
+                return 'You have unsaved changes. Are you sure you want to leave?';
+            }
+        });
+
+        $('#contractForm').on('submit', function() {
+            formChanged = false;
+        });
+    </script>
+}

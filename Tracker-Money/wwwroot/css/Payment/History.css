@@ -1,0 +1,459 @@
+/* Payment History Page Styles */
+
+/* Filter Section */
+.filter-section {
+    background-color: #f8f9fa;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e9ecef;
+}
+
+.filter-section .card-header {
+    background-color: #e9ecef;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.filter-section .card-header h6 {
+    margin: 0;
+    font-weight: 600;
+    color: #495057;
+    font-size: 1rem;
+}
+
+.filter-section .card-body {
+    padding: 1.5rem;
+}
+
+/* Filter Controls */
+.filter-controls .form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.filter-controls .form-control,
+.filter-controls .form-select {
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.filter-controls .form-control:focus,
+.filter-controls .form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Quick Filter Buttons */
+.quick-filter-buttons .btn {
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+    margin: 0.125rem;
+    transition: all 0.2s ease;
+}
+
+.quick-filter-buttons .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+
+.quick-filter-buttons .btn.active {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+}
+
+/* Summary Statistics Cards */
+.summary-stats {
+    margin-bottom: 2rem;
+}
+
+.summary-stats .card {
+    border-radius: 0.75rem;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summary-stats .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.summary-stats .card-body {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.summary-stats h4,
+.summary-stats h5,
+.summary-stats h6 {
+    margin: 0;
+    font-weight: 700;
+    color: white;
+}
+
+.summary-stats small {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+/* Summary Card Colors */
+.summary-stats .bg-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.summary-stats .bg-success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%) !important;
+}
+
+.summary-stats .bg-info {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.summary-stats .bg-warning {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+}
+
+/* History Table */
+.history-table {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.history-table .table {
+    margin-bottom: 0;
+}
+
+.history-table .table th {
+    background-color: #343a40;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    border: none;
+    padding: 1rem 0.75rem;
+}
+
+.history-table .table td {
+    vertical-align: middle;
+    padding: 0.75rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.history-table .table tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+    transition: background-color 0.2s ease;
+}
+
+/* Payment Amount Styling */
+.payment-amount {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #198754;
+    font-family: 'Courier New', monospace;
+}
+
+/* Payment Method Badges */
+.payment-method-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+}
+
+.payment-method-cash {
+    background-color: #198754;
+    color: white;
+}
+
+.payment-method-bank {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.payment-method-card {
+    background-color: #6f42c1;
+    color: white;
+}
+
+.payment-method-check {
+    background-color: #fd7e14;
+    color: white;
+}
+
+.payment-method-mobile {
+    background-color: #20c997;
+    color: white;
+}
+
+.payment-method-other {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Installment Badge */
+.installment-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    background-color: #0dcaf0;
+    color: #000;
+    font-weight: 500;
+}
+
+/* Action Buttons */
+.history-actions .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    margin: 0 0.125rem;
+    border-radius: 0.375rem;
+}
+
+.history-actions .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+/* Empty State */
+.history-empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6c757d;
+}
+
+.history-empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.history-empty-state p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.history-empty-state small {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Utility Buttons */
+.utility-buttons .btn {
+    font-size: 0.8rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    margin-left: 0.25rem;
+}
+
+.utility-buttons .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filter-section {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .filter-section .card-body {
+        padding: 1rem;
+    }
+    
+    .summary-stats .card-body {
+        padding: 1rem;
+    }
+    
+    .summary-stats h4 {
+        font-size: 1.5rem;
+    }
+    
+    .summary-stats h5 {
+        font-size: 1.25rem;
+    }
+    
+    .summary-stats h6 {
+        font-size: 1rem;
+    }
+    
+    .history-table .table th,
+    .history-table .table td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.8rem;
+    }
+    
+    .payment-amount {
+        font-size: 0.9rem;
+    }
+    
+    .history-actions .btn {
+        padding: 0.125rem 0.25rem;
+        font-size: 0.7rem;
+    }
+    
+    .utility-buttons {
+        margin-top: 1rem;
+    }
+    
+    .utility-buttons .btn {
+        margin-bottom: 0.5rem;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .filter-section {
+        padding: 0.75rem;
+    }
+    
+    .filter-section .card-body {
+        padding: 0.75rem;
+    }
+    
+    .filter-controls .form-control,
+    .filter-controls .form-select {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .quick-filter-buttons .btn {
+        font-size: 0.75rem;
+        padding: 0.375rem 0.5rem;
+        margin: 0.0625rem;
+    }
+    
+    .summary-stats .card-body {
+        padding: 0.75rem;
+    }
+    
+    .summary-stats h4 {
+        font-size: 1.25rem;
+    }
+    
+    .summary-stats h5 {
+        font-size: 1rem;
+    }
+    
+    .summary-stats h6 {
+        font-size: 0.875rem;
+    }
+    
+    .history-table .table th,
+    .history-table .table td {
+        padding: 0.375rem 0.125rem;
+        font-size: 0.75rem;
+    }
+    
+    .payment-amount {
+        font-size: 0.8rem;
+    }
+    
+    .history-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .history-actions .btn {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+/* Loading States */
+.history-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.history-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #0d6efd;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animation Effects */
+.summary-stats .card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.summary-stats .card:nth-child(1) { animation-delay: 0.1s; }
+.summary-stats .card:nth-child(2) { animation-delay: 0.2s; }
+.summary-stats .card:nth-child(3) { animation-delay: 0.3s; }
+.summary-stats .card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .filter-section,
+    .utility-buttons,
+    .history-actions {
+        display: none !important;
+    }
+    
+    .summary-stats .card {
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+    
+    .history-table {
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+    }
+    
+    .history-table .table th {
+        background-color: #f8f9fa !important;
+        color: #000 !important;
+        border-bottom: 2px solid #000 !important;
+    }
+    
+    .payment-amount {
+        color: #000 !important;
+    }
+    
+    .payment-method-badge {
+        background-color: #f8f9fa !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+    }
+} 

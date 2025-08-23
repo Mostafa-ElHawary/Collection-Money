@@ -1,0 +1,187 @@
+@model CollectionApp.Application.ViewModels.ReversePaymentVM
+
+<div class="modal fade" id="reversePaymentModal" tabindex="-1" aria-labelledby="reversePaymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reversePaymentModalLabel">
+                    <i class="fas fa-exclamation-triangle text-warning me-2"></i>Reverse Payment
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="ReversePayment" method="post" id="reversePaymentForm">
+                <div class="modal-body">
+                    <!-- Warning Alert -->
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Warning:</strong> This action cannot be undone. The payment will be reversed and a reversal entry will be created.
+                    </div>
+
+                    <!-- Payment Details Display -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Payment Details</h6>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-4">Payment ID:</dt>
+                                <dd class="col-sm-8">
+                                    <code id="reversePaymentId"></code>
+                                </dd>
+
+                                <dt class="col-sm-4">Amount:</dt>
+                                <dd class="col-sm-8">
+                                    <span id="reversePaymentAmount" class="fw-bold text-success"></span>
+                                </dd>
+
+                                <dt class="col-sm-4">Date:</dt>
+                                <dd class="col-sm-8">
+                                    <span id="reversePaymentDate" class="text-muted"></span>
+                                </dd>
+
+                                <dt class="col-sm-4">Method:</dt>
+                                <dd class="col-sm-8">
+                                    <span id="reversePaymentMethod" class="badge bg-primary"></span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <!-- Reversal Form -->
+                    <input type="hidden" asp-for="PaymentId" id="reversePaymentIdInput" />
+                    
+                    <div class="mb-3">
+                        <label asp-for="Reason" class="form-label">Reason for Reversal *</label>
+                        <textarea asp-for="Reason" class="form-control" rows="3" 
+                                  placeholder="Please provide a detailed reason for reversing this payment..." required></textarea>
+                        <span asp-validation-for="Reason" class="text-danger"></span>
+                        <div class="form-text">This reason will be recorded in the audit trail</div>
+                    </div>
+
+                    <!-- Confirmation Checkbox -->
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="confirmReversal" required>
+                            <label class="form-check-label" for="confirmReversal">
+                                I understand that this action cannot be undone and I have the authority to reverse this payment
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-warning" id="reverseSubmitBtn" disabled>
+                        <i class="fas fa-undo me-1"></i>Reverse Payment
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Enable/disable submit button based on confirmation checkbox
+        $('#confirmReversal').change(function() {
+            $('#reverseSubmitBtn').prop('disabled', !this.checked);
+        });
+
+        // Form submission
+        $('#reversePaymentForm').submit(function(e) {
+            if (!$('#confirmReversal').is(':checked')) {
+                e.preventDefault();
+                showReverseAlert('Please confirm that you understand this action cannot be undone', 'warning');
+                return false;
+            }
+
+            // Disable submit button to prevent double submission
+            $('#reverseSubmitBtn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>Processing...');
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            $('.reverse-alert').alert('close');
+        }, 5000);
+    });
+
+    function showReversePaymentModal(paymentId, paymentData) {
+        // Populate payment details
+        $('#reversePaymentId').text(paymentId);
+        $('#reversePaymentIdInput').val(paymentId);
+        $('#reversePaymentAmount').text(paymentData.amount + ' ' + paymentData.currency);
+        $('#reversePaymentDate').text(new Date(paymentData.paymentDate).toLocaleDateString());
+        $('#reversePaymentMethod').text(paymentData.paymentMethod);
+
+        // Clear form
+        $('#Reason').val('');
+        $('#confirmReversal').prop('checked', false);
+        $('#reverseSubmitBtn').prop('disabled', true);
+
+        // Show modal
+        $('#reversePaymentModal').modal('show');
+    }
+
+    function showReverseAlert(message, type) {
+        // Remove existing alerts
+        $('.reverse-alert').remove();
+        
+        const alertHtml = `
+            <div class="reverse-alert alert alert-${type} alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-triangle me-2"></i>${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+        
+        $('.modal-body').prepend(alertHtml);
+        
+        // Auto-hide after 5 seconds
+        setTimeout(function() {
+            $('.reverse-alert').alert('close');
+        }, 5000);
+    }
+
+    // AJAX version for API calls
+    function reversePaymentAjax(paymentId, reason) {
+        if (!reason || reason.trim() === '') {
+            showReverseAlert('Please provide a reason for the reversal', 'warning');
+            return;
+        }
+
+        // Disable submit button
+        $('#reverseSubmitBtn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>Processing...');
+
+        $.ajax({
+            url: `/api/payments/${paymentId}/reverse`,
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                paymentId: paymentId,
+                reason: reason
+            }),
+            success: function(response) {
+                if (response.success) {
+                    showReverseAlert('Payment reversed successfully!', 'success');
+                    $('#reversePaymentModal').modal('hide');
+                    
+                    // Refresh the page or update the UI
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    showReverseAlert(response.message || 'Failed to reverse payment', 'danger');
+                }
+            },
+            error: function(xhr) {
+                let errorMessage = 'An error occurred while reversing the payment';
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                }
+                showReverseAlert(errorMessage, 'danger');
+            },
+            complete: function() {
+                // Re-enable submit button
+                $('#reverseSubmitBtn').prop('disabled', false).html('<i class="fas fa-undo me-1"></i>Reverse Payment');
+            }
+        });
+    }
+</script> 

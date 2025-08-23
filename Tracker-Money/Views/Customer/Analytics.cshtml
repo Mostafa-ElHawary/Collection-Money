@@ -1,0 +1,79 @@
+@model CollectionApp.Application.ViewModels.CustomerAnalyticsVM
+@{
+    ViewData["Title"] = "Customer Analytics";
+}
+
+<div class="container analytics">
+    <h2>@ViewData["Title"]</h2>
+
+    <div class="row g-3">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="h6">Total Customers</div>
+                    <div class="display-6">@Model.TotalCustomers</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="h6">Active Contracts</div>
+                    <div class="display-6">@Model.ActiveContracts</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="h6">Completed Contracts</div>
+                    <div class="display-6">@Model.CompletedContracts</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="h6">Total Portfolio</div>
+                    <div class="display-6">@Model.TotalPortfolioValue</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3 mt-1">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Gender Distribution</div>
+                <div class="card-body">
+                    <canvas id="genderChart" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Credit Score Distribution</div>
+                <div class="card-body">
+                    <canvas id="creditChart" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3 mt-1">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">New Customers Over Time</div>
+                <div class="card-body">
+                    <canvas id="newCustomersChart" height="120"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+// Placeholder hooks for chart initialization
+</script>
+}

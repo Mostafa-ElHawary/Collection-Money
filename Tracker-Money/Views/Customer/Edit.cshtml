@@ -1,0 +1,319 @@
+@model CollectionApp.Application.ViewModels.CustomerUpdateVM
+
+@{
+    ViewData["Title"] = $"Edit Customer - {Model.FirstName} {Model.LastName}";
+}
+
+@section Styles {
+    <link href="~/css/Customer/Edit.css" rel="stylesheet" />
+}
+
+<div class="dashboard-content">
+    <!-- Enhanced dashboard header -->
+    <div class="dashboard-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="dashboard-title">Edit Customer</h1>
+                <p class="dashboard-subtitle">Update customer information and details</p>
+            </div>
+            <div class="d-flex gap-3">
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-info">
+                    <i class="fas fa-eye"></i> View Details
+                </a>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Main form section -->
+        <div class="col-lg-8">
+            <div class="form-card">
+                <form asp-action="Edit" method="post" class="customer-form">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+
+                    <!-- Enhanced tabs with futuristic design -->
+                    <ul class="nav nav-tabs customer-tabs" id="customerEditTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab">
+                                <i class="fas fa-user"></i> Personal Info
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab">
+                                <i class="fas fa-envelope"></i> Contact Info
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="address-tab" data-bs-toggle="tab" data-bs-target="#address" type="button" role="tab">
+                                <i class="fas fa-map-marker-alt"></i> Address
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="customerEditTabContent">
+                        <!-- Personal Information Tab -->
+                        <div class="tab-pane fade show active" id="personal" role="tabpanel">
+                            <div class="form-section">
+                                <h4 class="section-title">Personal Information</h4>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="FirstName" class="form-label">First Name</label>
+                                            <input asp-for="FirstName" class="form-control" />
+                                            <span asp-validation-for="FirstName" class="validation-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="LastName" class="form-label">Last Name</label>
+                                            <input asp-for="LastName" class="form-control" />
+                                            <span asp-validation-for="LastName" class="validation-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="NationalId" class="form-label">National ID</label>
+                                    <input asp-for="NationalId" class="form-control" />
+                                    <span asp-validation-for="NationalId" class="validation-error"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information Tab -->
+                        <div class="tab-pane fade" id="contact" role="tabpanel">
+                            <div class="form-section">
+                                <h4 class="section-title">Contact Information</h4>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="form-label">Email Address</label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="validation-error"></span>
+                                </div>
+
+                                <div class="phone-section">
+                                    <h5 class="subsection-title">
+                                        <i class="fas fa-phone"></i>
+                                        Phone Information
+                                    </h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label asp-for="PhoneCountryCode" class="form-label">Country Code</label>
+                                                <input asp-for="PhoneCountryCode" class="form-control" />
+                                                <span asp-validation-for="PhoneCountryCode" class="validation-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label asp-for="PhoneAreaCode" class="form-label">Area Code</label>
+                                                <input asp-for="PhoneAreaCode" class="form-control" />
+                                                <span asp-validation-for="PhoneAreaCode" class="validation-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                                                <input asp-for="PhoneNumber" class="form-control" />
+                                                <span asp-validation-for="PhoneNumber" class="validation-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label asp-for="PhoneType" class="form-label">Type</label>
+                                                <input asp-for="PhoneType" class="form-control" />
+                                                <span asp-validation-for="PhoneType" class="validation-error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address Information Tab -->
+                        <div class="tab-pane fade" id="address" role="tabpanel">
+                            <div class="form-section">
+                                <h4 class="section-title">Address Information</h4>
+                                <div class="form-group">
+                                    <label asp-for="Street" class="form-label">Street Address</label>
+                                    <input asp-for="Street" class="form-control" />
+                                    <span asp-validation-for="Street" class="validation-error"></span>
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="City" class="form-label">City</label>
+                                            <input asp-for="City" class="form-control" />
+                                            <span asp-validation-for="City" class="validation-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="State" class="form-label">State/Province</label>
+                                            <input asp-for="State" class="form-control" />
+                                            <span asp-validation-for="State" class="validation-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="ZipCode" class="form-label">Zip Code</label>
+                                            <input asp-for="ZipCode" class="form-control" />
+                                            <span asp-validation-for="ZipCode" class="validation-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Country" class="form-label">Country</label>
+                                    <input asp-for="Country" class="form-control" />
+                                    <span asp-validation-for="Country" class="validation-error"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Sidebar with quick actions -->
+        <div class="col-lg-4">
+            <div class="actions-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-bolt"></i>
+                        Quick Actions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="customer-action-buttons">
+                        <a asp-action="Details" asp-route-id="@Model.Id" class="customer-action-btn info">
+                            <i class="fas fa-eye"></i>
+                            <div class="customer-action-content">
+                                <span class="customer-action-title">View Details</span>
+                                <span class="customer-action-desc">See complete customer profile</span>
+                            </div>
+                        </a>
+                        <a href="#" class="customer-action-btn primary">
+                            <i class="fas fa-file-contract"></i>
+                            <div class="customer-action-content">
+                                <span class="customer-action-title">View Contracts</span>
+                                <span class="customer-action-desc">Manage customer contracts</span>
+                            </div>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="customer-action-btn danger">
+                            <i class="fas fa-trash"></i>
+                            <div class="customer-action-content">
+                                <span class="customer-action-title">Delete Customer</span>
+                                <span class="customer-action-desc">Remove from system</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit History Card -->
+            <div class="history-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-history"></i>
+                        Recent Changes
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="history-timeline">
+                        <div class="history-item">
+                            <div class="history-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="history-content">
+                                <span class="history-action">Profile Updated</span>
+                                <span class="history-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="history-content">
+                                <span class="history-action">Phone Number Changed</span>
+                                <span class="history-time">1 day ago</span>
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="history-content">
+                                <span class="history-action">Customer Created</span>
+                                <span class="history-time">1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Enhanced tab functionality and form tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab change animations
+            const tabButtons = document.querySelectorAll('.nav-link');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Add active state animation
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Form change tracking
+            const form = document.querySelector('.customer-form');
+            let hasChanges = false;
+
+            form.addEventListener('input', function() {
+                hasChanges = true;
+                // Add visual indicator for unsaved changes
+                const saveButton = document.querySelector('.btn-primary');
+                if (!saveButton.classList.contains('has-changes')) {
+                    saveButton.classList.add('has-changes');
+                    saveButton.innerHTML = '<i class="fas fa-save"></i> Save Changes *';
+                }
+            });
+
+            // Warn before leaving with unsaved changes
+            window.addEventListener('beforeunload', function(e) {
+                if (hasChanges) {
+                    e.preventDefault();
+                    e.returnValue = '';
+                }
+            });
+
+            // Remove warning on form submit
+            form.addEventListener('submit', function() {
+                hasChanges = false;
+            });
+        });
+    </script>
+}

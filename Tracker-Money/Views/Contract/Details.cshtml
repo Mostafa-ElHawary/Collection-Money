@@ -1,0 +1,288 @@
+@using CollectionApp.Application.ViewModels
+@using CollectionApp.Domain.Enums
+@using Tracker_Money.Helpers
+@model ContractDetailVM
+@{
+    ViewData["Title"] = $"Contract - {Model.ContractNumber}";
+    var statusClass = Model.Status switch
+    {
+        ContractStatus.Active => "text-success",
+        ContractStatus.Suspended => "text-warning",
+        ContractStatus.Completed => "text-info",
+        ContractStatus.Cancelled => "text-danger",
+        ContractStatus.Defaulted => "text-dark",
+        _ => "text-secondary"
+    };
+}
+@section Styles {
+    <link href="~/css/Contract/Details.css" rel="stylesheet" />
+    <link href="~/css/Contract/FinancialOperations.css" rel="stylesheet" />
+}
+<div class="dashboard-content" id="contractDetailsRoot" data-contract-id="@Model.Id">
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="dashboard-title mb-1">@Model.ContractNumber</h1>
+                <p class="dashboard-subtitle mb-0">Customer: <a asp-controller="Customer" asp-action="Details" asp-route-id="@Model.CustomerId">@Model.CustomerName</a></p>
+            </div>
+            <div class="btn-group" role="group">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-futuristic btn-primary">
+                    <i class="fas fa-edit me-2"></i>Edit Contract
+                </a>
+                <a asp-action="Index" class="btn btn-futuristic btn-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+<div class="row g-4">
+        <!-- Left Column: Key Details -->
+        <div class="col-lg-5">
+            <!-- Contract Summary Card -->
+            <div class="futuristic-card mb-4">
+                <div class="futuristic-card-header">
+                    <h5 class="mb-0"><i class="fas fa-file-signature me-2"></i>Contract Summary</h5>
+                </div>
+                <div class="futuristic-card-body">
+                    <div class="info-row">
+                        <div class="info-label">Status</div>
+                        <div class="info-value"><status-badge value="@Model.Status"></status-badge></div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Contract Type</div>
+                        <div class="info-value">@Model.ContractType</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Assigned Staff</div>
+                        <div class="info-value">@(Model.StaffName ?? "N/A")</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Summary Card -->
+            <div class="futuristic-card mb-4">
+                <div class="futuristic-card-header">
+                    <h5 class="mb-0"><i class="fas fa-dollar-sign me-2"></i>Financials</h5>
+                </div>
+                <div class="futuristic-card-body">
+                    <div class="info-row">
+                        <div class="info-label">Principal Amount</div>
+                        <div class="info-value">@Tracker_Money.Helpers.CurrencyFormatter.Format(Model.PrincipalAmount ?? 0, Model.Currency)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Total Amount</div>
+                        <div class="info-value fw-bold">@Tracker_Money.Helpers.CurrencyFormatter.Format(Model.TotalAmount, Model.Currency)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Outstanding</div>
+                        <div class="info-value fw-bold @(Model.OutstandingAmount > 0 ? "text-warning" : "text-success")">
+                            @Tracker_Money.Helpers.CurrencyFormatter.Format(Model.OutstandingAmount, Model.Currency)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- Key Dates Card -->
+            <div class="futuristic-card mb-4">
+                <div class="futuristic-card-header">
+                    <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Key Dates & Terms</h5>
+                </div>
+                <div class="futuristic-card-body">
+                     <div class="info-row">
+                        <div class="info-label">Start Date</div>
+                        <div class="info-value">@Model.StartDate.ToString("MMM dd, yyyy")</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">End Date</div>
+                        <div class="info-value">@Model.EndDate?.ToString("MMM dd, yyyy")</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Term</div>
+                        <div class="info-value">@Model.TermInMonths months</div>
+                    </div>
+                     <div class="info-row">
+                        <div class="info-label">Payment Frequency</div>
+                        <div class="info-value">@Model.PaymentFrequency</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                    <!-- Outstanding Amount Alert -->
+                    @if (Model.OutstandingAmount > 0)
+                    {
+                        <div class="alert alert-warning" role="alert">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    <strong>Outstanding Amount:</strong>
+                                    <span class="fs-5 fw-bold text-danger" id="outstanding-amount" data-fin-outstanding>
+                                        @Tracker_Money.Helpers.CurrencyFormatter.Format(Model.OutstandingAmount, Model.Currency)
+                                    </span>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="recalculateOutstanding()">
+                                    <i class="fas fa-sync-alt me-1"></i>Recalculate
+                                </button>
+                            </div>
+                        </div>
+                    }
+
+
+        <!-- Right Column: Tabs for Details -->
+        <div class="col-lg-7">
+            <div class="futuristic-card">
+                <div class="futuristic-card-body">
+                    <!-- Styled Tabs -->
+                    <ul class="nav nav-tabs futuristic-tabs" id="contractTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="installments-tab" data-bs-toggle="tab" data-bs-target="#installments" type="button" role="tab">Installments</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="payments-tab" data-bs-toggle="tab" data-bs-target="#payments" type="button" role="tab">Payments</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="terms-tab" data-bs-toggle="tab" data-bs-target="#terms" type="button" role="tab">Terms</button>
+                        </li>
+                         <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="actions-tab" data-bs-toggle="tab" data-bs-target="#actions" type="button" role="tab">Actions</button>
+                        </li>
+                    </ul>
+
+
+                    <div class="tab-content pt-4" id="contractTabsContent">
+                        <!-- Contract Information Tab -->
+                        <!-- Remove unused info/financial panes or ensure nav links exist. Keeping primary panes below. -->
+                        <!-- Contract Information and Financial panes removed to normalize tab structure -->
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <h5>Basic Information</h5>
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td class="fw-bold" style="width: 40%;">Contract Number:</td>
+                                            <td>@Model.ContractNumber</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Customer:</td>
+                                            <td><a asp-controller="Customer" asp-action="Details" asp-route-id="@Model.CustomerId">@Model.CustomerName</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Contract Type:</td>
+                                            <td>@Model.ContractType</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Status:</td>
+                                            <td><span class="@statusClass">@Model.Status</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Start Date:</td>
+                                            <td>@Model.StartDate.ToString("MMM dd, yyyy")</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">End Date:</td>
+                                            <td>@Model.EndDate?.ToString("MMM dd, yyyy")</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Term (Months):</td>
+                                            <td>@Model.TermInMonths</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Payment Terms</h5>
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td class="fw-bold" style="width: 40%;">Payment Frequency:</td>
+                                            <td>@Model.PaymentFrequency</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Grace Period:</td>
+                                            <td>@Model.GracePeriodDays days</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Late Fee %:</td>
+                                            <td>@Model.LateFeePercentage%</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Penalty %:</td>
+                                            <td>@Model.PenaltyPercentage%</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Staff Assigned:</td>
+                                            <td>@Model.StaffName</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Created:</td>
+                                            <td>@Model.CreatedAt.ToString("MMM dd, yyyy HH:mm")</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+
+                        <!-- Installments Tab -->
+                        <div class="tab-pane fade show active" id="installments" role="tabpanel">
+                             <div id="installmentsTab" data-source='@Url.Action("InstallmentsPartial", "Contract", new { id = Model.Id })'>
+                                 <partial name="_ContractInstallments" model="Model.Installments" />
+                             </div>
+                        </div>
+
+                        <!-- Payments Tab -->
+                        <div class="tab-pane fade" id="payments" role="tabpanel">
+                            <div id="paymentsTab" data-source='@Url.Action("PaymentsPartial", "Contract", new { id = Model.Id })'>
+                                <partial name="_ContractPayments" model="Model.Payments" />
+                            </div>
+                        </div>
+
+                        <!-- Terms Tab -->
+                        <div class="tab-pane fade" id="terms" role="tabpanel">
+                            <h5>Additional Information</h5>
+                            <table class="table table-borderless table-futuristic">
+                                <tr><td>Grace Period:</td><td>@Model.GracePeriodDays days</td></tr>
+                                <tr><td>Late Fee %:</td><td>@Model.LateFeePercentage%</td></tr>
+                                <tr><td>Penalty %:</td><td>@Model.PenaltyPercentage%</td></tr>
+                                <tr><td>Collateral:</td><td>@(string.IsNullOrEmpty(Model.CollateralDescription) ? "None" : Model.CollateralDescription)</td></tr>
+                                <tr><td>Guarantor:</td><td>@(string.IsNullOrEmpty(Model.GuarantorName) ? "None" : Model.GuarantorName)</td></tr>
+                                <tr><td>Notes:</td><td>@(string.IsNullOrEmpty(Model.Notes) ? "None" : Model.Notes)</td></tr>
+                            </table>
+                        </div>
+
+                        <!-- Actions Tab -->
+                        <div class="tab-pane fade" id="actions" role="tabpanel">
+                            <h5>Contract Actions</h5>
+                            <div class="action-buttons-group">
+                                @if (Model.Status == ContractStatus.Draft) {
+                                    <form asp-action="Activate" asp-route-id="@Model.Id" method="post">@Html.AntiForgeryToken()<button type="submit" class="btn btn-futuristic btn-success" onclick="return confirm('Activate this contract?')"><i class="fas fa-play me-1"></i>Activate</button></form>
+                                } else if (Model.Status == ContractStatus.Active) {
+                                    <form asp-action="Suspend" asp-route-id="@Model.Id" method="post">@Html.AntiForgeryToken()<button type="submit" class="btn btn-futuristic btn-warning" onclick="return confirm('Suspend this contract?')"><i class="fas fa-pause me-1"></i>Suspend</button></form>
+                                    <form asp-action="Complete" asp-route-id="@Model.Id" method="post">@Html.AntiForgeryToken()<button type="submit" class="btn btn-futuristic btn-info" onclick="return confirm('Complete this contract?')"><i class="fas fa-check me-1"></i>Complete</button></form>
+                                } else if (Model.Status == ContractStatus.Suspended) {
+                                    <form asp-action="Activate" asp-route-id="@Model.Id" method="post">@Html.AntiForgeryToken()<button type="submit" class="btn btn-futuristic btn-success" onclick="return confirm('Reactivate this contract?')"><i class="fas fa-play me-1"></i>Reactivate</button></form>
+                                }
+                                @if (Model.Status == ContractStatus.Active || Model.Status == ContractStatus.Suspended) {
+                                     <form asp-action="Cancel" asp-route-id="@Model.Id" method="post">@Html.AntiForgeryToken()<button type="submit" class="btn btn-futuristic btn-danger" onclick="return confirm('Cancel this contract?')"><i class="fas fa-times me-1"></i>Cancel</button></form>
+                                }
+                            </div>
+                            <div class="mt-3">
+                                <a class="btn btn-outline-info" asp-action="GetFinancialSummary" asp-route-contractId="@Model.Id">Refresh Summary</a>
+                                <a class="btn btn-outline-primary" asp-action="ExportFinancialReport" asp-route-contractId="@Model.Id">Export Financial Report</a>
+                                <a class="btn btn-outline-secondary" asp-action="FinancialAnalytics" asp-route-id="@Model.Id">Open Analytics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+  <script src="~/js/contract-financial-operations.js"></script>
+  <script> (function(){ window.initializeFinancialOperations && window.initializeFinancialOperations(); })(); </script>
+}
+
+<div id="paymentModalContainer"></div>
+<div id="installmentActionsModalContainer"></div>

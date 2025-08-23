@@ -1,0 +1,12 @@
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\bin\Debug\net8.0\CollectionApp.Domain.deps.json
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\bin\Debug\net8.0\CollectionApp.Domain.dll
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\bin\Debug\net8.0\CollectionApp.Domain.pdb
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\obj\Debug\net8.0\CollectionApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\obj\Debug\net8.0\CollectionApp.Domain.AssemblyInfoInputs.cache
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\obj\Debug\net8.0\CollectionApp.Domain.AssemblyInfo.cs
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\obj\Debug\net8.0\CollectionApp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\obj\Debug\net8.0\CollectionApp.Domain.sourcelink.json
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\obj\Debug\net8.0\CollectionApp.Domain.dll
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\obj\Debug\net8.0\refint\CollectionApp.Domain.dll
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\obj\Debug\net8.0\CollectionApp.Domain.pdb
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Domain\obj\Debug\net8.0\ref\CollectionApp.Domain.dll

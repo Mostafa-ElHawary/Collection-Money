@@ -1,0 +1,12 @@
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker-Money.csproj.AssemblyReference.cache
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker_Money.Resources.SharedResource.ar.resources
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker_Money.Resources.SharedResource.en.resources
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker-Money.csproj.GenerateResource.cache
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker-Money.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker-Money.AssemblyInfoInputs.cache
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker-Money.AssemblyInfo.cs
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker-Money.csproj.CoreCompileInputs.cache
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker-Money.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker-Money.RazorAssemblyInfo.cache
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker-Money.RazorAssemblyInfo.cs
+C:\Users\welcome\source\repos\Tracker-Money\Tracker-Money\obj\Debug\net8.0\Tracker-Money.sourcelink.json

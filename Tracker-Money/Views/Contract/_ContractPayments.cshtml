@@ -1,0 +1,251 @@
+@using CollectionApp.Application.ViewModels
+@using CollectionApp.Domain.Enums
+@using Tracker_Money.Helpers
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model IReadOnlyList<ContractPaymentSummaryVM>
+
+@section Styles {
+<link href="~/css/Contract/ContractPayments.css" rel="stylesheet" />
+}
+@if (!Model.Any())
+{
+    <div class="text-center py-3">
+        <i class="fas fa-credit-card fa-2x text-muted mb-2"></i>
+        <p class="text-muted mb-0">@Localizer["NoPaymentsFound"]</p>
+    </div>
+}
+else
+{
+    <!-- Payment Summary -->
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <div class="d-flex justify-content-between">
+                <span>@Localizer["TotalPayments"]:</span>
+                <span class="fw-bold">@Model.Count()</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="d-flex justify-content-between">
+                <span>@Localizer["TotalAmount"]:</span>
+                <span class="fw-bold text-success">@Tracker_Money.Helpers.CurrencyFormatter.Format(Model.Sum(p => p.Amount), Model.FirstOrDefault()?.Currency ?? "USD")</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="d-flex justify-content-between">
+                <span>@Localizer["LastPayment"]:</span>
+                <span class="fw-bold">@Model.Max(p => p.PaymentDate).ToString("MMM dd, yyyy")</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="d-flex justify-content-between">
+                <span>@Localizer["AveragePayment"]:</span>
+                <span class="fw-bold text-info">@Tracker_Money.Helpers.CurrencyFormatter.Format(Model.Average(p => p.Amount), Model.FirstOrDefault()?.Currency ?? "USD")</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payments Table -->
+    <div class="table-responsive">
+        <table class="table table-sm table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Date"]</th>
+                    <th>@Localizer["Amount"]</th>
+                    <th>@Localizer["Method"]</th>
+                    <th>@Localizer["Reference"]</th>
+                    <th>@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var payment in Model.OrderByDescending(p => p.PaymentDate))
+                {
+                    <tr>
+                        <td>
+                            <div>
+                                <strong>@payment.PaymentDate.ToString("MMM dd, yyyy")</strong>
+                                <br>
+                                <small class="text-muted">@GetRelativeDate(payment.PaymentDate)</small>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="fw-bold text-success">@Tracker_Money.Helpers.CurrencyFormatter.Format(payment.Amount, payment.Currency)</span>
+                        </td>
+                        <td>
+                            @{
+                                var methodClass = payment.PaymentMethod switch
+                                {
+                                    PaymentMethod.Cash => "text-success",
+                                    PaymentMethod.BankTransfer => "text-primary",
+                                    PaymentMethod.Check => "text-warning",
+                                    PaymentMethod.CreditCard => "text-info",
+                                    _ => "text-secondary"
+                                };
+                                var methodIcon = payment.PaymentMethod switch
+                                {
+                                    PaymentMethod.Cash => "fas fa-money-bill-wave",
+                                    PaymentMethod.BankTransfer => "fas fa-university",
+                                    PaymentMethod.Check => "fas fa-check",
+                                    PaymentMethod.CreditCard => "fas fa-credit-card",
+                                    _ => "fas fa-money-bill"
+                                };
+                            }
+                            <span class="@methodClass">
+                                <i class="@methodIcon me-1"></i>
+                                @payment.PaymentMethod
+                            </span>
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(payment.ReferenceNumber))
+                            {
+                                <span class="text-muted">@payment.ReferenceNumber</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">-</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-sm btn-outline-info" title="@Localizer["ViewReceipt"]" 
+                                        onclick="viewReceipt('@payment.Id')">
+                                    <i class="fas fa-receipt"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-primary" title="@Localizer["ViewDetails"]" 
+                                        onclick="viewPaymentDetails('@payment.Id')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                @if (payment.PaymentDate > DateTime.Now.AddDays(-30))
+                                {
+                                    <button type="button" class="btn btn-sm btn-outline-warning" title="@Localizer["ReversePayment"]" 
+                                            onclick="confirmPaymentReversal('@payment.Id')">
+                                        <i class="fas fa-undo"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="@Localizer["RegenerateReceipt"]" 
+                                            onclick="regenerateReceipt('@payment.Id')">
+                                        <i class="fas fa-sync"></i>
+                                    </button>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Payment Method Breakdown -->
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <h6>@Localizer["PaymentMethods"]</h6>
+            <div class="list-group list-group-flush">
+                @foreach (var method in Model.GroupBy(p => p.PaymentMethod).OrderByDescending(g => g.Sum(p => p.Amount)))
+                {
+                    var methodClass = method.Key switch
+                    {
+                        PaymentMethod.Cash => "text-success",
+                        PaymentMethod.BankTransfer => "text-primary",
+                        PaymentMethod.Check => "text-info",
+                        PaymentMethod.CreditCard => "text-danger",
+                        _ => "text-secondary"
+                    };
+                    var methodIcon = method.Key switch
+                    {
+                        PaymentMethod.Cash => "fas fa-money-bill-wave",
+                        PaymentMethod.BankTransfer => "fas fa-university",
+                        PaymentMethod.Check => "fas fa-check",
+                        PaymentMethod.CreditCard => "fas fa-credit-card",
+                        _ => "fas fa-money-bill"
+                    };
+
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="@methodIcon @methodClass me-2"></i>
+                            @method.Key
+                        </div>
+                        <div>
+                            <span class="badge bg-primary rounded-pill">@method.Count()</span>
+                            <span class="ms-2 fw-bold">@Tracker_Money.Helpers.CurrencyFormatter.Format(method.Sum(p => p.Amount), Model.FirstOrDefault()?.Currency ?? "USD")</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h6>@Localizer["RecentActivity"]</h6>
+            <div class="list-group list-group-flush">
+                @foreach (var payment in Model.OrderByDescending(p => p.PaymentDate).Take(5))
+                {
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>@Tracker_Money.Helpers.CurrencyFormatter.Format(payment.Amount, payment.Currency)</strong>
+                                <br>
+                                <small class="text-muted">@payment.PaymentDate.ToString("MMM dd, yyyy")</small>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted">@payment.PaymentMethod</small>
+                                <br>
+                                <small class="text-muted">@GetRelativeDate(payment.PaymentDate)</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="mt-3">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="exportPayments()">
+                <i class="fas fa-download me-1"></i>@Localizer["Export"]
+            </button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="printPayments()">
+                <i class="fas fa-print me-1"></i>@Localizer["Print"]
+            </button>
+            <button type="button" class="btn btn-outline-info btn-sm" onclick="refreshPaymentTable()">
+                <i class="fas fa-sync me-1"></i>@Localizer["Refresh"]
+            </button>
+        </div>
+    </div>
+}
+
+@functions {
+    private string GetRelativeDate(DateTime date)
+    {
+        var timeSpan = DateTime.Now - date;
+        
+        if (timeSpan.TotalDays >= 365)
+        {
+            var years = (int)(timeSpan.TotalDays / 365);
+            return $"{years} {(years > 1 ? Localizer["Years"] : Localizer["Year"])} {Localizer["Ago"]}";
+        }
+        else if (timeSpan.TotalDays >= 30)
+        {
+            var months = (int)(timeSpan.TotalDays / 30);
+            return $"{months} {(months > 1 ? Localizer["Months"] : Localizer["Month"])} {Localizer["Ago"]}";
+        }
+        else if (timeSpan.TotalDays >= 1)
+        {
+            var days = (int)timeSpan.TotalDays;
+            return $"{days} {(days > 1 ? Localizer["Days"] : Localizer["Day"])} {Localizer["Ago"]}";
+        }
+        else if (timeSpan.TotalHours >= 1)
+        {
+            var hours = (int)timeSpan.TotalHours;
+            return $"{hours} {(hours > 1 ? Localizer["Hours"] : Localizer["Hour"])} {Localizer["Ago"]}";
+        }
+        else
+        {
+            return Localizer["JustNow"].Value;
+        }
+    }
+}
+
+<script>
+    function viewReceipt(paymentId) { window.viewReceipt(paymentId); }
+    function viewPaymentDetails(paymentId) { /* could open details modal; placeholder */ }
+    function exportPayments() { /* implement export filters if needed */ }
+    function printPayments() { window.print(); }
+</script>

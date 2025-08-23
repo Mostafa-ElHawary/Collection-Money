@@ -1,0 +1,179 @@
+@model CollectionApp.Application.ViewModels.PaymentUpdateVM
+@{
+    ViewData["Title"] = "Edit Payment";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Payment" asp-action="Index">Payments</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Payment" asp-action="Details" asp-route-id="@Model.Id">Payment Details</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Payment</li>
+                </ol>
+            </nav>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h4 class="mb-0">
+                                <i class="fas fa-edit me-2"></i>Edit Payment
+                            </h4>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-1"></i>Back to Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <!-- Warning Alert -->
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Important:</strong> For audit compliance, only the reference number and notes can be modified. 
+                        All other payment details are read-only.
+                    </div>
+
+                    <form asp-action="Edit" method="post" id="paymentEditForm">
+                        <input type="hidden" asp-for="Id" />
+                        
+                        <div class="row">
+                            <!-- Read-only Payment Information -->
+                            <div class="col-md-8">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Payment Information (Read-only)</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <dl class="row">
+                                                    <dt class="col-sm-4">Payment ID:</dt>
+                                                    <dd class="col-sm-8">
+                                                        <code>@Model.Id.ToString("N")</code>
+                                                    </dd>
+
+                                                    <dt class="col-sm-4">Payment Date:</dt>
+                                                    <dd class="col-sm-8">
+                                                        <span class="text-muted">[Payment Date]</span>
+                                                    </dd>
+
+                                                    <dt class="col-sm-4">Amount:</dt>
+                                                    <dd class="col-sm-8">
+                                                        <span class="text-muted">[Amount] [Currency]</span>
+                                                    </dd>
+
+                                                    <dt class="col-sm-4">Payment Method:</dt>
+                                                    <dd class="col-sm-8">
+                                                        <span class="text-muted">[Payment Method]</span>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <dl class="row">
+                                                    <dt class="col-sm-4">Contract:</dt>
+                                                    <dd class="col-sm-8">
+                                                        <span class="text-muted">[Contract Number]</span>
+                                                    </dd>
+
+                                                    <dt class="col-sm-4">Installment:</dt>
+                                                    <dd class="col-sm-8">
+                                                        <span class="text-muted">[Installment Number]</span>
+                                                    </dd>
+
+                                                    <dt class="col-sm-4">Staff:</dt>
+                                                    <dd class="col-sm-8">
+                                                        <span class="text-muted">[Staff Name]</span>
+                                                    </dd>
+
+                                                    <dt class="col-sm-4">Created:</dt>
+                                                    <dd class="col-sm-8">
+                                                        <span class="text-muted">[Created Date]</span>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Editable Fields -->
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="mb-0"><i class="fas fa-edit me-2"></i>Editable Fields</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label asp-for="ReferenceNumber" class="form-label">Reference Number</label>
+                                            <input asp-for="ReferenceNumber" class="form-control" 
+                                                   placeholder="e.g., Check number, transaction ID" />
+                                            <span asp-validation-for="ReferenceNumber" class="text-danger"></span>
+                                            <div class="form-text">Optional reference number for tracking</div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label asp-for="Notes" class="form-label">Notes</label>
+                                            <textarea asp-for="Notes" class="form-control" rows="4" 
+                                                      placeholder="Additional notes about this payment..."></textarea>
+                                            <span asp-validation-for="Notes" class="text-danger"></span>
+                                            <div class="form-text">Optional notes about the payment</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Form Actions -->
+                                <div class="card mt-3">
+                                    <div class="card-body">
+                                        <div class="d-grid gap-2">
+                                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                                <i class="fas fa-save me-1"></i>Save Changes
+                                            </button>
+                                            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">
+                                                <i class="fas fa-times me-1"></i>Cancel
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Form submission
+            $('#paymentEditForm').submit(function(e) {
+                // Disable submit button to prevent double submission
+                $('#submitBtn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>Saving...');
+            });
+
+            // Auto-hide success/error messages after 5 seconds
+            setTimeout(function() {
+                const alerts = document.querySelectorAll('.alert-dismissible');
+                alerts.forEach(function(alert) {
+                    const bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                });
+            }, 5000);
+        });
+    </script>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Payment/PaymentOperations.css" />
+} 

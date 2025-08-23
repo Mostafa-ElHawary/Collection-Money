@@ -1,0 +1,95 @@
+@model CollectionApp.Application.ViewModels.ContractFinancialSummaryVM
+@{
+	ViewData["Title"] = "Financial Analytics";
+}
+
+<div class="container-fluid py-3">
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<h4 class="mb-0">Financial Analytics</h4>
+		<div>
+			<a class="btn btn-outline-secondary" href="@Url.Action("Details","Contract", new { id = Model.ContractId })">Back to Details</a>
+			<a class="btn btn-primary" href="@Url.Action("ExportFinancialReport","Contract", new { contractId = Model.ContractId, format = "excel" })">Export Excel</a>
+			<a class="btn btn-outline-primary" href="@Url.Action("ExportFinancialReport","Contract", new { contractId = Model.ContractId, format = "pdf" })">Export PDF</a>
+		</div>
+	</div>
+
+	<div class="row g-3">
+		<div class="col-sm-6 col-lg-3">
+			<div class="card metric-card">
+				<div class="card-body">
+					<div class="text-muted">Total Installments</div>
+					<div class="h4 mb-0">@Model.TotalInstallments</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-3">
+			<div class="card metric-card">
+				<div class="card-body">
+					<div class="text-muted">Paid Installments</div>
+					<div class="h4 mb-0">@Model.PaidInstallments</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-3">
+			<div class="card metric-card">
+				<div class="card-body">
+					<div class="text-muted">Pending</div>
+					<div class="h4 mb-0">@Model.PendingInstallments</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-3">
+			<div class="card metric-card">
+				<div class="card-body">
+					<div class="text-muted">Overdue</div>
+					<div class="h4 mb-0">@Model.OverdueInstallments</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row g-3 mt-1">
+		<div class="col-lg-4">
+			<div class="card h-100">
+				<div class="card-body">
+					<div class="text-muted">Outstanding Amount</div>
+					<div class="display-6">@Model.OutstandingAmount</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-8">
+			<div class="card h-100">
+				<div class="card-body">
+					<canvas id="paymentsTimeline"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row g-3 mt-1">
+		<div class="col-lg-6">
+			<div class="card h-100">
+				<div class="card-body">
+					<canvas id="installmentStatusPie"></canvas>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="card h-100">
+				<div class="card-body">
+					<canvas id="collectionRateTrend"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+    (function(){
+        // Placeholder hooks for charts; actual data loaded via AJAX elsewhere
+        if (window.initializeFinancialOperations) {
+            window.initializeFinancialOperations();
+        }
+    })();
+</script>
+

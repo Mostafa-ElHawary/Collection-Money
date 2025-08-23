@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = Localizer["AppName"];
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2>@Localizer["AppName"] - @Localizer["Language"] @(LanguageService.CurrentCulture.Name == "ar" ? Localizer["Arabic"] : Localizer["English"])</h2>
+                </div>
+                <div class="card-body">
+                    <h3>@Localizer["Overview"]</h3>
+                    <p>@Localizer["AppName"] @Localizer["Language"] @Localizer["Settings"]</p>
+                    
+                    <h4>@Localizer["Customers"]</h4>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item">@Localizer["FirstName"]: John</li>
+                        <li class="list-group-item">@Localizer["LastName"]: Doe</li>
+                        <li class="list-group-item">@Localizer["Email"]: john.doe@example.com</li>
+                        <li class="list-group-item">@Localizer["Phone"]: +1 234 567 890</li>
+                    </ul>
+                    
+                    <h4>@Localizer["Contracts"]</h4>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item">@Localizer["ContractNumber"]: C-12345</li>
+                        <li class="list-group-item">@Localizer["StartDate"]: 2023-01-01</li>
+                        <li class="list-group-item">@Localizer["EndDate"]: 2023-12-31</li>
+                        <li class="list-group-item">@Localizer["Status"]: @Localizer["Active"]</li>
+                    </ul>
+                    
+                    <h4>@Localizer["Payments"]</h4>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item">@Localizer["PaymentDate"]: 2023-02-15</li>
+                        <li class="list-group-item">@Localizer["PaymentAmount"]: $500.00</li>
+                        <li class="list-group-item">@Localizer["PaymentMethod"]: @Localizer["CreditCard"]</li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <h4>@Localizer["Language"] @Localizer["Settings"]</h4>
+                        <form asp-controller="Language" asp-action="SetLanguage" method="post">
+                            <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                            <div class="d-flex gap-2">
+                                <button type="submit" name="culture" value="en" class="btn @(LanguageService.CurrentCulture.Name == "en" ? "btn-primary" : "btn-outline-primary")">
+                                    @Localizer["English"]
+                                </button>
+                                <button type="submit" name="culture" value="ar" class="btn @(LanguageService.CurrentCulture.Name == "ar" ? "btn-primary" : "btn-outline-primary")">
+                                    @Localizer["Arabic"]
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

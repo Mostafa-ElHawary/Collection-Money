@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = Localizer["HomePage"];
+}
+
+<div class="text-center">
+    <h1 class="display-4">@Localizer["Welcome"]</h1>
+    <p>@Localizer["LearnAbout"] <a href="https://learn.microsoft.com/aspnet/core">@Localizer["BuildingWebApps"]</a>.</p>
+    
+    <div class="mt-4">
+        <a asp-controller="Home" asp-action="Localization" class="btn btn-primary">@Localizer["ViewLocalizationDemo"]</a>
+    </div>
+</div>

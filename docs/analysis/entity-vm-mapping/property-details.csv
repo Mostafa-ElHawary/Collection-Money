@@ -1,0 +1,1389 @@
+EntityName,EntityProperty,EntityPropertyType,ViewModelType,ViewModelProperty,ViewModelPropertyType,MappingStatus,Notes
+Contract,ContractNumber,string,ContractCreateVM (Create),ContractNumber,string,Matched,
+Contract,CustomerId,Guid,ContractCreateVM (Create),CustomerId,Guid,Matched,
+Contract,TotalAmount,Money,ContractCreateVM (Create),TotalAmount,decimal,Flattened,Value object Money flattened to TotalAmount
+Contract,StartDate,DateTime,ContractCreateVM (Create),StartDate,DateTime,Matched,
+Contract,EndDate,DateTime?,ContractCreateVM (Create),EndDate,DateTime?,Matched,
+Contract,Status,ContractStatus,ContractCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,InterestRate,decimal,ContractCreateVM (Create),InterestRate,decimal,Matched,
+Contract,NumberOfInstallments,int,ContractCreateVM (Create),NumberOfInstallments,int,Matched,
+Contract,ContractType,string?,ContractCreateVM (Create),ContractType,string,Matched,
+Contract,PrincipalAmount,Money?,ContractCreateVM (Create),PrincipalAmount,decimal,Flattened,Value object Money? flattened to PrincipalAmount
+Contract,TermInMonths,int?,ContractCreateVM (Create),TermInMonths,int,Matched,
+Contract,PaymentFrequency,string?,ContractCreateVM (Create),PaymentFrequency,string,Matched,
+Contract,GracePeriodDays,int?,ContractCreateVM (Create),GracePeriodDays,int,Matched,
+Contract,LateFeePercentage,decimal?,ContractCreateVM (Create),LateFeePercentage,decimal,Matched,
+Contract,PenaltyPercentage,decimal?,ContractCreateVM (Create),PenaltyPercentage,decimal,Matched,
+Contract,CollateralDescription,string?,ContractCreateVM (Create),CollateralDescription,string?,Matched,
+Contract,GuarantorName,string?,ContractCreateVM (Create),GuarantorName,string?,Derived,Computed/derived property
+Contract,GuarantorContact,string?,ContractCreateVM (Create),GuarantorContact,string?,Matched,
+Contract,Notes,string?,ContractCreateVM (Create),Notes,string?,Matched,
+Contract,Customer,Customer?,ContractCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Installments,IReadOnlyCollection<Installment>,ContractCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Payments,IReadOnlyCollection<Payment>,ContractCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,TotalAmount,Money,ContractCreateVM (Create),Currency,string,Flattened,Value object Money flattened to Currency
+Contract,ContractNumber,string,ContractUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,CustomerId,Guid,ContractUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,TotalAmount,Money,ContractUpdateVM (Update),TotalAmount,decimal,Flattened,Value object Money flattened to TotalAmount
+Contract,StartDate,DateTime,ContractUpdateVM (Update),StartDate,DateTime,Matched,
+Contract,EndDate,DateTime?,ContractUpdateVM (Update),EndDate,DateTime?,Matched,
+Contract,Status,ContractStatus,ContractUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,InterestRate,decimal,ContractUpdateVM (Update),InterestRate,decimal,Matched,
+Contract,NumberOfInstallments,int,ContractUpdateVM (Update),NumberOfInstallments,int,Matched,
+Contract,ContractType,string?,ContractUpdateVM (Update),ContractType,string,Matched,
+Contract,PrincipalAmount,Money?,ContractUpdateVM (Update),PrincipalAmount,decimal,Flattened,Value object Money? flattened to PrincipalAmount
+Contract,TermInMonths,int?,ContractUpdateVM (Update),TermInMonths,int,Matched,
+Contract,PaymentFrequency,string?,ContractUpdateVM (Update),PaymentFrequency,string,Matched,
+Contract,GracePeriodDays,int?,ContractUpdateVM (Update),GracePeriodDays,int,Matched,
+Contract,LateFeePercentage,decimal?,ContractUpdateVM (Update),LateFeePercentage,decimal,Matched,
+Contract,PenaltyPercentage,decimal?,ContractUpdateVM (Update),PenaltyPercentage,decimal,Matched,
+Contract,CollateralDescription,string?,ContractUpdateVM (Update),CollateralDescription,string?,Matched,
+Contract,GuarantorName,string?,ContractUpdateVM (Update),GuarantorName,string?,Derived,Computed/derived property
+Contract,GuarantorContact,string?,ContractUpdateVM (Update),GuarantorContact,string?,Matched,
+Contract,Notes,string?,ContractUpdateVM (Update),Notes,string?,Matched,
+Contract,Customer,Customer?,ContractUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Installments,IReadOnlyCollection<Installment>,ContractUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Payments,IReadOnlyCollection<Payment>,ContractUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,,,ContractUpdateVM (Update),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,TotalAmount,Money,ContractUpdateVM (Update),Currency,string,Flattened,Value object Money flattened to Currency
+Contract,ContractNumber,string,ContractDetailVM (Detail),ContractNumber,string,Matched,
+Contract,CustomerId,Guid,ContractDetailVM (Detail),CustomerId,Guid,Matched,
+Contract,TotalAmount,Money,ContractDetailVM (Detail),TotalAmount,decimal,Flattened,Value object Money flattened to TotalAmount
+Contract,StartDate,DateTime,ContractDetailVM (Detail),StartDate,DateTime,Matched,
+Contract,EndDate,DateTime?,ContractDetailVM (Detail),EndDate,DateTime?,Matched,
+Contract,Status,ContractStatus,ContractDetailVM (Detail),Status,ContractStatus,Matched,
+Contract,InterestRate,decimal,ContractDetailVM (Detail),InterestRate,decimal,Matched,
+Contract,NumberOfInstallments,int,ContractDetailVM (Detail),NumberOfInstallments,int,Matched,
+Contract,ContractType,string?,ContractDetailVM (Detail),ContractType,string?,Matched,
+Contract,PrincipalAmount,Money?,ContractDetailVM (Detail),PrincipalAmount,decimal?,Flattened,Value object Money? flattened to PrincipalAmount
+Contract,TermInMonths,int?,ContractDetailVM (Detail),TermInMonths,int?,Matched,
+Contract,PaymentFrequency,string?,ContractDetailVM (Detail),PaymentFrequency,string?,Matched,
+Contract,GracePeriodDays,int?,ContractDetailVM (Detail),GracePeriodDays,int?,Matched,
+Contract,LateFeePercentage,decimal?,ContractDetailVM (Detail),LateFeePercentage,decimal?,Matched,
+Contract,PenaltyPercentage,decimal?,ContractDetailVM (Detail),PenaltyPercentage,decimal?,Matched,
+Contract,CollateralDescription,string?,ContractDetailVM (Detail),CollateralDescription,string?,Matched,
+Contract,GuarantorName,string?,ContractDetailVM (Detail),GuarantorName,string?,Derived,Computed/derived property
+Contract,GuarantorContact,string?,ContractDetailVM (Detail),GuarantorContact,string?,Matched,
+Contract,Notes,string?,ContractDetailVM (Detail),Notes,string?,Matched,
+Contract,Customer,Customer?,ContractDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Installments,IReadOnlyCollection<Installment>,ContractDetailVM (Detail),Installments,IReadOnlyList<ContractInstallmentSummaryVM>,TypeMismatch,Type mismatch: IReadOnlyCollection<Installment> vs IReadOnlyList<ContractInstallmentSummaryVM>
+Contract,Payments,IReadOnlyCollection<Payment>,ContractDetailVM (Detail),Payments,IReadOnlyList<ContractPaymentSummaryVM>,TypeMismatch,Type mismatch: IReadOnlyCollection<Payment> vs IReadOnlyList<ContractPaymentSummaryVM>
+Contract,,,ContractDetailVM (Detail),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,,,ContractDetailVM (Detail),CustomerName,string,Derived,Computed/derived property
+Contract,TotalAmount,Money,ContractDetailVM (Detail),Currency,string,Flattened,Value object Money flattened to Currency
+Contract,TotalAmount,Money,ContractDetailVM (Detail),OutstandingAmount,decimal,Flattened,Value object Money flattened to OutstandingAmount
+Contract,,,ContractDetailVM (Detail),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,,,ContractDetailVM (Detail),UpdatedAt,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,,,ContractDetailVM (Detail),StaffName,string?,Derived,Computed/derived property
+Contract,ContractNumber,string,ContractListVM (List),ContractNumber,string,Matched,
+Contract,CustomerId,Guid,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,TotalAmount,Money,ContractListVM (List),TotalAmount,decimal,Flattened,Value object Money flattened to TotalAmount
+Contract,StartDate,DateTime,ContractListVM (List),StartDate,DateTime,Matched,
+Contract,EndDate,DateTime?,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Status,ContractStatus,ContractListVM (List),Status,ContractStatus,Matched,
+Contract,InterestRate,decimal,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,NumberOfInstallments,int,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,ContractType,string?,ContractListVM (List),ContractType,string?,Matched,
+Contract,PrincipalAmount,Money?,ContractListVM (List),PrincipalAmount,decimal?,Flattened,Value object Money? flattened to PrincipalAmount
+Contract,TermInMonths,int?,ContractListVM (List),TermInMonths,int?,Matched,
+Contract,PaymentFrequency,string?,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GracePeriodDays,int?,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,LateFeePercentage,decimal?,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,PenaltyPercentage,decimal?,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,CollateralDescription,string?,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GuarantorName,string?,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GuarantorContact,string?,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Notes,string?,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Customer,Customer?,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Installments,IReadOnlyCollection<Installment>,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Payments,IReadOnlyCollection<Payment>,ContractListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,,,ContractListVM (List),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,,,ContractListVM (List),CustomerName,string,Derived,Computed/derived property
+Contract,TotalAmount,Money,ContractListVM (List),Currency,string,Flattened,Value object Money flattened to Currency
+Contract,TotalAmount,Money,ContractListVM (List),OutstandingAmount,decimal,Flattened,Value object Money flattened to OutstandingAmount
+Contract,,,ContractListVM (List),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,,,ContractListVM (List),StaffName,string?,Derived,Computed/derived property
+Contract,ContractNumber,string,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,CustomerId,Guid,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,TotalAmount,Money,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,StartDate,DateTime,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,EndDate,DateTime?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Status,ContractStatus,ContractInstallmentSummaryVM (Summary),Status,InstallmentStatus,TypeMismatch,Type mismatch: ContractStatus vs InstallmentStatus
+Contract,InterestRate,decimal,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,NumberOfInstallments,int,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,ContractType,string?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,PrincipalAmount,Money?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,TermInMonths,int?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,PaymentFrequency,string?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GracePeriodDays,int?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,LateFeePercentage,decimal?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,PenaltyPercentage,decimal?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,CollateralDescription,string?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GuarantorName,string?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GuarantorContact,string?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Notes,string?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Customer,Customer?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Installments,IReadOnlyCollection<Installment>,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Payments,IReadOnlyCollection<Payment>,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,,,ContractInstallmentSummaryVM (Summary),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,,,ContractInstallmentSummaryVM (Summary),InstallmentNumber,int,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,,,ContractInstallmentSummaryVM (Summary),DueDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,TotalAmount,Money,ContractInstallmentSummaryVM (Summary),Amount,decimal,Flattened,Value object Money flattened to Amount
+Contract,TotalAmount,Money,ContractInstallmentSummaryVM (Summary),Currency,string,Flattened,Value object Money flattened to Currency
+Contract,ContractNumber,string,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,CustomerId,Guid,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,TotalAmount,Money,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,StartDate,DateTime,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,EndDate,DateTime?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Status,ContractStatus,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,InterestRate,decimal,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,NumberOfInstallments,int,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,ContractType,string?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,PrincipalAmount,Money?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,TermInMonths,int?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,PaymentFrequency,string?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GracePeriodDays,int?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,LateFeePercentage,decimal?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,PenaltyPercentage,decimal?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,CollateralDescription,string?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GuarantorName,string?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GuarantorContact,string?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Notes,string?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Customer,Customer?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Installments,IReadOnlyCollection<Installment>,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Payments,IReadOnlyCollection<Payment>,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,,,ContractPaymentSummaryVM (Summary),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,,,ContractPaymentSummaryVM (Summary),PaymentDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,TotalAmount,Money,ContractPaymentSummaryVM (Summary),Amount,decimal,Flattened,Value object Money flattened to Amount
+Contract,TotalAmount,Money,ContractPaymentSummaryVM (Summary),Currency,string,Flattened,Value object Money flattened to Currency
+Contract,,,ContractPaymentSummaryVM (Summary),PaymentMethod,PaymentMethod,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,,,ContractPaymentSummaryVM (Summary),ReferenceNumber,string?,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,ContractNumber,string,CustomerContractSummaryVM (Summary),ContractNumber,string,Matched,
+Contract,CustomerId,Guid,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,TotalAmount,Money,CustomerContractSummaryVM (Summary),TotalAmount,decimal,Flattened,Value object Money flattened to TotalAmount
+Contract,StartDate,DateTime,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,EndDate,DateTime?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Status,ContractStatus,CustomerContractSummaryVM (Summary),Status,ContractStatus,Matched,
+Contract,InterestRate,decimal,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,NumberOfInstallments,int,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,ContractType,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,PrincipalAmount,Money?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,TermInMonths,int?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,PaymentFrequency,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GracePeriodDays,int?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,LateFeePercentage,decimal?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,PenaltyPercentage,decimal?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,CollateralDescription,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GuarantorName,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,GuarantorContact,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Notes,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Customer,Customer?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Installments,IReadOnlyCollection<Installment>,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,Payments,IReadOnlyCollection<Payment>,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Contract,,,CustomerContractSummaryVM (Summary),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Contract,TotalAmount,Money,CustomerContractSummaryVM (Summary),Currency,string,Flattened,Value object Money flattened to Currency
+Customer,FirstName,string,CustomerCreateVM (Create),FirstName,string,Derived,Computed/derived property
+Customer,LastName,string,CustomerCreateVM (Create),LastName,string,Derived,Computed/derived property
+Customer,NationalId,string,CustomerCreateVM (Create),NationalId,string,Matched,
+Customer,Address,Address,CustomerCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Phone,Phone,CustomerCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Email,string,CustomerCreateVM (Create),Email,string,Matched,
+Customer,DateOfBirth,DateTime?,CustomerCreateVM (Create),DateOfBirth,DateTime?,Matched,
+Customer,Gender,string?,CustomerCreateVM (Create),Gender,string?,Matched,
+Customer,Occupation,string?,CustomerCreateVM (Create),Occupation,string?,Matched,
+Customer,EmployerName,string?,CustomerCreateVM (Create),EmployerName,string?,Derived,Computed/derived property
+Customer,MonthlyIncome,decimal?,CustomerCreateVM (Create),MonthlyIncome,decimal?,Matched,
+Customer,CreditScore,int?,CustomerCreateVM (Create),CreditScore,int?,Matched,
+Customer,SourceOfFunds,string?,CustomerCreateVM (Create),SourceOfFunds,string?,Matched,
+Customer,PurposeOfLoan,string?,CustomerCreateVM (Create),PurposeOfLoan,string?,Matched,
+Customer,Notes,string?,CustomerCreateVM (Create),Notes,string?,Matched,
+Customer,Contracts,IReadOnlyCollection<Contract>,CustomerCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Address,Address,CustomerCreateVM (Create),Street,string,Flattened,Value object Address flattened to Street
+Customer,Address,Address,CustomerCreateVM (Create),City,string,Flattened,Value object Address flattened to City
+Customer,Address,Address,CustomerCreateVM (Create),State,string,Flattened,Value object Address flattened to State
+Customer,Address,Address,CustomerCreateVM (Create),Country,string,Flattened,Value object Address flattened to Country
+Customer,,,CustomerCreateVM (Create),Country,string,Derived,Computed/derived property
+Customer,Address,Address,CustomerCreateVM (Create),ZipCode,string,Flattened,Value object Address flattened to ZipCode
+Customer,Address,Address,CustomerCreateVM (Create),PhoneCountryCode,string,Flattened,Value object Address flattened to PhoneCountryCode
+Customer,,,CustomerCreateVM (Create),PhoneCountryCode,string,Derived,Computed/derived property
+Customer,Phone,Phone,CustomerCreateVM (Create),PhoneAreaCode,string,Flattened,Value object Phone flattened to PhoneAreaCode
+Customer,Phone,Phone,CustomerCreateVM (Create),PhoneNumber,string,Flattened,Value object Phone flattened to PhoneNumber
+Customer,,,CustomerCreateVM (Create),PhoneType,string,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,FirstName,string,CustomerUpdateVM (Update),FirstName,string,Derived,Computed/derived property
+Customer,LastName,string,CustomerUpdateVM (Update),LastName,string,Derived,Computed/derived property
+Customer,NationalId,string,CustomerUpdateVM (Update),NationalId,string,Matched,
+Customer,Address,Address,CustomerUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Phone,Phone,CustomerUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Email,string,CustomerUpdateVM (Update),Email,string,Matched,
+Customer,DateOfBirth,DateTime?,CustomerUpdateVM (Update),DateOfBirth,DateTime?,Matched,
+Customer,Gender,string?,CustomerUpdateVM (Update),Gender,string?,Matched,
+Customer,Occupation,string?,CustomerUpdateVM (Update),Occupation,string?,Matched,
+Customer,EmployerName,string?,CustomerUpdateVM (Update),EmployerName,string?,Derived,Computed/derived property
+Customer,MonthlyIncome,decimal?,CustomerUpdateVM (Update),MonthlyIncome,decimal?,Matched,
+Customer,CreditScore,int?,CustomerUpdateVM (Update),CreditScore,int?,Matched,
+Customer,SourceOfFunds,string?,CustomerUpdateVM (Update),SourceOfFunds,string?,Matched,
+Customer,PurposeOfLoan,string?,CustomerUpdateVM (Update),PurposeOfLoan,string?,Matched,
+Customer,Notes,string?,CustomerUpdateVM (Update),Notes,string?,Matched,
+Customer,Contracts,IReadOnlyCollection<Contract>,CustomerUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,,,CustomerUpdateVM (Update),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,Address,Address,CustomerUpdateVM (Update),Street,string,Flattened,Value object Address flattened to Street
+Customer,Address,Address,CustomerUpdateVM (Update),City,string,Flattened,Value object Address flattened to City
+Customer,Address,Address,CustomerUpdateVM (Update),State,string,Flattened,Value object Address flattened to State
+Customer,Address,Address,CustomerUpdateVM (Update),Country,string,Flattened,Value object Address flattened to Country
+Customer,,,CustomerUpdateVM (Update),Country,string,Derived,Computed/derived property
+Customer,Address,Address,CustomerUpdateVM (Update),ZipCode,string,Flattened,Value object Address flattened to ZipCode
+Customer,Address,Address,CustomerUpdateVM (Update),PhoneCountryCode,string,Flattened,Value object Address flattened to PhoneCountryCode
+Customer,,,CustomerUpdateVM (Update),PhoneCountryCode,string,Derived,Computed/derived property
+Customer,Phone,Phone,CustomerUpdateVM (Update),PhoneAreaCode,string,Flattened,Value object Phone flattened to PhoneAreaCode
+Customer,Phone,Phone,CustomerUpdateVM (Update),PhoneNumber,string,Flattened,Value object Phone flattened to PhoneNumber
+Customer,,,CustomerUpdateVM (Update),PhoneType,string,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,FirstName,string,CustomerDetailVM (Detail),FirstName,string,Derived,Computed/derived property
+Customer,LastName,string,CustomerDetailVM (Detail),LastName,string,Derived,Computed/derived property
+Customer,NationalId,string,CustomerDetailVM (Detail),NationalId,string,Matched,
+Customer,Address,Address,CustomerDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Phone,Phone,CustomerDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Email,string,CustomerDetailVM (Detail),Email,string?,Matched,
+Customer,DateOfBirth,DateTime?,CustomerDetailVM (Detail),DateOfBirth,DateTime?,Matched,
+Customer,Gender,string?,CustomerDetailVM (Detail),Gender,string?,Matched,
+Customer,Occupation,string?,CustomerDetailVM (Detail),Occupation,string?,Matched,
+Customer,EmployerName,string?,CustomerDetailVM (Detail),EmployerName,string?,Derived,Computed/derived property
+Customer,MonthlyIncome,decimal?,CustomerDetailVM (Detail),MonthlyIncome,decimal?,Matched,
+Customer,CreditScore,int?,CustomerDetailVM (Detail),CreditScore,int?,Matched,
+Customer,SourceOfFunds,string?,CustomerDetailVM (Detail),SourceOfFunds,string?,Matched,
+Customer,PurposeOfLoan,string?,CustomerDetailVM (Detail),PurposeOfLoan,string?,Matched,
+Customer,Notes,string?,CustomerDetailVM (Detail),Notes,string?,Matched,
+Customer,Contracts,IReadOnlyCollection<Contract>,CustomerDetailVM (Detail),Contracts,IReadOnlyList<CustomerContractSummaryVM>,TypeMismatch,Type mismatch: IReadOnlyCollection<Contract> vs IReadOnlyList<CustomerContractSummaryVM>
+Customer,,,CustomerDetailVM (Detail),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerDetailVM (Detail),FullName,string,Derived,Computed/derived property
+Customer,Address,Address,CustomerDetailVM (Detail),Street,string?,Flattened,Value object Address flattened to Street
+Customer,Address,Address,CustomerDetailVM (Detail),City,string?,Flattened,Value object Address flattened to City
+Customer,Address,Address,CustomerDetailVM (Detail),State,string?,Flattened,Value object Address flattened to State
+Customer,Address,Address,CustomerDetailVM (Detail),Country,string?,Flattened,Value object Address flattened to Country
+Customer,,,CustomerDetailVM (Detail),Country,string?,Derived,Computed/derived property
+Customer,Address,Address,CustomerDetailVM (Detail),ZipCode,string?,Flattened,Value object Address flattened to ZipCode
+Customer,Address,Address,CustomerDetailVM (Detail),PhoneCountryCode,string?,Flattened,Value object Address flattened to PhoneCountryCode
+Customer,,,CustomerDetailVM (Detail),PhoneCountryCode,string?,Derived,Computed/derived property
+Customer,Phone,Phone,CustomerDetailVM (Detail),PhoneAreaCode,string?,Flattened,Value object Phone flattened to PhoneAreaCode
+Customer,Phone,Phone,CustomerDetailVM (Detail),PhoneNumber,string?,Flattened,Value object Phone flattened to PhoneNumber
+Customer,,,CustomerDetailVM (Detail),PhoneType,string?,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerDetailVM (Detail),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerDetailVM (Detail),UpdatedAt,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,FirstName,string,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,LastName,string,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,NationalId,string,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Address,Address,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Phone,Phone,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Email,string,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,DateOfBirth,DateTime?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Gender,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Occupation,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,EmployerName,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,MonthlyIncome,decimal?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,CreditScore,int?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,SourceOfFunds,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,PurposeOfLoan,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Notes,string?,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Contracts,IReadOnlyCollection<Contract>,CustomerContractSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,,,CustomerContractSummaryVM (Summary),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,Phone,Phone,CustomerContractSummaryVM (Summary),ContractNumber,string,Flattened,Value object Phone flattened to ContractNumber
+Customer,,,CustomerContractSummaryVM (Summary),Status,ContractStatus,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerContractSummaryVM (Summary),TotalAmount,decimal,Derived,Computed/derived property
+Customer,,,CustomerContractSummaryVM (Summary),Currency,string,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,FirstName,string,CustomerListVM (List),FirstName,string,Derived,Computed/derived property
+Customer,LastName,string,CustomerListVM (List),LastName,string,Derived,Computed/derived property
+Customer,NationalId,string,CustomerListVM (List),NationalId,string,Matched,
+Customer,Address,Address,CustomerListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Phone,Phone,CustomerListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Email,string,CustomerListVM (List),Email,string?,Matched,
+Customer,DateOfBirth,DateTime?,CustomerListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Gender,string?,CustomerListVM (List),Gender,string?,Matched,
+Customer,Occupation,string?,CustomerListVM (List),Occupation,string?,Matched,
+Customer,EmployerName,string?,CustomerListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,MonthlyIncome,decimal?,CustomerListVM (List),MonthlyIncome,decimal?,Matched,
+Customer,CreditScore,int?,CustomerListVM (List),CreditScore,int?,Matched,
+Customer,SourceOfFunds,string?,CustomerListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,PurposeOfLoan,string?,CustomerListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Notes,string?,CustomerListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Contracts,IReadOnlyCollection<Contract>,CustomerListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,,,CustomerListVM (List),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerListVM (List),FullName,string,Derived,Computed/derived property
+Customer,Address,Address,CustomerListVM (List),PhoneCountryCode,string?,Flattened,Value object Address flattened to PhoneCountryCode
+Customer,,,CustomerListVM (List),PhoneCountryCode,string?,Derived,Computed/derived property
+Customer,Phone,Phone,CustomerListVM (List),PhoneAreaCode,string?,Flattened,Value object Phone flattened to PhoneAreaCode
+Customer,Phone,Phone,CustomerListVM (List),PhoneNumber,string?,Flattened,Value object Phone flattened to PhoneNumber
+Customer,,,CustomerListVM (List),PhoneType,string?,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerListVM (List),PhoneDisplay,string,Derived,Computed/derived property
+Customer,Address,Address,CustomerListVM (List),Street,string?,Flattened,Value object Address flattened to Street
+Customer,Address,Address,CustomerListVM (List),City,string?,Flattened,Value object Address flattened to City
+Customer,Address,Address,CustomerListVM (List),State,string?,Flattened,Value object Address flattened to State
+Customer,Address,Address,CustomerListVM (List),Country,string?,Flattened,Value object Address flattened to Country
+Customer,,,CustomerListVM (List),Country,string?,Derived,Computed/derived property
+Customer,Address,Address,CustomerListVM (List),ZipCode,string?,Flattened,Value object Address flattened to ZipCode
+Customer,,,CustomerListVM (List),AddressDisplay,string,Derived,Computed/derived property
+Customer,,,CustomerListVM (List),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,FirstName,string,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,LastName,string,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,NationalId,string,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Address,Address,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Phone,Phone,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Email,string,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,DateOfBirth,DateTime?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Gender,string?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Occupation,string?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,EmployerName,string?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,MonthlyIncome,decimal?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,CreditScore,int?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,SourceOfFunds,string?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,PurposeOfLoan,string?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Notes,string?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Contracts,IReadOnlyCollection<Contract>,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,,,CustomerFollowUpPatternVM (General),CustomerId,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerFollowUpPatternVM (General),TotalFollowUps,int,Derived,Computed/derived property
+Customer,,,CustomerFollowUpPatternVM (General),CompletedFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerFollowUpPatternVM (General),PendingFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerFollowUpPatternVM (General),AverageFollowUpsPerMonth,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerFollowUpPatternVM (General),LastFollowUpDate,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerFollowUpPatternVM (General),FollowUpFrequency,double,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,FirstName,string,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,LastName,string,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,NationalId,string,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Address,Address,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Phone,Phone,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Email,string,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,DateOfBirth,DateTime?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Gender,string?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Occupation,string?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,EmployerName,string?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,MonthlyIncome,decimal?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,CreditScore,int?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,SourceOfFunds,string?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,PurposeOfLoan,string?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Notes,string?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Contracts,IReadOnlyCollection<Contract>,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,,,CustomerVisitPatternVM (General),CustomerId,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerVisitPatternVM (General),TotalVisits,int,Derived,Computed/derived property
+Customer,,,CustomerVisitPatternVM (General),AverageVisitsPerMonth,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerVisitPatternVM (General),LastVisitDate,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerVisitPatternVM (General),VisitFrequency,double,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerVisitPatternVM (General),PreferredVisitDays,List<string>,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,FirstName,string,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,LastName,string,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,NationalId,string,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Address,Address,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Phone,Phone,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Email,string,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,DateOfBirth,DateTime?,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Gender,string?,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Occupation,string?,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,EmployerName,string?,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,MonthlyIncome,decimal?,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,CreditScore,int?,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,SourceOfFunds,string?,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,PurposeOfLoan,string?,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Notes,string?,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,Contracts,IReadOnlyCollection<Contract>,CustomerEngagementReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Customer,,,CustomerEngagementReportVM (General),CustomerId,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerEngagementReportVM (General),TotalVisits,int,Derived,Computed/derived property
+Customer,,,CustomerEngagementReportVM (General),TotalPayments,int,Derived,Computed/derived property
+Customer,,,CustomerEngagementReportVM (General),TotalAmountPaid,decimal,Derived,Computed/derived property
+Customer,,,CustomerEngagementReportVM (General),LastVisitDate,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerEngagementReportVM (General),LastPaymentDate,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Customer,,,CustomerEngagementReportVM (General),VisitFrequency,double,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,CustomerId,Guid,FollowUpCreateVM (Create),CustomerId,Guid,Matched,
+FollowUp,ContractId,Guid?,FollowUpCreateVM (Create),ContractId,Guid?,Matched,
+FollowUp,StaffId,Guid,FollowUpCreateVM (Create),StaffId,Guid,Matched,
+FollowUp,ScheduledDate,DateTime,FollowUpCreateVM (Create),ScheduledDate,DateTime,Matched,
+FollowUp,ActualDate,DateTime?,FollowUpCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Type,string,FollowUpCreateVM (Create),Type,string,Matched,
+FollowUp,Priority,string,FollowUpCreateVM (Create),Priority,string,Matched,
+FollowUp,Status,string,FollowUpCreateVM (Create),Status,string,Matched,
+FollowUp,Notes,string?,FollowUpCreateVM (Create),Notes,string?,Matched,
+FollowUp,Outcome,string?,FollowUpCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,AssignedToStaffId,Guid?,FollowUpCreateVM (Create),AssignedToStaffId,Guid?,Matched,
+FollowUp,Description,string?,FollowUpCreateVM (Create),Description,string,Matched,
+FollowUp,Customer,Customer?,FollowUpCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Contract,Contract?,FollowUpCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Staff,Staff?,FollowUpCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,CustomerId,Guid,FollowUpUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ContractId,Guid?,FollowUpUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,StaffId,Guid,FollowUpUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ScheduledDate,DateTime,FollowUpUpdateVM (Update),ScheduledDate,DateTime?,Matched,
+FollowUp,ActualDate,DateTime?,FollowUpUpdateVM (Update),ActualDate,DateTime?,Matched,
+FollowUp,Type,string,FollowUpUpdateVM (Update),Type,string?,Matched,
+FollowUp,Priority,string,FollowUpUpdateVM (Update),Priority,string?,Matched,
+FollowUp,Status,string,FollowUpUpdateVM (Update),Status,string?,Matched,
+FollowUp,Notes,string?,FollowUpUpdateVM (Update),Notes,string?,Matched,
+FollowUp,Outcome,string?,FollowUpUpdateVM (Update),Outcome,string?,Matched,
+FollowUp,AssignedToStaffId,Guid?,FollowUpUpdateVM (Update),AssignedToStaffId,Guid?,Matched,
+FollowUp,Description,string?,FollowUpUpdateVM (Update),Description,string?,Matched,
+FollowUp,Customer,Customer?,FollowUpUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Contract,Contract?,FollowUpUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Staff,Staff?,FollowUpUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,,,FollowUpUpdateVM (Update),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,CustomerId,Guid,FollowUpDetailVM (Detail),CustomerId,Guid,Matched,
+FollowUp,ContractId,Guid?,FollowUpDetailVM (Detail),ContractId,Guid?,Matched,
+FollowUp,StaffId,Guid,FollowUpDetailVM (Detail),StaffId,Guid,Matched,
+FollowUp,ScheduledDate,DateTime,FollowUpDetailVM (Detail),ScheduledDate,DateTime,Matched,
+FollowUp,ActualDate,DateTime?,FollowUpDetailVM (Detail),ActualDate,DateTime?,Matched,
+FollowUp,Type,string,FollowUpDetailVM (Detail),Type,string?,Matched,
+FollowUp,Priority,string,FollowUpDetailVM (Detail),Priority,string?,Matched,
+FollowUp,Status,string,FollowUpDetailVM (Detail),Status,string?,Matched,
+FollowUp,Notes,string?,FollowUpDetailVM (Detail),Notes,string?,Matched,
+FollowUp,Outcome,string?,FollowUpDetailVM (Detail),Outcome,string?,Matched,
+FollowUp,AssignedToStaffId,Guid?,FollowUpDetailVM (Detail),AssignedToStaffId,Guid?,Matched,
+FollowUp,Description,string?,FollowUpDetailVM (Detail),Description,string?,Matched,
+FollowUp,Customer,Customer?,FollowUpDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Contract,Contract?,FollowUpDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Staff,Staff?,FollowUpDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,,,FollowUpDetailVM (Detail),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpDetailVM (Detail),CustomerName,string,Derived,Computed/derived property
+FollowUp,,,FollowUpDetailVM (Detail),StaffName,string,Derived,Computed/derived property
+FollowUp,,,FollowUpDetailVM (Detail),AssignedStaffName,string,Derived,Computed/derived property
+FollowUp,,,FollowUpDetailVM (Detail),ContractNumber,string?,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpDetailVM (Detail),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpDetailVM (Detail),UpdatedAt,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,CustomerId,Guid,FollowUpListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ContractId,Guid?,FollowUpListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,StaffId,Guid,FollowUpListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ScheduledDate,DateTime,FollowUpListVM (List),ScheduledDate,DateTime,Matched,
+FollowUp,ActualDate,DateTime?,FollowUpListVM (List),ActualDate,DateTime?,Matched,
+FollowUp,Type,string,FollowUpListVM (List),Type,string?,Matched,
+FollowUp,Priority,string,FollowUpListVM (List),Priority,string?,Matched,
+FollowUp,Status,string,FollowUpListVM (List),Status,string?,Matched,
+FollowUp,Notes,string?,FollowUpListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Outcome,string?,FollowUpListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,AssignedToStaffId,Guid?,FollowUpListVM (List),AssignedToStaffId,Guid?,Matched,
+FollowUp,Description,string?,FollowUpListVM (List),Description,string?,Matched,
+FollowUp,Customer,Customer?,FollowUpListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Contract,Contract?,FollowUpListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Staff,Staff?,FollowUpListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,,,FollowUpListVM (List),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpListVM (List),CustomerName,string,Derived,Computed/derived property
+FollowUp,,,FollowUpListVM (List),ContractNumber,string?,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpListVM (List),StaffName,string,Derived,Computed/derived property
+FollowUp,,,FollowUpListVM (List),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,CustomerId,Guid,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ContractId,Guid?,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,StaffId,Guid,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ScheduledDate,DateTime,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ActualDate,DateTime?,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Type,string,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Priority,string,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Status,string,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Notes,string?,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Outcome,string?,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,AssignedToStaffId,Guid?,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Description,string?,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Customer,Customer?,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Contract,Contract?,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Staff,Staff?,FollowUpAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,CustomerId,Guid,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ContractId,Guid?,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,StaffId,Guid,FollowUpEffectivenessVM (General),StaffId,Guid,Matched,
+FollowUp,ScheduledDate,DateTime,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ActualDate,DateTime?,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Type,string,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Priority,string,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Status,string,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Notes,string?,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Outcome,string?,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,AssignedToStaffId,Guid?,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Description,string?,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Customer,Customer?,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Contract,Contract?,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Staff,Staff?,FollowUpEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,,,FollowUpEffectivenessVM (General),TotalFollowUps,int,Derived,Computed/derived property
+FollowUp,,,FollowUpEffectivenessVM (General),CompletedFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpEffectivenessVM (General),PendingFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpEffectivenessVM (General),OverdueFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpEffectivenessVM (General),CompletionRate,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpEffectivenessVM (General),AverageCompletionTime,double,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,CustomerId,Guid,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ContractId,Guid?,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,StaffId,Guid,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ScheduledDate,DateTime,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ActualDate,DateTime?,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Type,string,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Priority,string,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Status,string,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Notes,string?,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Outcome,string?,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,AssignedToStaffId,Guid?,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Description,string?,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Customer,Customer?,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Contract,Contract?,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Staff,Staff?,FollowUpPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,,,FollowUpPerformanceVM (General),FromDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpPerformanceVM (General),ToDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpPerformanceVM (General),TotalFollowUps,int,Derived,Computed/derived property
+FollowUp,,,FollowUpPerformanceVM (General),CompletedFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpPerformanceVM (General),PendingFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpPerformanceVM (General),OverdueFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpPerformanceVM (General),HighPriorityFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpPerformanceVM (General),FollowUpsByType,"Dictionary<string, int>",MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,FollowUpPerformanceVM (General),FollowUpsByPriority,"Dictionary<string, int>",MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,CustomerId,Guid,CustomerFollowUpPatternVM (General),CustomerId,Guid,Matched,
+FollowUp,ContractId,Guid?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,StaffId,Guid,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ScheduledDate,DateTime,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,ActualDate,DateTime?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Type,string,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Priority,string,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Status,string,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Notes,string?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Outcome,string?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,AssignedToStaffId,Guid?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Description,string?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Customer,Customer?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Contract,Contract?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,Staff,Staff?,CustomerFollowUpPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+FollowUp,,,CustomerFollowUpPatternVM (General),TotalFollowUps,int,Derived,Computed/derived property
+FollowUp,,,CustomerFollowUpPatternVM (General),CompletedFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,CustomerFollowUpPatternVM (General),PendingFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,CustomerFollowUpPatternVM (General),AverageFollowUpsPerMonth,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,CustomerFollowUpPatternVM (General),LastFollowUpDate,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+FollowUp,,,CustomerFollowUpPatternVM (General),FollowUpFrequency,double,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,ContractId,Guid,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,InstallmentNumber,int,ContractInstallmentSummaryVM (Summary),InstallmentNumber,int,Matched,
+Installment,DueDate,DateTime,ContractInstallmentSummaryVM (Summary),DueDate,DateTime,Matched,
+Installment,Amount,Money,ContractInstallmentSummaryVM (Summary),Amount,decimal,Flattened,Value object Money flattened to Amount
+Installment,Status,InstallmentStatus,ContractInstallmentSummaryVM (Summary),Status,InstallmentStatus,Matched,
+Installment,PaidAmount,Money,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,PaidDate,DateTime?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Contract,Contract?,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Payments,IReadOnlyCollection<Payment>,ContractInstallmentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,,,ContractInstallmentSummaryVM (Summary),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,Amount,Money,ContractInstallmentSummaryVM (Summary),Currency,string,Flattened,Value object Money flattened to Currency
+Installment,ContractId,Guid,InstallmentCreateVM (Create),ContractId,Guid,Matched,
+Installment,InstallmentNumber,int,InstallmentCreateVM (Create),InstallmentNumber,int,Matched,
+Installment,DueDate,DateTime,InstallmentCreateVM (Create),DueDate,DateTime,Matched,
+Installment,Amount,Money,InstallmentCreateVM (Create),Amount,decimal,Flattened,Value object Money flattened to Amount
+Installment,Status,InstallmentStatus,InstallmentCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,PaidAmount,Money,InstallmentCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,PaidDate,DateTime?,InstallmentCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Contract,Contract?,InstallmentCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Payments,IReadOnlyCollection<Payment>,InstallmentCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Amount,Money,InstallmentCreateVM (Create),Currency,string,Flattened,Value object Money flattened to Currency
+Installment,ContractId,Guid,InstallmentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,InstallmentNumber,int,InstallmentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,DueDate,DateTime,InstallmentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Amount,Money,InstallmentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Status,InstallmentStatus,InstallmentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,PaidAmount,Money,InstallmentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,PaidDate,DateTime?,InstallmentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Contract,Contract?,InstallmentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Payments,IReadOnlyCollection<Payment>,InstallmentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,,,InstallmentUpdateVM (Update),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,ContractId,Guid,InstallmentDetailVM (Detail),ContractId,Guid,Matched,
+Installment,InstallmentNumber,int,InstallmentDetailVM (Detail),InstallmentNumber,int,Matched,
+Installment,DueDate,DateTime,InstallmentDetailVM (Detail),DueDate,DateTime,Matched,
+Installment,Amount,Money,InstallmentDetailVM (Detail),Amount,decimal,Flattened,Value object Money flattened to Amount
+Installment,Status,InstallmentStatus,InstallmentDetailVM (Detail),Status,InstallmentStatus,Matched,
+Installment,PaidAmount,Money,InstallmentDetailVM (Detail),PaidAmount,decimal,Flattened,Value object Money flattened to PaidAmount
+Installment,PaidDate,DateTime?,InstallmentDetailVM (Detail),PaidDate,DateTime?,Matched,
+Installment,Contract,Contract?,InstallmentDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Payments,IReadOnlyCollection<Payment>,InstallmentDetailVM (Detail),Payments,IReadOnlyList<InstallmentPaymentSummaryVM>,TypeMismatch,Type mismatch: IReadOnlyCollection<Payment> vs IReadOnlyList<InstallmentPaymentSummaryVM>
+Installment,,,InstallmentDetailVM (Detail),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,,,InstallmentDetailVM (Detail),ContractNumber,string,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,,,InstallmentDetailVM (Detail),CustomerName,string,Derived,Computed/derived property
+Installment,Amount,Money,InstallmentDetailVM (Detail),Currency,string,Flattened,Value object Money flattened to Currency
+Installment,Amount,Money,InstallmentDetailVM (Detail),PaidCurrency,string,Flattened,Value object Money flattened to PaidCurrency
+Installment,,,InstallmentDetailVM (Detail),IsOverdue,bool,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,,,InstallmentDetailVM (Detail),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,,,InstallmentDetailVM (Detail),UpdatedAt,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,ContractId,Guid,InstallmentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,InstallmentNumber,int,InstallmentListVM (List),InstallmentNumber,int,Matched,
+Installment,DueDate,DateTime,InstallmentListVM (List),DueDate,DateTime,Matched,
+Installment,Amount,Money,InstallmentListVM (List),Amount,decimal,Flattened,Value object Money flattened to Amount
+Installment,Status,InstallmentStatus,InstallmentListVM (List),Status,InstallmentStatus,Matched,
+Installment,PaidAmount,Money,InstallmentListVM (List),PaidAmount,decimal,Flattened,Value object Money flattened to PaidAmount
+Installment,PaidDate,DateTime?,InstallmentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Contract,Contract?,InstallmentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Payments,IReadOnlyCollection<Payment>,InstallmentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,,,InstallmentListVM (List),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,,,InstallmentListVM (List),ContractNumber,string,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,,,InstallmentListVM (List),CustomerName,string,Derived,Computed/derived property
+Installment,Amount,Money,InstallmentListVM (List),Currency,string,Flattened,Value object Money flattened to Currency
+Installment,Amount,Money,InstallmentListVM (List),PaidCurrency,string,Flattened,Value object Money flattened to PaidCurrency
+Installment,Amount,Money,InstallmentListVM (List),RemainingAmount,decimal,Flattened,Value object Money flattened to RemainingAmount
+Installment,,,InstallmentListVM (List),IsOverdue,bool,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,ContractId,Guid,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,InstallmentNumber,int,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,DueDate,DateTime,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Amount,Money,InstallmentPaymentSummaryVM (Summary),Amount,decimal,Flattened,Value object Money flattened to Amount
+Installment,Status,InstallmentStatus,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,PaidAmount,Money,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,PaidDate,DateTime?,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Contract,Contract?,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Payments,IReadOnlyCollection<Payment>,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,,,InstallmentPaymentSummaryVM (Summary),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,,,InstallmentPaymentSummaryVM (Summary),PaymentDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,Amount,Money,InstallmentPaymentSummaryVM (Summary),Currency,string,Flattened,Value object Money flattened to Currency
+Installment,,,InstallmentPaymentSummaryVM (Summary),ReferenceNumber,string?,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,ContractId,Guid,InstallmentAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,InstallmentNumber,int,InstallmentAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,DueDate,DateTime,InstallmentAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Amount,Money,InstallmentAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Status,InstallmentStatus,InstallmentAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,PaidAmount,Money,InstallmentAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,PaidDate,DateTime?,InstallmentAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Contract,Contract?,InstallmentAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Payments,IReadOnlyCollection<Payment>,InstallmentAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,ContractId,Guid,InstallmentStatusSummaryVM (Summary),ContractId,Guid,Matched,
+Installment,InstallmentNumber,int,InstallmentStatusSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,DueDate,DateTime,InstallmentStatusSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Amount,Money,InstallmentStatusSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Status,InstallmentStatus,InstallmentStatusSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,PaidAmount,Money,InstallmentStatusSummaryVM (Summary),PaidAmount,decimal,Flattened,Value object Money flattened to PaidAmount
+Installment,PaidDate,DateTime?,InstallmentStatusSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Contract,Contract?,InstallmentStatusSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,Payments,IReadOnlyCollection<Payment>,InstallmentStatusSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Installment,,,InstallmentStatusSummaryVM (Summary),TotalInstallments,int,Derived,Computed/derived property
+Installment,,,InstallmentStatusSummaryVM (Summary),PaidInstallments,int,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,,,InstallmentStatusSummaryVM (Summary),PendingInstallments,int,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,,,InstallmentStatusSummaryVM (Summary),OverdueInstallments,int,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,,,InstallmentStatusSummaryVM (Summary),WaivedInstallments,int,MissingInEntity,Property exists in ViewModel but not in entity
+Installment,Amount,Money,InstallmentStatusSummaryVM (Summary),TotalAmount,decimal,Flattened,Value object Money flattened to TotalAmount
+Installment,,,InstallmentStatusSummaryVM (Summary),TotalAmount,decimal,Derived,Computed/derived property
+Installment,Amount,Money,InstallmentStatusSummaryVM (Summary),OutstandingAmount,decimal,Flattened,Value object Money flattened to OutstandingAmount
+LedgerEntry,ContractId,Guid?,LedgerEntryCreateVM (Create),ContractId,Guid?,Matched,
+LedgerEntry,CustomerId,Guid?,LedgerEntryCreateVM (Create),CustomerId,Guid?,Matched,
+LedgerEntry,TransactionDate,DateTime,LedgerEntryCreateVM (Create),TransactionDate,DateTime,Matched,
+LedgerEntry,Description,string,LedgerEntryCreateVM (Create),Description,string,Matched,
+LedgerEntry,DebitAmount,Money,LedgerEntryCreateVM (Create),DebitAmount,decimal,Flattened,Value object Money flattened to DebitAmount
+LedgerEntry,CreditAmount,Money,LedgerEntryCreateVM (Create),CreditAmount,decimal,Flattened,Value object Money flattened to CreditAmount
+LedgerEntry,Balance,Money,LedgerEntryCreateVM (Create),Balance,decimal,TypeMismatch,Type mismatch: Money vs decimal
+LedgerEntry,ReferenceType,string,LedgerEntryCreateVM (Create),ReferenceType,string?,Matched,
+LedgerEntry,ReferenceId,Guid?,LedgerEntryCreateVM (Create),ReferenceId,Guid?,Matched,
+LedgerEntry,StaffId,Guid?,LedgerEntryCreateVM (Create),StaffId,Guid?,Matched,
+LedgerEntry,Contract,Contract?,LedgerEntryCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Customer,Customer?,LedgerEntryCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Staff,Staff?,LedgerEntryCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,DebitAmount,Money,LedgerEntryCreateVM (Create),Currency,string,Flattened,Value object Money flattened to Currency
+LedgerEntry,ContractId,Guid?,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,CustomerId,Guid?,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,TransactionDate,DateTime,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Description,string,LedgerEntryUpdateVM (Update),Description,string?,Matched,
+LedgerEntry,DebitAmount,Money,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,CreditAmount,Money,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Balance,Money,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,ReferenceType,string,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,ReferenceId,Guid?,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,StaffId,Guid?,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Contract,Contract?,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Customer,Customer?,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Staff,Staff?,LedgerEntryUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,,,LedgerEntryUpdateVM (Update),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+LedgerEntry,ContractId,Guid?,LedgerEntryDetailVM (Detail),ContractId,Guid?,Matched,
+LedgerEntry,CustomerId,Guid?,LedgerEntryDetailVM (Detail),CustomerId,Guid?,Matched,
+LedgerEntry,TransactionDate,DateTime,LedgerEntryDetailVM (Detail),TransactionDate,DateTime,Matched,
+LedgerEntry,Description,string,LedgerEntryDetailVM (Detail),Description,string,Matched,
+LedgerEntry,DebitAmount,Money,LedgerEntryDetailVM (Detail),DebitAmount,decimal,Flattened,Value object Money flattened to DebitAmount
+LedgerEntry,CreditAmount,Money,LedgerEntryDetailVM (Detail),CreditAmount,decimal,Flattened,Value object Money flattened to CreditAmount
+LedgerEntry,Balance,Money,LedgerEntryDetailVM (Detail),Balance,decimal,TypeMismatch,Type mismatch: Money vs decimal
+LedgerEntry,ReferenceType,string,LedgerEntryDetailVM (Detail),ReferenceType,string?,Matched,
+LedgerEntry,ReferenceId,Guid?,LedgerEntryDetailVM (Detail),ReferenceId,Guid?,Matched,
+LedgerEntry,StaffId,Guid?,LedgerEntryDetailVM (Detail),StaffId,Guid?,Matched,
+LedgerEntry,Contract,Contract?,LedgerEntryDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Customer,Customer?,LedgerEntryDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Staff,Staff?,LedgerEntryDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,,,LedgerEntryDetailVM (Detail),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+LedgerEntry,DebitAmount,Money,LedgerEntryDetailVM (Detail),Currency,string,Flattened,Value object Money flattened to Currency
+LedgerEntry,,,LedgerEntryDetailVM (Detail),ContractNumber,string?,MissingInEntity,Property exists in ViewModel but not in entity
+LedgerEntry,,,LedgerEntryDetailVM (Detail),CustomerName,string?,Derived,Computed/derived property
+LedgerEntry,,,LedgerEntryDetailVM (Detail),StaffName,string?,Derived,Computed/derived property
+LedgerEntry,,,LedgerEntryDetailVM (Detail),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+LedgerEntry,,,LedgerEntryDetailVM (Detail),UpdatedAt,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+LedgerEntry,ContractId,Guid?,LedgerEntryListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,CustomerId,Guid?,LedgerEntryListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,TransactionDate,DateTime,LedgerEntryListVM (List),TransactionDate,DateTime,Matched,
+LedgerEntry,Description,string,LedgerEntryListVM (List),Description,string,Matched,
+LedgerEntry,DebitAmount,Money,LedgerEntryListVM (List),DebitAmount,decimal,Flattened,Value object Money flattened to DebitAmount
+LedgerEntry,CreditAmount,Money,LedgerEntryListVM (List),CreditAmount,decimal,Flattened,Value object Money flattened to CreditAmount
+LedgerEntry,Balance,Money,LedgerEntryListVM (List),Balance,decimal,TypeMismatch,Type mismatch: Money vs decimal
+LedgerEntry,ReferenceType,string,LedgerEntryListVM (List),ReferenceType,string?,Matched,
+LedgerEntry,ReferenceId,Guid?,LedgerEntryListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,StaffId,Guid?,LedgerEntryListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Contract,Contract?,LedgerEntryListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Customer,Customer?,LedgerEntryListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,Staff,Staff?,LedgerEntryListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+LedgerEntry,,,LedgerEntryListVM (List),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+LedgerEntry,DebitAmount,Money,LedgerEntryListVM (List),Currency,string,Flattened,Value object Money flattened to Currency
+LedgerEntry,,,LedgerEntryListVM (List),CustomerName,string?,Derived,Computed/derived property
+LedgerEntry,,,LedgerEntryListVM (List),ContractNumber,string?,MissingInEntity,Property exists in ViewModel but not in entity
+LedgerEntry,,,LedgerEntryListVM (List),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,ContractId,Guid,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,InstallmentId,Guid,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Amount,Money,ContractPaymentSummaryVM (Summary),Amount,decimal,Flattened,Value object Money flattened to Amount
+Payment,PaymentDate,DateTime,ContractPaymentSummaryVM (Summary),PaymentDate,DateTime,Matched,
+Payment,PaymentMethod,PaymentMethod,ContractPaymentSummaryVM (Summary),PaymentMethod,PaymentMethod,Matched,
+Payment,ReferenceNumber,string?,ContractPaymentSummaryVM (Summary),ReferenceNumber,string?,Matched,
+Payment,Notes,string?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,StaffId,Guid?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,ProcessedByStaffId,Guid?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Contract,Contract?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Installment,Installment?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Staff,Staff?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Receipt,Receipt?,ContractPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,,,ContractPaymentSummaryVM (Summary),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,Amount,Money,ContractPaymentSummaryVM (Summary),Currency,string,Flattened,Value object Money flattened to Currency
+Payment,ContractId,Guid,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,InstallmentId,Guid,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Amount,Money,InstallmentPaymentSummaryVM (Summary),Amount,decimal,Flattened,Value object Money flattened to Amount
+Payment,PaymentDate,DateTime,InstallmentPaymentSummaryVM (Summary),PaymentDate,DateTime,Matched,
+Payment,PaymentMethod,PaymentMethod,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,ReferenceNumber,string?,InstallmentPaymentSummaryVM (Summary),ReferenceNumber,string?,Matched,
+Payment,Notes,string?,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,StaffId,Guid?,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,ProcessedByStaffId,Guid?,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Contract,Contract?,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Installment,Installment?,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Staff,Staff?,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Receipt,Receipt?,InstallmentPaymentSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,,,InstallmentPaymentSummaryVM (Summary),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,Amount,Money,InstallmentPaymentSummaryVM (Summary),Currency,string,Flattened,Value object Money flattened to Currency
+Payment,ContractId,Guid,PaymentHistoryVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,InstallmentId,Guid,PaymentHistoryVM (General),InstallmentId,Guid,Matched,
+Payment,Amount,Money,PaymentHistoryVM (General),Amount,decimal,Flattened,Value object Money flattened to Amount
+Payment,PaymentDate,DateTime,PaymentHistoryVM (General),PaymentDate,DateTime,Matched,
+Payment,PaymentMethod,PaymentMethod,PaymentHistoryVM (General),PaymentMethod,string,TypeMismatch,Type mismatch: PaymentMethod vs string
+Payment,ReferenceNumber,string?,PaymentHistoryVM (General),ReferenceNumber,string,Matched,
+Payment,Notes,string?,PaymentHistoryVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,StaffId,Guid?,PaymentHistoryVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,ProcessedByStaffId,Guid?,PaymentHistoryVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Contract,Contract?,PaymentHistoryVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Installment,Installment?,PaymentHistoryVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Staff,Staff?,PaymentHistoryVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Receipt,Receipt?,PaymentHistoryVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,,,PaymentHistoryVM (General),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,,,PaymentHistoryVM (General),Status,string,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,ContractId,Guid,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,InstallmentId,Guid,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Amount,Money,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,PaymentDate,DateTime,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,PaymentMethod,PaymentMethod,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,ReferenceNumber,string?,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Notes,string?,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,StaffId,Guid?,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,ProcessedByStaffId,Guid?,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Contract,Contract?,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Installment,Installment?,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Staff,Staff?,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Receipt,Receipt?,PaymentTrendsVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,,,PaymentTrendsVM (General),FromDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,,,PaymentTrendsVM (General),ToDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,,,PaymentTrendsVM (General),TotalPayments,decimal,Derived,Computed/derived property
+Payment,Amount,Money,PaymentTrendsVM (General),AveragePaymentAmount,decimal,Flattened,Value object Money flattened to AveragePaymentAmount
+Payment,,,PaymentTrendsVM (General),PaymentTrendsByMonth,"Dictionary<string, decimal>",MissingInEntity,Property exists in ViewModel but not in entity
+Payment,ContractId,Guid,PaymentCreateVM (Create),ContractId,Guid,Matched,
+Payment,InstallmentId,Guid,PaymentCreateVM (Create),InstallmentId,Guid,Matched,
+Payment,Amount,Money,PaymentCreateVM (Create),Amount,decimal,Flattened,Value object Money flattened to Amount
+Payment,PaymentDate,DateTime,PaymentCreateVM (Create),PaymentDate,DateTime,Matched,
+Payment,PaymentMethod,PaymentMethod,PaymentCreateVM (Create),PaymentMethod,PaymentMethod,Matched,
+Payment,ReferenceNumber,string?,PaymentCreateVM (Create),ReferenceNumber,string?,Matched,
+Payment,Notes,string?,PaymentCreateVM (Create),Notes,string?,Matched,
+Payment,StaffId,Guid?,PaymentCreateVM (Create),StaffId,Guid?,Matched,
+Payment,ProcessedByStaffId,Guid?,PaymentCreateVM (Create),ProcessedByStaffId,Guid?,Matched,
+Payment,Contract,Contract?,PaymentCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Installment,Installment?,PaymentCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Staff,Staff?,PaymentCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Receipt,Receipt?,PaymentCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Amount,Money,PaymentCreateVM (Create),Currency,string,Flattened,Value object Money flattened to Currency
+Payment,ContractId,Guid,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,InstallmentId,Guid,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Amount,Money,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,PaymentDate,DateTime,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,PaymentMethod,PaymentMethod,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,ReferenceNumber,string?,PaymentUpdateVM (Update),ReferenceNumber,string?,Matched,
+Payment,Notes,string?,PaymentUpdateVM (Update),Notes,string?,Matched,
+Payment,StaffId,Guid?,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,ProcessedByStaffId,Guid?,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Contract,Contract?,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Installment,Installment?,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Staff,Staff?,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Receipt,Receipt?,PaymentUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,,,PaymentUpdateVM (Update),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,ContractId,Guid,PaymentDetailVM (Detail),ContractId,Guid,Matched,
+Payment,InstallmentId,Guid,PaymentDetailVM (Detail),InstallmentId,Guid?,Matched,
+Payment,Amount,Money,PaymentDetailVM (Detail),Amount,decimal,Flattened,Value object Money flattened to Amount
+Payment,PaymentDate,DateTime,PaymentDetailVM (Detail),PaymentDate,DateTime,Matched,
+Payment,PaymentMethod,PaymentMethod,PaymentDetailVM (Detail),PaymentMethod,PaymentMethod,Matched,
+Payment,ReferenceNumber,string?,PaymentDetailVM (Detail),ReferenceNumber,string?,Matched,
+Payment,Notes,string?,PaymentDetailVM (Detail),Notes,string?,Matched,
+Payment,StaffId,Guid?,PaymentDetailVM (Detail),StaffId,Guid?,Matched,
+Payment,ProcessedByStaffId,Guid?,PaymentDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Contract,Contract?,PaymentDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Installment,Installment?,PaymentDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Staff,Staff?,PaymentDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Receipt,Receipt?,PaymentDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,,,PaymentDetailVM (Detail),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,,,PaymentDetailVM (Detail),ContractNumber,string,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,,,PaymentDetailVM (Detail),InstallmentNumber,int?,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,Amount,Money,PaymentDetailVM (Detail),Currency,string,Flattened,Value object Money flattened to Currency
+Payment,,,PaymentDetailVM (Detail),StaffName,string,Derived,Computed/derived property
+Payment,,,PaymentDetailVM (Detail),ReceiptId,Guid?,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,,,PaymentDetailVM (Detail),ReceiptNumber,string?,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,,,PaymentDetailVM (Detail),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,,,PaymentDetailVM (Detail),UpdatedAt,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,ContractId,Guid,PaymentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,InstallmentId,Guid,PaymentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Amount,Money,PaymentListVM (List),Amount,decimal,Flattened,Value object Money flattened to Amount
+Payment,PaymentDate,DateTime,PaymentListVM (List),PaymentDate,DateTime,Matched,
+Payment,PaymentMethod,PaymentMethod,PaymentListVM (List),PaymentMethod,PaymentMethod,Matched,
+Payment,ReferenceNumber,string?,PaymentListVM (List),ReferenceNumber,string?,Matched,
+Payment,Notes,string?,PaymentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,StaffId,Guid?,PaymentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,ProcessedByStaffId,Guid?,PaymentListVM (List),ProcessedByStaffId,Guid?,Matched,
+Payment,Contract,Contract?,PaymentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Installment,Installment?,PaymentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Staff,Staff?,PaymentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,Receipt,Receipt?,PaymentListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Payment,,,PaymentListVM (List),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,,,PaymentListVM (List),ContractNumber,string,MissingInEntity,Property exists in ViewModel but not in entity
+Payment,,,PaymentListVM (List),CustomerName,string,Derived,Computed/derived property
+Payment,Amount,Money,PaymentListVM (List),Currency,string,Flattened,Value object Money flattened to Currency
+Payment,,,PaymentListVM (List),StaffName,string,Derived,Computed/derived property
+Payment,,,PaymentListVM (List),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Receipt,ReceiptNumber,string,ReceiptCreateVM (Create),ReceiptNumber,string,Matched,
+Receipt,PaymentId,Guid,ReceiptCreateVM (Create),PaymentId,Guid,Matched,
+Receipt,CustomerId,Guid,ReceiptCreateVM (Create),CustomerId,Guid,Matched,
+Receipt,Amount,Money,ReceiptCreateVM (Create),Amount,decimal,Flattened,Value object Money flattened to Amount
+Receipt,IssueDate,DateTime,ReceiptCreateVM (Create),IssueDate,DateTime,Matched,
+Receipt,Description,string?,ReceiptCreateVM (Create),Description,string?,Matched,
+Receipt,StaffId,Guid,ReceiptCreateVM (Create),StaffId,Guid,Matched,
+Receipt,Payment,Payment?,ReceiptCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Customer,Customer?,ReceiptCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Staff,Staff?,ReceiptCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Amount,Money,ReceiptCreateVM (Create),Currency,string,Flattened,Value object Money flattened to Currency
+Receipt,ReceiptNumber,string,ReceiptUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,PaymentId,Guid,ReceiptUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,CustomerId,Guid,ReceiptUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Amount,Money,ReceiptUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,IssueDate,DateTime,ReceiptUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Description,string?,ReceiptUpdateVM (Update),Description,string?,Matched,
+Receipt,StaffId,Guid,ReceiptUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Payment,Payment?,ReceiptUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Customer,Customer?,ReceiptUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Staff,Staff?,ReceiptUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,,,ReceiptUpdateVM (Update),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Receipt,ReceiptNumber,string,ReceiptDetailVM (Detail),ReceiptNumber,string,Matched,
+Receipt,PaymentId,Guid,ReceiptDetailVM (Detail),PaymentId,Guid,Matched,
+Receipt,CustomerId,Guid,ReceiptDetailVM (Detail),CustomerId,Guid,Matched,
+Receipt,Amount,Money,ReceiptDetailVM (Detail),Amount,decimal,Flattened,Value object Money flattened to Amount
+Receipt,IssueDate,DateTime,ReceiptDetailVM (Detail),IssueDate,DateTime,Matched,
+Receipt,Description,string?,ReceiptDetailVM (Detail),Description,string?,Matched,
+Receipt,StaffId,Guid,ReceiptDetailVM (Detail),StaffId,Guid,Matched,
+Receipt,Payment,Payment?,ReceiptDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Customer,Customer?,ReceiptDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Staff,Staff?,ReceiptDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,,,ReceiptDetailVM (Detail),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Receipt,,,ReceiptDetailVM (Detail),PaymentDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Receipt,,,ReceiptDetailVM (Detail),CustomerName,string,Derived,Computed/derived property
+Receipt,Amount,Money,ReceiptDetailVM (Detail),Currency,string,Flattened,Value object Money flattened to Currency
+Receipt,,,ReceiptDetailVM (Detail),StaffName,string,Derived,Computed/derived property
+Receipt,,,ReceiptDetailVM (Detail),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Receipt,,,ReceiptDetailVM (Detail),UpdatedAt,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Receipt,ReceiptNumber,string,ReceiptListVM (List),ReceiptNumber,string,Matched,
+Receipt,PaymentId,Guid,ReceiptListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,CustomerId,Guid,ReceiptListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Amount,Money,ReceiptListVM (List),Amount,decimal,Flattened,Value object Money flattened to Amount
+Receipt,IssueDate,DateTime,ReceiptListVM (List),IssueDate,DateTime,Matched,
+Receipt,Description,string?,ReceiptListVM (List),Description,string?,Matched,
+Receipt,StaffId,Guid,ReceiptListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Payment,Payment?,ReceiptListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Customer,Customer?,ReceiptListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,Staff,Staff?,ReceiptListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Receipt,,,ReceiptListVM (List),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Receipt,,,ReceiptListVM (List),CustomerName,string,Derived,Computed/derived property
+Receipt,Amount,Money,ReceiptListVM (List),Currency,string,Flattened,Value object Money flattened to Currency
+Receipt,,,ReceiptListVM (List),StaffName,string,Derived,Computed/derived property
+Receipt,,,ReceiptListVM (List),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,EmployeeId,string,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FirstName,string,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,LastName,string,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Position,string,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Department,string,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Phone,Phone,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,HireDate,DateTime,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,IsActive,bool,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Salary,decimal?,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Permissions,List<string>,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Notes,string?,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Payments,IReadOnlyCollection<Payment>,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Visits,IReadOnlyCollection<Visit>,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffWorkloadVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,,,StaffWorkloadVM (General),StaffId,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffWorkloadVM (General),TotalFollowUps,int,Derived,Computed/derived property
+Staff,,,StaffWorkloadVM (General),PendingFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffWorkloadVM (General),OverdueFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffWorkloadVM (General),HighPriorityFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffWorkloadVM (General),TodayFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffWorkloadVM (General),ThisWeekFollowUps,int,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,EmployeeId,string,StaffCreateVM (Create),EmployeeId,string,Matched,
+Staff,FirstName,string,StaffCreateVM (Create),FirstName,string,Derived,Computed/derived property
+Staff,LastName,string,StaffCreateVM (Create),LastName,string,Derived,Computed/derived property
+Staff,Position,string,StaffCreateVM (Create),Position,string,Matched,
+Staff,Department,string,StaffCreateVM (Create),Department,string,Matched,
+Staff,Phone,Phone,StaffCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffCreateVM (Create),Email,string,Matched,
+Staff,HireDate,DateTime,StaffCreateVM (Create),HireDate,DateTime,Matched,
+Staff,IsActive,bool,StaffCreateVM (Create),IsActive,bool,Matched,
+Staff,Salary,decimal?,StaffCreateVM (Create),Salary,decimal?,Matched,
+Staff,Permissions,List<string>,StaffCreateVM (Create),Permissions,List<string>,Matched,
+Staff,Notes,string?,StaffCreateVM (Create),Notes,string?,Matched,
+Staff,Payments,IReadOnlyCollection<Payment>,StaffCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Visits,IReadOnlyCollection<Visit>,StaffCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Phone,Phone,StaffCreateVM (Create),PhoneCountryCode,string,Flattened,Value object Phone flattened to PhoneCountryCode
+Staff,,,StaffCreateVM (Create),PhoneCountryCode,string,Derived,Computed/derived property
+Staff,Phone,Phone,StaffCreateVM (Create),PhoneAreaCode,string,Flattened,Value object Phone flattened to PhoneAreaCode
+Staff,Phone,Phone,StaffCreateVM (Create),PhoneNumber,string,Flattened,Value object Phone flattened to PhoneNumber
+Staff,,,StaffCreateVM (Create),PhoneType,string,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,EmployeeId,string,StaffUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FirstName,string,StaffUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,LastName,string,StaffUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Position,string,StaffUpdateVM (Update),Position,string?,Matched,
+Staff,Department,string,StaffUpdateVM (Update),Department,string?,Matched,
+Staff,Phone,Phone,StaffUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffUpdateVM (Update),Email,string?,Matched,
+Staff,HireDate,DateTime,StaffUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,IsActive,bool,StaffUpdateVM (Update),IsActive,bool,Matched,
+Staff,Salary,decimal?,StaffUpdateVM (Update),Salary,decimal?,Matched,
+Staff,Permissions,List<string>,StaffUpdateVM (Update),Permissions,List<string>,Matched,
+Staff,Notes,string?,StaffUpdateVM (Update),Notes,string?,Matched,
+Staff,Payments,IReadOnlyCollection<Payment>,StaffUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Visits,IReadOnlyCollection<Visit>,StaffUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,,,StaffUpdateVM (Update),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,Phone,Phone,StaffUpdateVM (Update),PhoneCountryCode,string?,Flattened,Value object Phone flattened to PhoneCountryCode
+Staff,,,StaffUpdateVM (Update),PhoneCountryCode,string?,Derived,Computed/derived property
+Staff,Phone,Phone,StaffUpdateVM (Update),PhoneAreaCode,string?,Flattened,Value object Phone flattened to PhoneAreaCode
+Staff,Phone,Phone,StaffUpdateVM (Update),PhoneNumber,string?,Flattened,Value object Phone flattened to PhoneNumber
+Staff,,,StaffUpdateVM (Update),PhoneType,string?,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,EmployeeId,string,StaffDetailVM (Detail),EmployeeId,string,Matched,
+Staff,FirstName,string,StaffDetailVM (Detail),FirstName,string,Derived,Computed/derived property
+Staff,LastName,string,StaffDetailVM (Detail),LastName,string,Derived,Computed/derived property
+Staff,Position,string,StaffDetailVM (Detail),Position,string?,Matched,
+Staff,Department,string,StaffDetailVM (Detail),Department,string?,Matched,
+Staff,Phone,Phone,StaffDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffDetailVM (Detail),Email,string?,Matched,
+Staff,HireDate,DateTime,StaffDetailVM (Detail),HireDate,DateTime,Matched,
+Staff,IsActive,bool,StaffDetailVM (Detail),IsActive,bool,Matched,
+Staff,Salary,decimal?,StaffDetailVM (Detail),Salary,decimal?,Matched,
+Staff,Permissions,List<string>,StaffDetailVM (Detail),Permissions,IReadOnlyList<string>,Matched,
+Staff,Notes,string?,StaffDetailVM (Detail),Notes,string?,Matched,
+Staff,Payments,IReadOnlyCollection<Payment>,StaffDetailVM (Detail),Payments,IReadOnlyList<StaffRelatedSummaryVM>,TypeMismatch,Type mismatch: IReadOnlyCollection<Payment> vs IReadOnlyList<StaffRelatedSummaryVM>
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffDetailVM (Detail),Receipts,IReadOnlyList<StaffRelatedSummaryVM>,TypeMismatch,Type mismatch: IReadOnlyCollection<Receipt> vs IReadOnlyList<StaffRelatedSummaryVM>
+Staff,Visits,IReadOnlyCollection<Visit>,StaffDetailVM (Detail),Visits,IReadOnlyList<StaffRelatedSummaryVM>,TypeMismatch,Type mismatch: IReadOnlyCollection<Visit> vs IReadOnlyList<StaffRelatedSummaryVM>
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffDetailVM (Detail),FollowUps,IReadOnlyList<StaffRelatedSummaryVM>,TypeMismatch,Type mismatch: IReadOnlyCollection<FollowUp> vs IReadOnlyList<StaffRelatedSummaryVM>
+Staff,,,StaffDetailVM (Detail),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffDetailVM (Detail),FullName,string,Derived,Computed/derived property
+Staff,Phone,Phone,StaffDetailVM (Detail),PhoneCountryCode,string?,Flattened,Value object Phone flattened to PhoneCountryCode
+Staff,,,StaffDetailVM (Detail),PhoneCountryCode,string?,Derived,Computed/derived property
+Staff,Phone,Phone,StaffDetailVM (Detail),PhoneAreaCode,string?,Flattened,Value object Phone flattened to PhoneAreaCode
+Staff,Phone,Phone,StaffDetailVM (Detail),PhoneNumber,string?,Flattened,Value object Phone flattened to PhoneNumber
+Staff,,,StaffDetailVM (Detail),PhoneDisplay,string,Derived,Computed/derived property
+Staff,,,StaffDetailVM (Detail),PhoneType,string?,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffDetailVM (Detail),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffDetailVM (Detail),UpdatedAt,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,EmployeeId,string,StaffListVM (List),EmployeeId,string,Matched,
+Staff,FirstName,string,StaffListVM (List),FirstName,string,Derived,Computed/derived property
+Staff,LastName,string,StaffListVM (List),LastName,string,Derived,Computed/derived property
+Staff,Position,string,StaffListVM (List),Position,string?,Matched,
+Staff,Department,string,StaffListVM (List),Department,string?,Matched,
+Staff,Phone,Phone,StaffListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffListVM (List),Email,string?,Matched,
+Staff,HireDate,DateTime,StaffListVM (List),HireDate,DateTime,Matched,
+Staff,IsActive,bool,StaffListVM (List),IsActive,bool,Matched,
+Staff,Salary,decimal?,StaffListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Permissions,List<string>,StaffListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Notes,string?,StaffListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Payments,IReadOnlyCollection<Payment>,StaffListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Visits,IReadOnlyCollection<Visit>,StaffListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,,,StaffListVM (List),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffListVM (List),FullName,string,Derived,Computed/derived property
+Staff,Phone,Phone,StaffListVM (List),PhoneCountryCode,string?,Flattened,Value object Phone flattened to PhoneCountryCode
+Staff,,,StaffListVM (List),PhoneCountryCode,string?,Derived,Computed/derived property
+Staff,Phone,Phone,StaffListVM (List),PhoneAreaCode,string?,Flattened,Value object Phone flattened to PhoneAreaCode
+Staff,Phone,Phone,StaffListVM (List),PhoneNumber,string?,Flattened,Value object Phone flattened to PhoneNumber
+Staff,,,StaffListVM (List),PhoneDisplay,string,Derived,Computed/derived property
+Staff,,,StaffListVM (List),PhoneType,string?,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,EmployeeId,string,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FirstName,string,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,LastName,string,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Position,string,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Department,string,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Phone,Phone,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,HireDate,DateTime,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,IsActive,bool,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Salary,decimal?,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Permissions,List<string>,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Notes,string?,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Payments,IReadOnlyCollection<Payment>,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Visits,IReadOnlyCollection<Visit>,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffRelatedSummaryVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,,,StaffRelatedSummaryVM (Summary),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffRelatedSummaryVM (Summary),Reference,string,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffRelatedSummaryVM (Summary),Date,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffRelatedSummaryVM (Summary),Description,string,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,EmployeeId,string,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FirstName,string,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,LastName,string,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Position,string,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Department,string,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Phone,Phone,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,HireDate,DateTime,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,IsActive,bool,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Salary,decimal?,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Permissions,List<string>,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Notes,string?,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Payments,IReadOnlyCollection<Payment>,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Visits,IReadOnlyCollection<Visit>,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,EmployeeId,string,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FirstName,string,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,LastName,string,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Position,string,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Department,string,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Phone,Phone,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,HireDate,DateTime,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,IsActive,bool,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Salary,decimal?,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Permissions,List<string>,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Notes,string?,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Payments,IReadOnlyCollection<Payment>,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Visits,IReadOnlyCollection<Visit>,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffActivityVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,,,StaffActivityVM (General),ActivityType,StaffActivityType,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffActivityVM (General),ActivityId,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffActivityVM (General),Description,string,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffActivityVM (General),Amount,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffActivityVM (General),Date,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffActivityVM (General),RelatedEntityId,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffActivityVM (General),RelatedEntityType,RelatedEntityType,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,EmployeeId,string,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FirstName,string,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,LastName,string,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Position,string,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Department,string,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Phone,Phone,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,HireDate,DateTime,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,IsActive,bool,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Salary,decimal?,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Permissions,List<string>,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Notes,string?,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Payments,IReadOnlyCollection<Payment>,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Visits,IReadOnlyCollection<Visit>,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,,,StaffPerformanceVM (General),StaffId,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffPerformanceVM (General),FromDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffPerformanceVM (General),ToDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffPerformanceVM (General),TotalPaymentsProcessed,int,Derived,Computed/derived property
+Staff,,,StaffPerformanceVM (General),TotalAmountCollected,decimal,Derived,Computed/derived property
+Staff,,,StaffPerformanceVM (General),TotalVisitsConducted,int,Derived,Computed/derived property
+Staff,,,StaffPerformanceVM (General),TotalFollowUpsCompleted,int,Derived,Computed/derived property
+Staff,,,StaffPerformanceVM (General),AveragePaymentAmount,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffPerformanceVM (General),VisitToPaymentRatio,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffPerformanceVM (General),FollowUpCompletionRate,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,EmployeeId,string,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FirstName,string,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,LastName,string,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Position,string,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Department,string,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Phone,Phone,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,HireDate,DateTime,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,IsActive,bool,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Salary,decimal?,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Permissions,List<string>,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Notes,string?,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Payments,IReadOnlyCollection<Payment>,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Visits,IReadOnlyCollection<Visit>,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,,,StaffVisitPerformanceVM (General),StaffId,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffVisitPerformanceVM (General),TotalVisits,int,Derived,Computed/derived property
+Staff,,,StaffVisitPerformanceVM (General),CompletedVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffVisitPerformanceVM (General),CancelledVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffVisitPerformanceVM (General),NoShowVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffVisitPerformanceVM (General),AverageVisitDuration,double,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffVisitPerformanceVM (General),VisitsWithPayments,int,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffVisitPerformanceVM (General),TotalAmountCollected,decimal,Derived,Computed/derived property
+Staff,,,StaffVisitPerformanceVM (General),SuccessRate,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffVisitPerformanceVM (General),PaymentConversionRate,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,EmployeeId,string,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FirstName,string,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,LastName,string,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Position,string,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Department,string,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Phone,Phone,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Email,string,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,HireDate,DateTime,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,IsActive,bool,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Salary,decimal?,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Permissions,List<string>,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Notes,string?,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Payments,IReadOnlyCollection<Payment>,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Receipts,IReadOnlyCollection<Receipt>,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,Visits,IReadOnlyCollection<Visit>,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,FollowUps,IReadOnlyCollection<FollowUp>,StaffScheduleVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Staff,,,StaffScheduleVM (General),ActivityType,StaffActivityType,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffScheduleVM (General),ActivityId,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffScheduleVM (General),Description,string,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffScheduleVM (General),StartTime,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffScheduleVM (General),EndTime,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffScheduleVM (General),Location,string?,MissingInEntity,Property exists in ViewModel but not in entity
+Staff,,,StaffScheduleVM (General),Status,string,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,VisitCreateVM (Create),CustomerId,Guid,Matched,
+Visit,StaffId,Guid,VisitCreateVM (Create),StaffId,Guid,Matched,
+Visit,VisitDate,DateTime,VisitCreateVM (Create),VisitDate,DateTime,Matched,
+Visit,Purpose,string,VisitCreateVM (Create),Purpose,string,Matched,
+Visit,Notes,string?,VisitCreateVM (Create),Notes,string?,Matched,
+Visit,Outcome,string?,VisitCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,NextVisitDate,DateTime?,VisitCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Duration,TimeSpan?,VisitCreateVM (Create),Duration,TimeSpan?,Matched,
+Visit,VisitType,string?,VisitCreateVM (Create),VisitType,string,Matched,
+Visit,Location,string?,VisitCreateVM (Create),Location,string?,Matched,
+Visit,Status,VisitStatus,VisitCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,VisitCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,VisitCreateVM (Create),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,VisitCreateVM (Create),DurationHours,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitCreateVM (Create),DurationMinutes,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,VisitUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,StaffId,Guid,VisitUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitDate,DateTime,VisitUpdateVM (Update),VisitDate,DateTime?,Matched,
+Visit,Purpose,string,VisitUpdateVM (Update),Purpose,string?,Matched,
+Visit,Notes,string?,VisitUpdateVM (Update),Notes,string?,Matched,
+Visit,Outcome,string?,VisitUpdateVM (Update),Outcome,string?,Matched,
+Visit,NextVisitDate,DateTime?,VisitUpdateVM (Update),NextVisitDate,DateTime?,Matched,
+Visit,Duration,TimeSpan?,VisitUpdateVM (Update),Duration,TimeSpan?,Matched,
+Visit,VisitType,string?,VisitUpdateVM (Update),VisitType,string?,Matched,
+Visit,Location,string?,VisitUpdateVM (Update),Location,string?,Matched,
+Visit,Status,VisitStatus,VisitUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,VisitUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,VisitUpdateVM (Update),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,VisitUpdateVM (Update),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitUpdateVM (Update),DurationHours,int?,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitUpdateVM (Update),DurationMinutes,int?,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,VisitDetailVM (Detail),CustomerId,Guid,Matched,
+Visit,StaffId,Guid,VisitDetailVM (Detail),StaffId,Guid,Matched,
+Visit,VisitDate,DateTime,VisitDetailVM (Detail),VisitDate,DateTime,Matched,
+Visit,Purpose,string,VisitDetailVM (Detail),Purpose,string,Matched,
+Visit,Notes,string?,VisitDetailVM (Detail),Notes,string?,Matched,
+Visit,Outcome,string?,VisitDetailVM (Detail),Outcome,string?,Matched,
+Visit,NextVisitDate,DateTime?,VisitDetailVM (Detail),NextVisitDate,DateTime?,Matched,
+Visit,Duration,TimeSpan?,VisitDetailVM (Detail),Duration,TimeSpan?,Matched,
+Visit,VisitType,string?,VisitDetailVM (Detail),VisitType,string?,Matched,
+Visit,Location,string?,VisitDetailVM (Detail),Location,string?,Matched,
+Visit,Status,VisitStatus,VisitDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,VisitDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,VisitDetailVM (Detail),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,VisitDetailVM (Detail),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitDetailVM (Detail),CustomerName,string,Derived,Computed/derived property
+Visit,,,VisitDetailVM (Detail),StaffName,string,Derived,Computed/derived property
+Visit,,,VisitDetailVM (Detail),DurationHours,int?,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitDetailVM (Detail),DurationMinutes,int?,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitDetailVM (Detail),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitDetailVM (Detail),UpdatedAt,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,VisitListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,StaffId,Guid,VisitListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitDate,DateTime,VisitListVM (List),VisitDate,DateTime,Matched,
+Visit,Purpose,string,VisitListVM (List),Purpose,string,Matched,
+Visit,Notes,string?,VisitListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Outcome,string?,VisitListVM (List),Outcome,string?,Matched,
+Visit,NextVisitDate,DateTime?,VisitListVM (List),NextVisitDate,DateTime?,Matched,
+Visit,Duration,TimeSpan?,VisitListVM (List),Duration,TimeSpan?,Matched,
+Visit,VisitType,string?,VisitListVM (List),VisitType,string?,Matched,
+Visit,Location,string?,VisitListVM (List),Location,string?,Matched,
+Visit,Status,VisitStatus,VisitListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,VisitListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,VisitListVM (List),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,VisitListVM (List),Id,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitListVM (List),CustomerName,string,Derived,Computed/derived property
+Visit,,,VisitListVM (List),StaffName,string,Derived,Computed/derived property
+Visit,,,VisitListVM (List),DurationHours,int?,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitListVM (List),DurationMinutes,int?,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitListVM (List),CreatedAt,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,StaffId,Guid,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitDate,DateTime,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Purpose,string,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Notes,string?,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Outcome,string?,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,NextVisitDate,DateTime?,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Duration,TimeSpan?,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitType,string?,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Location,string?,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Status,VisitStatus,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,VisitAnalyticsViewModels (Analytics),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,CustomerId,Guid,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,StaffId,Guid,VisitEffectivenessVM (General),StaffId,Guid,Matched,
+Visit,VisitDate,DateTime,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Purpose,string,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Notes,string?,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Outcome,string?,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,NextVisitDate,DateTime?,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Duration,TimeSpan?,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitType,string?,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Location,string?,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Status,VisitStatus,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,VisitEffectivenessVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,VisitEffectivenessVM (General),TotalVisits,int,Derived,Computed/derived property
+Visit,,,VisitEffectivenessVM (General),VisitsWithPayments,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitEffectivenessVM (General),TotalAmountFromVisits,decimal,Derived,Computed/derived property
+Visit,,,VisitEffectivenessVM (General),ConversionRate,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,CustomerVisitPatternVM (General),CustomerId,Guid,Matched,
+Visit,StaffId,Guid,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitDate,DateTime,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Purpose,string,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Notes,string?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Outcome,string?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,NextVisitDate,DateTime?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Duration,TimeSpan?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitType,string?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Location,string?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Status,VisitStatus,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,CustomerVisitPatternVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,CustomerVisitPatternVM (General),TotalVisits,int,Derived,Computed/derived property
+Visit,,,CustomerVisitPatternVM (General),AverageVisitsPerMonth,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,CustomerVisitPatternVM (General),LastVisitDate,DateTime?,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,CustomerVisitPatternVM (General),VisitFrequency,double,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,CustomerVisitPatternVM (General),PreferredVisitDays,List<string>,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,StaffId,Guid,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitDate,DateTime,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Purpose,string,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Notes,string?,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Outcome,string?,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,NextVisitDate,DateTime?,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Duration,TimeSpan?,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitType,string?,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Location,string?,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Status,VisitStatus,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,VisitOutcomeAnalysisVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,VisitOutcomeAnalysisVM (General),FromDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitOutcomeAnalysisVM (General),ToDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitOutcomeAnalysisVM (General),TotalVisits,int,Derived,Computed/derived property
+Visit,,,VisitOutcomeAnalysisVM (General),SuccessfulVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitOutcomeAnalysisVM (General),FollowUpRequired,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitOutcomeAnalysisVM (General),NoShowVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitOutcomeAnalysisVM (General),OutcomeBreakdown,"Dictionary<string, int>",MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,StaffId,Guid,StaffVisitPerformanceVM (General),StaffId,Guid,Matched,
+Visit,VisitDate,DateTime,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Purpose,string,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Notes,string?,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Outcome,string?,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,NextVisitDate,DateTime?,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Duration,TimeSpan?,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitType,string?,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Location,string?,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Status,VisitStatus,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,StaffVisitPerformanceVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,StaffVisitPerformanceVM (General),TotalVisits,int,Derived,Computed/derived property
+Visit,,,StaffVisitPerformanceVM (General),CompletedVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,StaffVisitPerformanceVM (General),CancelledVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,StaffVisitPerformanceVM (General),NoShowVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,StaffVisitPerformanceVM (General),AverageVisitDuration,double,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,StaffVisitPerformanceVM (General),VisitsWithPayments,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,StaffVisitPerformanceVM (General),TotalAmountCollected,decimal,Derived,Computed/derived property
+Visit,,,StaffVisitPerformanceVM (General),SuccessRate,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,StaffVisitPerformanceVM (General),PaymentConversionRate,decimal,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,VisitRouteVM (General),CustomerId,Guid,Matched,
+Visit,StaffId,Guid,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitDate,DateTime,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Purpose,string,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Notes,string?,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Outcome,string?,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,NextVisitDate,DateTime?,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Duration,TimeSpan?,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitType,string?,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Location,string?,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Status,VisitStatus,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,VisitRouteVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,VisitRouteVM (General),Order,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitRouteVM (General),CustomerName,string,Derived,Computed/derived property
+Visit,,,VisitRouteVM (General),Address,string?,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitRouteVM (General),EstimatedDuration,TimeSpan,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitRouteVM (General),EstimatedTravelTime,TimeSpan,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,StaffId,Guid,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitDate,DateTime,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Purpose,string,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Notes,string?,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Outcome,string?,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,NextVisitDate,DateTime?,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Duration,TimeSpan?,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitType,string?,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Location,string?,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Status,VisitStatus,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,VisitConflictVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,VisitConflictVM (General),ExistingVisitId,Guid,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitConflictVM (General),ExistingVisitTime,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitConflictVM (General),ExistingVisitDuration,TimeSpan,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitConflictVM (General),ProposedVisitTime,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitConflictVM (General),ProposedVisitDuration,TimeSpan,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitConflictVM (General),ConflictType,string,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,StaffId,Guid,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitDate,DateTime,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Purpose,string,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Notes,string?,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Outcome,string?,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,NextVisitDate,DateTime?,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Duration,TimeSpan?,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitType,string?,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Location,string?,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Status,VisitStatus,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,VisitSummaryReportVM (Summary),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,VisitSummaryReportVM (Summary),FromDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitSummaryReportVM (Summary),ToDate,DateTime,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitSummaryReportVM (Summary),TotalVisits,int,Derived,Computed/derived property
+Visit,,,VisitSummaryReportVM (Summary),CompletedVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitSummaryReportVM (Summary),CancelledVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitSummaryReportVM (Summary),NoShowVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitSummaryReportVM (Summary),TotalVisitHours,decimal,Derived,Computed/derived property
+Visit,,,VisitSummaryReportVM (Summary),AverageVisitDuration,double,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,VisitSummaryReportVM (Summary),VisitsByType,"Dictionary<string, int>",MissingInEntity,Property exists in ViewModel but not in entity
+Visit,CustomerId,Guid,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,StaffId,Guid,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitDate,DateTime,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Purpose,string,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Notes,string?,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Outcome,string?,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,NextVisitDate,DateTime?,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Duration,TimeSpan?,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,VisitType,string?,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Location,string?,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Status,VisitStatus,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Customer,Customer?,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,Staff,Staff?,TerritoryVisitReportVM (General),,,MissingInViewModel,Property exists in entity but not in ViewModel
+Visit,,,TerritoryVisitReportVM (General),Territory,string,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,TerritoryVisitReportVM (General),TotalVisits,int,Derived,Computed/derived property
+Visit,,,TerritoryVisitReportVM (General),CompletedVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,TerritoryVisitReportVM (General),PendingVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,TerritoryVisitReportVM (General),CancelledVisits,int,MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,TerritoryVisitReportVM (General),VisitsByStaff,"Dictionary<Guid, int>",MissingInEntity,Property exists in ViewModel but not in entity
+Visit,,,TerritoryVisitReportVM (General),AverageVisitsPerDay,decimal,MissingInEntity,Property exists in ViewModel but not in entity

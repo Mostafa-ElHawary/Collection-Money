@@ -1,0 +1,168 @@
+@model Tracker_Money.Models.PagedViewModel<CollectionApp.Application.ViewModels.CustomerListVM>
+
+@{
+    ViewData["Title"] = Localizer["CustomerManagement"];
+}
+
+@section Styles {
+    <link href="~/css/Customer/Index.css" rel="stylesheet" />
+}
+
+<div class="dashboard-content">
+    <!-- Enhanced dashboard header with financial styling -->
+    <div class="dashboard-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="dashboard-title">@Localizer["CustomerManagement"]</h1>
+                <p class="dashboard-subtitle">@Localizer["CustomerDatabaseOverview"]</p>
+            </div>
+            <div class="d-flex gap-3">
+                <a asp-action="Create" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    @Localizer["AddCustomer"]
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced search section -->
+    <div class="search-section">
+        <h3 class="search-title">
+            <i class="fas fa-search"></i>
+            @Localizer["CustomerSearchFilters"]
+        </h3>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="@Localizer["SearchByNameOrId"]" />
+            </div>
+            <div class="col-md-3">
+                <select class="form-control">
+                    <option value="">@Localizer["AllLocations"]</option>
+                    <option value="city1">@Localizer["NewYork"]</option>
+                    <option value="city2">@Localizer["LosAngeles"]</option>
+                    <option value="city3">@Localizer["Chicago"]</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-control">
+                    <option value="">@Localizer["ContractStatus"]</option>
+                    <option value="active">@Localizer["ActiveContracts"]</option>
+                    <option value="inactive">@Localizer["NoActiveContracts"]</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary w-100">
+                    <i class="fas fa-filter"></i>
+                    @Localizer["Filter"]
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced customer data grid -->
+    @if (!Model.Items.Any())
+    {
+        <div class="empty-state">
+            <div class="empty-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h3 class="empty-title">@Localizer["NoCustomersFound"]</h3>
+            <p class="empty-description">@Localizer["StartBuildingCustomerDatabase"]</p>
+            <a asp-action="Create" class="btn-primary">
+                <i class="fas fa-plus"></i>
+                @Localizer["AddFirstCustomer"]
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="data-grid">
+            <div class="grid-header">
+                <div class="grid-cell">@Localizer["CustomerInformation"]</div>
+                <div class="grid-cell">@Localizer["ContactDetails"]</div>
+                <div class="grid-cell">@Localizer["Location"]</div>
+                <div class="grid-cell">@Localizer["Contracts"]</div>
+                <div class="grid-cell">@Localizer["Actions"]</div>
+            </div>
+
+            @foreach (var customer in Model.Items)
+            {
+                <div class="grid-row">
+                    <div class="grid-cell customer-info">
+                        <div class="customer-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="customer-details">
+                            <h4 class="customer-name">@customer.FullName</h4>
+                            <p class="customer-id">ID: @customer.NationalId</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-cell contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>@customer.PhoneDisplay</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>@customer.Email</span>
+                        </div>
+                    </div>
+
+                    <div class="grid-cell location-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>@customer.AddressDisplay</span>
+                    </div>
+
+                    <div class="grid-cell contracts-info">
+                        <div class="contract-badge">
+                            <span class="badge-number">@customer.ActiveContractsCount</span>
+                            <span class="badge-label">Active</span>
+                        </div>
+                    </div>
+
+                    <div class="grid-cell actions-info">
+                        <div class="customer-action-buttons">
+                            <a asp-action="Details" asp-route-id="@customer.Id" class="customer-action-btn" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@customer.Id" class="customer-action-btn" title="Edit Customer">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@customer.Id" class="customer-action-btn danger" title="Delete Customer">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Enhanced pagination -->
+        <div class="mt-4">
+            <partial name="_Pager" model="Model" />
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // Enhanced search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth animations for grid rows
+            const gridRows = document.querySelectorAll('.grid-row');
+            gridRows.forEach((row, index) => {
+                row.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            // Add search functionality
+            const searchInput = document.querySelector('input[placeholder*="Search"]');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    // Add search logic here
+                    console.log('Searching for:', this.value);
+                });
+            }
+        });
+    </script>
+}

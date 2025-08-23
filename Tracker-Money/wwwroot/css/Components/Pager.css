@@ -1,0 +1,225 @@
+/* Customer View Pager Component Styles */
+
+/* Pager Container */
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Page Items */
+.page-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.page-link:hover::before {
+    left: 100%;
+}
+
+.page-link:hover {
+    color: #ffffff;
+    border-color: rgba(0, 255, 255, 0.3);
+    background: rgba(0, 255, 255, 0.02);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.1);
+}
+
+/* Active Page */
+.page-item.active .page-link {
+    background: linear-gradient(135deg, #00ffff, #0080ff);
+    color: #fff;
+    border-color: #00ffff;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+.page-item.active .page-link:hover {
+    transform: scale(1.05);
+}
+
+/* Disabled Page */
+.page-item.disabled .page-link {
+    background: rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.page-item.disabled .page-link:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Navigation Arrows */
+.page-link[aria-label="First"],
+.page-link[aria-label="Last"] {
+    font-weight: 700;
+}
+
+.page-link[aria-label="Previous"],
+.page-link[aria-label="Next"] {
+    font-weight: 600;
+}
+
+/* Page Size Selector */
+.form-select {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
+}
+
+.form-select:hover {
+    border-color: rgba(0, 255, 255, 0.3);
+    background: rgba(0, 255, 255, 0.02);
+}
+
+/* Form Label */
+.form-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Pager Container */
+nav[aria-label="Page navigation"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(22, 33, 62, 0.6);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 12px;
+    margin-top: 2rem;
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem;
+    }
+    
+    .page-link {
+        min-width: 2rem;
+        height: 2rem;
+        font-size: 0.875rem;
+    }
+    
+    nav[aria-label="Page navigation"] {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .form-select {
+        width: 100% !important;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-link {
+        min-width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.75rem;
+    }
+    
+    .page-link[aria-label="First"],
+    .page-link[aria-label="Last"] {
+        display: none;
+    }
+}
+
+/* Enhanced Animations */
+@keyframes slideInPager {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pagination {
+    animation: slideInPager 0.6s ease-out;
+}
+
+.page-item {
+    animation: fadeInUp 0.4s ease-out;
+    animation-fill-mode: both;
+}
+
+.page-item:nth-child(1) { animation-delay: 0.1s; }
+.page-item:nth-child(2) { animation-delay: 0.2s; }
+.page-item:nth-child(3) { animation-delay: 0.3s; }
+.page-item:nth-child(4) { animation-delay: 0.4s; }
+.page-item:nth-child(5) { animation-delay: 0.5s; }
+.page-item:nth-child(6) { animation-delay: 0.6s; }
+.page-item:nth-child(7) { animation-delay: 0.7s; }
+
+/* Loading State */
+.pagination.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.pagination.loading::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
+    animation: loading-sweep 1.5s infinite;
+}

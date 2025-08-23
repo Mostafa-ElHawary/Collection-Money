@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!-- Common UI Elements -->
+  <data name="AppName" xml:space="preserve">
+    <value>تحصيل الأموال</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>الإنجليزية</value>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>العربية</value>
+  </data>
+  
+  <!-- Navigation -->
+  <data name="Overview" xml:space="preserve">
+    <value>نظرة عامة</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>العملاء</value>
+  </data>
+  <data name="Contracts" xml:space="preserve">
+    <value>العقود</value>
+  </data>
+  <data name="Payments" xml:space="preserve">
+    <value>المدفوعات</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>التقارير</value>
+  </data>
+  <data name="Analytics" xml:space="preserve">
+    <value>التحليلات</value>
+  </data>
+  <data name="Invoices" xml:space="preserve">
+    <value>الفواتير</value>
+  </data>
+  <data name="SystemSettings" xml:space="preserve">
+    <value>إعدادات النظام</value>
+  </data>
+  <data name="UserManagement" xml:space="preserve">
+    <value>إدارة المستخدمين</value>
+  </data>
+  <data name="AdminUser" xml:space="preserve">
+    <value>مستخدم المسؤول</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>لوحة التحكم</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>الإعدادات</value>
+  </data>
+  
+  <!-- Contract Payments -->
+  <data name="NoPaymentsFound" xml:space="preserve">
+    <value>لم يتم العثور على مدفوعات لهذا العقد.</value>
+  </data>
+  <data name="TotalPayments" xml:space="preserve">
+    <value>إجمالي المدفوعات</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>المبلغ الإجمالي</value>
+  </data>
+  <data name="LastPayment" xml:space="preserve">
+    <value>آخر دفعة</value>
+  </data>
+  <data name="AveragePayment" xml:space="preserve">
+    <value>متوسط الدفع</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>المبلغ</value>
+  </data>
+  <data name="Method" xml:space="preserve">
+    <value>الطريقة</value>
+  </data>
+  <data name="Reference" xml:space="preserve">
+    <value>المرجع</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>الإجراءات</value>
+  </data>
+  <data name="ViewReceipt" xml:space="preserve">
+    <value>عرض الإيصال</value>
+  </data>
+  <data name="ViewDetails" xml:space="preserve">
+    <value>عرض التفاصيل</value>
+  </data>
+  <data name="ReversePayment" xml:space="preserve">
+    <value>عكس الدفع</value>
+  </data>
+  <data name="PaymentMethods" xml:space="preserve">
+    <value>طرق الدفع</value>
+  </data>
+  <data name="RecentActivity" xml:space="preserve">
+    <value>النشاط الأخير</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>تصدير</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>طباعة</value>
+  </data>
+  <data name="GenerateReceipt" xml:space="preserve">
+    <value>إنشاء إيصال</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>سنة</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>سنوات</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>شهر</value>
+  </data>
+  <data name="Months" xml:space="preserve">
+    <value>أشهر</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>يوم</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>أيام</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>ساعة</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>ساعات</value>
+  </data>
+  <data name="Ago" xml:space="preserve">
+    <value>مضت</value>
+  </data>
+  <data name="JustNow" xml:space="preserve">
+    <value>الآن</value>
+  </data>
+  <data name="ReversePaymentConfirmation" xml:space="preserve">
+    <value>هل أنت متأكد أنك تريد عكس هذه الدفعة؟ لا يمكن التراجع عن هذا الإجراء.</value>
+  </data>
+  
+  <!-- Customer Create -->
+  <data name="CreateCustomer" xml:space="preserve">
+    <value>إنشاء عميل</value>
+  </data>
+  <data name="AddNewCustomer" xml:space="preserve">
+    <value>إضافة عميل جديد إلى النظام المالي</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>العودة إلى القائمة</value>
+  </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>المعلومات الشخصية</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>الاسم الأول</value>
+  </data>
+  <data name="EnterFirstName" xml:space="preserve">
+    <value>أدخل الاسم الأول</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>اسم العائلة</value>
+  </data>
+  <data name="EnterLastName" xml:space="preserve">
+    <value>أدخل اسم العائلة</value>
+  </data>
+  <data name="NationalID" xml:space="preserve">
+    <value>الهوية الوطنية</value>
+  </data>
+  <data name="EnterNationalID" xml:space="preserve">
+    <value>أدخل الهوية الوطنية</value>
+  </data>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>معلومات الاتصال</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="EnterEmailAddress" xml:space="preserve">
+    <value>أدخل البريد الإلكتروني</value>
+  </data>
+  <data name="PhoneInformation" xml:space="preserve">
+    <value>معلومات الهاتف</value>
+  </data>
+  
+  <!-- Contract Create -->
+  <data name="CreateContract" xml:space="preserve">
+    <value>إنشاء عقد</value>
+  </data>
+  <data name="AddNewContract" xml:space="preserve">
+    <value>إنشاء اتفاقية تعاقدية جديدة</value>
+  </data>
+  <data name="BasicInformation" xml:space="preserve">
+    <value>معلومات أساسية</value>
+  </data>
+  <data name="ContractNumber" xml:space="preserve">
+    <value>رقم العقد</value>
+  </data>
+  <data name="AutoGeneratedIfEmpty" xml:space="preserve">
+    <value>يتم إنشاؤه تلقائيًا إذا كان فارغًا</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>العميل</value>
+  </data>
+  <data name="SelectCustomer" xml:space="preserve">
+    <value>اختر العميل</value>
+  </data>
+  <data name="ContractType" xml:space="preserve">
+    <value>نوع العقد</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>اختر</value>
+  </data>
+  <data name="PersonalLoan" xml:space="preserve">
+    <value>قرض شخصي</value>
+  </data>
+  <data name="BusinessLoan" xml:space="preserve">
+    <value>قرض تجاري</value>
+  </data>
+  <data name="StaffAssigned" xml:space="preserve">
+    <value>الموظف المعين</value>
+  </data>
+  <data name="SelectStaff" xml:space="preserve">
+    <value>اختر الموظف</value>
+  </data>
+  <data name="FinancialTerms" xml:space="preserve">
+    <value>الشروط المالية</value>
+  </data>
+  <data name="PrincipalAmount" xml:space="preserve">
+    <value>المبلغ الأساسي</value>
+  </data>
+  <data name="PrincipalAmountExample" xml:space="preserve">
+    <value>مثال: 10000.00</value>
+  </data>
+  <data name="InterestRate" xml:space="preserve">
+    <value>معدل الفائدة</value>
+  </data>
+  <data name="InterestRateExample" xml:space="preserve">
+    <value>مثال: 5.5</value>
+  </data>
+  <data name="TermMonths" xml:space="preserve">
+    <value>المدة (بالأشهر)</value>
+  </data>
+  <data name="TermMonthsExample" xml:space="preserve">
+    <value>مثال: 24</value>
+  </data>
+  <data name="PaymentFrequency" xml:space="preserve">
+    <value>تكرار الدفع</value>
+  </data>
+  <data name="Monthly" xml:space="preserve">
+    <value>شهري</value>
+  </data>
+  <data name="Quarterly" xml:space="preserve">
+    <value>ربع سنوي</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="CreationGuidelines" xml:space="preserve">
+    <value>إرشادات الإنشاء</value>
+  </data>
+  <data name="FillRequiredContractDetails" xml:space="preserve">
+    <value>املأ جميع تفاصيل العقد المطلوبة.</value>
+  </data>
+  <data name="AssignCustomerToContract" xml:space="preserve">
+    <value>قم بتعيين عميل للعقد.</value>
+  </data>
+  <data name="DefinePrincipalAndInterest" xml:space="preserve">
+    <value>حدد المبلغ الأساسي ومعدل الفائدة.</value>
+  </data>
+  <data name="SetTermAndFrequency" xml:space="preserve">
+    <value>حدد مدة العقد وتكرار الدفع.</value>
+  </data>
+  <data name="RequiredFieldsAsterisk" xml:space="preserve">
+    <value>جميع الحقول المميزة بعلامة النجمة مطلوبة.</value>
+  </data>
+  <data name="UserManagement" xml:space="preserve">
+    <value>إدارة المستخدمين</value>
+  </data>
+  
+  <!-- Actions -->
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>البحث عن العملاء، العقود...</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>إنشاء</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>التفاصيل</value>
+  </data>
+  
+  <!-- Customer Related -->
+  <data name="CustomerDetails" xml:space="preserve">
+    <value>تفاصيل العميل</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>الاسم الأول</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>اسم العائلة</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  
+  <!-- Contract Related -->
+  <data name="ContractManagement" xml:space="preserve">
+    <value>إدارة العقود</value>
+  </data>
+  <data name="OverseeAndManageContracts" xml:space="preserve">
+    <value>الإشراف وإدارة جميع عقود العملاء</value>
+  </data>
+  <data name="AddContract" xml:space="preserve">
+    <value>إضافة عقد</value>
+  </data>
+  <data name="TotalContracts" xml:space="preserve">
+    <value>إجمالي العقود</value>
+  </data>
+  <data name="ActiveContracts" xml:space="preserve">
+    <value>العقود النشطة</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>مكتملة</value>
+  </data>
+  <data name="Defaulted" xml:space="preserve">
+    <value>متعثرة</value>
+  </data>
+  <data name="SearchContracts" xml:space="preserve">
+    <value>البحث في العقود</value>
+  </data>
+  <data name="SearchContractPlaceholder" xml:space="preserve">
+    <value>البحث برقم العقد، اسم العميل...</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+  <data name="ContractRecords" xml:space="preserve">
+    <value>سجلات العقود</value>
+  </data>
+  <data name="ContractCustomer" xml:space="preserve">
+    <value>العقد / العميل</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>المبلغ الإجمالي</value>
+  </data>
+  <data name="Outstanding" xml:space="preserve">
+    <value>المبلغ المتبقي</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>الإجراءات</value>
+  </data>
+  <data name="Principal" xml:space="preserve">
+    <value>المبلغ الأساسي</value>
+  </data>
+  <data name="ViewDetails" xml:space="preserve">
+    <value>عرض التفاصيل</value>
+  </data>
+  <data name="AdminUser" xml:space="preserve">
+    <value>مدير النظام</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>لوحة التحكم</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>الإعدادات</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>الشارع</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>الولاية</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>الرمز البريدي</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>البلد</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>الهوية الوطنية</value>
+  </data>
+  
+  <!-- Contract Related -->
+  <data name="ContractDetails" xml:space="preserve">
+    <value>تفاصيل العقد</value>
+  </data>
+  <data name="ContractNumber" xml:space="preserve">
+    <value>رقم العقد</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>المبلغ الإجمالي</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>نشط</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>مكتمل</value>
+  </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>ملغي</value>
+  </data>
+  <data name="Overdue" xml:space="preserve">
+    <value>متأخر</value>
+  </data>
+  
+  <!-- Payment Related -->
+  <data name="PaymentDetails" xml:space="preserve">
+    <value>تفاصيل الدفع</value>
+  </data>
+  <data name="PaymentDate" xml:space="preserve">
+    <value>تاريخ الدفع</value>
+  </data>
+  <data name="PaymentAmount" xml:space="preserve">
+    <value>مبلغ الدفع</value>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>طريقة الدفع</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>نقدًا</value>
+  </data>
+  <data name="CreditCard" xml:space="preserve">
+    <value>بطاقة ائتمان</value>
+  </data>
+  <data name="BankTransfer" xml:space="preserve">
+    <value>تحويل بنكي</value>
+  </data>
+  
+  <!-- Notifications -->
+  <data name="Notifications" xml:space="preserve">
+    <value>الإشعارات</value>
+  </data>
+  <data name="PaymentOverdue" xml:space="preserve">
+    <value>دفعة متأخرة</value>
+  </data>
+  <data name="NewContractCreated" xml:space="preserve">
+    <value>تم إنشاء عقد جديد</value>
+  </data>
+  <data name="PaymentReceived" xml:space="preserve">
+    <value>تم استلام الدفعة</value>
+  </data>
+  
+  <!-- User Account -->
+  <data name="Account" xml:space="preserve">
+    <value>الحساب</value>
+  </data>
+  <data name="ProfileSettings" xml:space="preserve">
+    <value>إعدادات الملف الشخصي</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>التفضيلات</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>تسجيل الخروج</value>
+  </data>
+  
+  <!-- Error Messages -->
+  <data name="Error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>غير موجود</value>
+  </data>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>تم رفض الوصول</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>هذا الحقل مطلوب</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>يرجى إدخال عنوان بريد إلكتروني صالح</value>
+  </data>
+</root>

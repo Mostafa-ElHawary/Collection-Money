@@ -1,0 +1,61 @@
+@model CollectionApp.Application.ViewModels.CustomerContractActionVM
+@{
+    ViewData["Title"] = "Contract Actions";
+    var customer = ViewBag.Customer as CollectionApp.Application.ViewModels.CustomerDetailVM;
+}
+
+<div class="container contract-actions">
+    <h2>@ViewData["Title"] - @customer?.FullName</h2>
+
+    <div class="mb-3">
+        <a asp-action="Details" asp-route-id="@customer?.Id" class="btn btn-link">Back to Customer</a>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Link Existing Contract</div>
+                <div class="card-body">
+                    <form asp-action="LinkContract" method="post">
+                        <input type="hidden" asp-for="CustomerId" value="@Model.CustomerId" />
+                        <div class="mb-2">
+                            <label asp-for="ContractId" class="form-label"></label>
+                            <input asp-for="ContractId" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Link</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Transfer Contract</div>
+                <div class="card-body">
+                    <form asp-action="TransferContract" method="post">
+                        <input type="hidden" asp-for="CustomerId" value="@Model.CustomerId" />
+                        <div class="mb-2">
+                            <label asp-for="ContractId" class="form-label"></label>
+                            <input asp-for="ContractId" class="form-control" />
+                        </div>
+                        <div class="mb-2">
+                            <label asp-for="ToCustomerId" class="form-label">Transfer To (Customer ID)</label>
+                            <input asp-for="ToCustomerId" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-warning">Transfer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3 mt-2">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">Contracts</div>
+                <div class="card-body">
+                    @await Html.PartialAsync("_ContractSummary", customer?.Contracts ?? Array.Empty<CollectionApp.Application.ViewModels.CustomerContractSummaryVM>())
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

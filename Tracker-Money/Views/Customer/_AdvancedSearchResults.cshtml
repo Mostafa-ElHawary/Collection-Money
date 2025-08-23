@@ -1,0 +1,82 @@
+@model Tracker_Money.Models.PagedViewModel<CollectionApp.Application.ViewModels.CustomerListVM>
+@using CollectionApp.Application.ViewModels
+
+<div class="advanced-results">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <div><strong>@Model.TotalCount</strong> results</div>
+        <div>
+            @await Html.PartialAsync("~/Views/Shared/_Pager.cshtml", Model)
+        </div>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="select-all" /></th>
+                <th>Full Name</th>
+                <th>National ID</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Contracts</th>
+                <th>Total Value</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model.Items.Any())
+        {
+            foreach (var c in Model.Items)
+            {
+                <tr>
+                    <td><input type="checkbox" class="select-row" data-id="@c.Id" /></td>
+                    <td>
+                        @if (c is CustomerSearchResultVM sr && !string.IsNullOrEmpty(sr.Highlight))
+                        {
+                            @Html.Raw(sr.Highlight)
+                        }
+                        else
+                        {
+                            @c.FullName
+                        }
+                    </td>
+                    <td>@c.NationalId</td>
+                    <td>@c.Email</td>
+                    <td>@c.PhoneDisplay</td>
+                    <td>@c.AddressDisplay</td>
+                    <td>@c.ActiveContractsCount</td>
+                    <td>@c.TotalContractValue</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@c.Id" class="btn btn-sm btn-outline-primary">View</a>
+                        <a asp-action="Edit" asp-route-id="@c.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td colspan="9" class="text-center">No results</td></tr>
+        }
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between align-items-center mt-2">
+        <div>
+            <button class="btn btn-sm btn-outline-primary" id="bulk-select-btn">Use selection</button>
+        </div>
+        <div>
+            @await Html.PartialAsync("~/Views/Shared/_Pager.cshtml", Model)
+        </div>
+    </div>
+</div>
+
+<script>
+(function(){
+    const selectAll = document.getElementById('select-all');
+    if (selectAll) {
+        selectAll.addEventListener('change', function(){
+            document.querySelectorAll('.select-row').forEach(cb => { cb.checked = selectAll.checked; cb.dispatchEvent(new Event('change')); });
+        });
+    }
+})();
+</script>

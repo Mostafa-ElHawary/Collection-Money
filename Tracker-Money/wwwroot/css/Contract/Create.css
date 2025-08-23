@@ -1,0 +1,12 @@
+/* All necessary styles are inherited from Customer/Create.css, linked via _Layout.cshtml.
+   This file can be used for any contract-specific overrides if needed in the future. */
+
+/* For now, we can ensure the shared styles apply correctly.
+   If Customer/Create.css were not globally loaded, we would copy its contents here. */
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.section-header {
+    margin-bottom: 1.5rem;
+}

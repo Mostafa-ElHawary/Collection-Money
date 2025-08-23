@@ -1,0 +1,129 @@
+/* Page-specific styles for Contract Details */
+
+/* The styles for .dashboard-content, .dashboard-header, .futuristic-card, .info-row
+   are shared and defined in layout.css and customer css files. We only define
+   contract-specific styles here. */
+
+/* Styled Tabs */
+.futuristic-tabs {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.futuristic-tabs .nav-item {
+    margin-bottom: -1px;
+}
+
+.futuristic-tabs .nav-link {
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.futuristic-tabs .nav-link:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--border-hover);
+}
+
+.futuristic-tabs .nav-link.active {
+    color: var(--primary);
+    background: var(--bg-glass);
+    border-bottom: 2px solid var(--primary);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+/* Table styles inside tabs */
+.table-futuristic {
+    color: var(--text-secondary);
+}
+
+.table-futuristic tr {
+    border-bottom: 1px solid var(--border);
+}
+
+.table-futuristic td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+.table-futuristic tr:last-child {
+    border-bottom: none;
+}
+
+.table-futuristic td:first-child {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Action Buttons Group */
+.action-buttons-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Use the shared .btn-futuristic styles defined in Customer/Details.css or a shared file */
+.btn-futuristic {
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-tertiary));
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-futuristic::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .btn-futuristic:hover {
+        transform: translateY(-2px);
+        border-color: var(--border-hover);
+        box-shadow: var(--glow) rgba(99, 102, 241, 0.3);
+        color: var(--text-primary);
+        text-decoration: none;
+    }
+
+    .btn-futuristic.btn-success {
+        background: linear-gradient(135deg, var(--success), #059669);
+        border-color: var(--success);
+        color: white;
+    }
+    .btn-futuristic.btn-warning {
+        background: linear-gradient(135deg, var(--warning), #d97706);
+        border-color: var(--warning);
+        color: white;
+    }
+    .btn-futuristic.btn-info {
+        background: linear-gradient(135deg, var(--accent), #0891b2);
+        border-color: var(--accent);
+        color: white;
+    }
+     .btn-futuristic.btn-danger {
+        background: linear-gradient(135deg, var(--danger), #be123c);
+        border-color: var(--danger);
+        color: white;
+    }
+
+    .btn-futuristic:hover::before {
+        left: 100%;
+    }

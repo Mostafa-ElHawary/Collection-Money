@@ -1,0 +1,198 @@
+@using CollectionApp.Application.ViewModels
+@using CollectionApp.Domain.Enums
+@using Tracker_Money.Models
+@model PagedViewModel<ContractListVM>
+@{
+    ViewData["Title"] = Localizer["Contracts"];
+}
+@section Styles {
+    <link href="~/css/Contract/Index.css" rel="stylesheet" />
+}
+
+<!-- Redesigned with modern card-based layout to match Customer views -->
+<div class="page-container">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="header-content">
+            <h1 class="page-title">@Localizer["ContractManagement"]</h1>
+            <p class="page-subtitle">@Localizer["OverseeAndManageContracts"]</p>
+        </div>
+        <div class="header-actions">
+            <a asp-action="Create" class="btn btn-outline-light btn-futuristic">
+                <i class="fas fa-plus"></i>
+                @Localizer["AddContract"]
+            </a>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-file-signature"></i>
+            </div>
+            <div class="stat-content">
+                <h3 class="stat-number">@Model.TotalCount</h3>
+                <p class="stat-label">@Localizer["TotalContracts"]</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <div class="stat-content">
+                <h3 class="stat-number">@Model.Items.Count(c => c.Status == ContractStatus.Active)</h3>
+                <p class="stat-label">@Localizer["ActiveContracts"]</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-hourglass-end"></i>
+            </div>
+            <div class="stat-content">
+                <h3 class="stat-number">@Model.Items.Count(c => c.Status == ContractStatus.Completed)</h3>
+                <p class="stat-label">@Localizer["Completed"]</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="stat-content">
+                <h3 class="stat-number">@Model.Items.Count(c => c.Status == ContractStatus.Defaulted)</h3>
+                <p class="stat-label">@Localizer["Defaulted"]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="content-card">
+        <div class="card-header">
+            <h2 class="card-title">@Localizer["SearchContracts"]</h2>
+        </div>
+        <div class="card-content">
+            <form method="get" class="search-section">
+                <div class="search-group">
+                    <div class="search-input-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="searchInput" name="searchTerm" class="search-input"
+                               placeholder="@Localizer["SearchContractPlaceholder"]" value="@ViewData["CurrentFilter"]">
+                    </div>
+                    <button class="btn-secondary" type="submit">
+                        <i class="fas fa-search"></i>
+                        @Localizer["Search"]
+                    </button>
+                    <a asp-action="Index" class="btn-outline">
+                        <i class="fas fa-times"></i>
+                        @Localizer["Clear"]
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="content-card">
+        <div class="card-header">
+            <h2 class="card-title">@Localizer["ContractRecords"]</h2>
+            <div class="card-actions">
+                <button class="btn-icon">
+                    <i class="fas fa-download"></i>
+                </button>
+                <button class="btn-icon">
+                    <i class="fas fa-filter"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="data-grid">
+                <div class="grid-header">
+                    <div class="grid-cell">@Localizer["ContractCustomer"]</div>
+                    <div class="grid-cell">@Localizer["TotalAmount"]</div>
+                    <div class="grid-cell">@Localizer["Outstanding"]</div>
+                    <div class="grid-cell">@Localizer["Status"]</div>
+                    <div class="grid-cell">@Localizer["Actions"]</div>
+                </div>
+                @if (Model.Items?.Any() ?? false)
+                {
+                    foreach (var contract in Model.Items)
+                    {
+                        <div class="grid-row">
+                            <div class="grid-cell">
+                                <div class="contract-info">
+                                    <div class="contract-icon">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <div class="contract-details">
+                                        <h4 class="contract-number">@contract.ContractNumber</h4>
+                                        <a asp-controller="Customer" asp-action="Details" asp-route-id="@contract.CustomerId" class="customer-link">
+                                            @contract.CustomerName
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-cell amount-info">
+                                <span class="total-amount">@Tracker_Money.Helpers.CurrencyFormatter.Format(contract.TotalAmount, contract.Currency)</span>
+                                <span class="principal-amount">@Tracker_Money.Helpers.CurrencyFormatter.Format(contract.PrincipalAmount, contract.Currency) @Localizer["Principal"]</span>
+                            </div>
+                            <div class="grid-cell outstanding-info">
+                                <span class="outstanding-amount @(contract.OutstandingAmount > 0 ? "text-danger" : "text-success")">
+                                    @Tracker_Money.Helpers.CurrencyFormatter.Format(contract.OutstandingAmount, contract.Currency)
+                                </span>
+                            </div>
+                            <div class="grid-cell status-info">
+                                <status-badge value="@contract.Status"></status-badge>
+                            </div>
+                            <div class="grid-cell actions-info">
+                                <div class="contract-action-buttons">
+                                    <a asp-action="Details" asp-route-id="@contract.Id" class="contract-action-btn" title="@Localizer["ViewDetails"]"><i class="fas fa-eye"></i></a>
+                                    <a asp-action="Edit" asp-route-id="@contract.Id" class="contract-action-btn" title="@Localizer["Edit"]"><i class="fas fa-edit"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@contract.Id" class="contract-action-btn danger" title="@Localizer["Delete"]"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="empty-state">
+                        <div class="empty-icon"><i class="fas fa-inbox"></i></div>
+                        <h3 class="empty-title">No Contracts Found</h3>
+                        <p class="empty-description">No contracts match your current search criteria. Try clearing the search.</p>
+                    </div>
+                }
+            </div>
+            @if (Model.TotalPages > 1)
+            {
+                <partial name="_Pager" model="Model" />
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Auto-submit form when page size changes
+            $('#pageSize').change(function() {
+                $(this).closest('form').submit();
+            });
+
+            // Auto-submit form when order by changes
+            $('#orderBy').change(function() {
+                $(this).closest('form').submit();
+            });
+
+            // Auto-submit form when status changes
+            $('#status').change(function() {
+                $(this).closest('form').submit();
+            });
+
+            // Clear search term when clear button is clicked
+            $('a[href*="Index"]').click(function() {
+                $('#searchTerm').val('');
+                $('#status').val('');
+            });
+        });
+    </script>
+}

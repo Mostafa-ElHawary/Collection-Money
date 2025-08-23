@@ -1,0 +1,244 @@
+@using CollectionApp.Application.ViewModels
+@using CollectionApp.Domain.Enums
+@using Tracker_Money.Helpers
+@model ContractDetailVM
+@{
+    ViewData["Title"] = $"Delete Contract - {Model.ContractNumber}";
+}
+@section Styles {
+    <link href="~/css/Contract/Delete.css" rel="stylesheet" />
+
+}
+<div class="dashboard-content">
+    <div class="dashboard-header">
+        <div class="header-content">
+            <div class="header-title">
+                <h1 class="dashboard-title">Delete Contract</h1>
+                <p class="dashboard-subtitle">Permanently remove or cancel a contract</p>
+            </div>
+            <div class="header-actions">
+                <a asp-action="Index" class="btn btn-futuristic btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="futuristic-card danger-card">
+                <div class="card-header danger-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-exclamation-triangle"></i> Confirm Action
+                    </h5>
+                </div>
+                <div class="card-body">
+
+                    <div class="delete-warning">
+                        <h4>Are you sure you want to @(Model.Status == ContractStatus.Draft ? "delete" : "cancel") this contract?</h4>
+                        <p>This action cannot be undone. Please review the contract details before proceeding.</p>
+                    </div>
+
+                    <div class="customer-info-section">
+                        <h5 class="section-title">Contract Information</h5>
+                        <div class="info-grid">
+                            <div class="info-row">
+                                <span class="info-label">Contract #</span>
+                                <span class="info-value">@Model.ContractNumber</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Customer</span>
+                                <span class="info-value">@Model.CustomerName</span>
+                            </div>
+                             <div class="info-row">
+                                <span class="info-label">Status</span>
+                                <span class="info-value"><status-badge value="@Model.Status"></status-badge></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Total Amount</span>
+                                <span class="info-value">@Tracker_Money.Helpers.CurrencyFormatter.Format(Model.TotalAmount, Model.Currency)</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Outstanding</span>
+                                <span class="info-value @(Model.OutstandingAmount > 0 ? "text-warning" : "")">@Tracker_Money.Helpers.CurrencyFormatter.Format(Model.OutstandingAmount, Model.Currency)</span>
+
+                    <!-- Warning Section -->
+                    <div class="alert alert-danger" role="alert">
+                        <div class="d-flex">
+                            <i class="fas fa-exclamation-triangle fa-2x me-3"></i>
+                            <div>
+                                <h4 class="alert-heading">Warning!</h4>
+                                <p class="mb-0">
+                                    @if (Model.Status == ContractStatus.Draft)
+                                    {
+                                        <span>You are about to permanently delete this draft contract. This action cannot be undone.</span>
+                                    }
+                                    else if (Model.Status == ContractStatus.Active)
+                                    {
+                                        <span>You are about to cancel this active contract. This will suspend all future payments and may affect the customer's credit history.</span>
+                                    }
+                                    else if (Model.Status == ContractStatus.Suspended)
+                                    {
+                                        <span>You are about to cancel this suspended contract. This action will permanently close the contract.</span>
+                                    }
+                                    else
+                                    {
+                                        <span>You are about to cancel this @Model.Status.ToString().ToLower() contract. Please review the details below before proceeding.</span>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Rules Information -->
+                    <div class="alert alert-info" role="alert">
+                        <h5><i class="fas fa-info-circle me-2"></i>Business Rules</h5>
+                        <ul class="mb-0">
+                            @if (Model.OutstandingAmount > 0)
+                            {
+                                <li><strong>Outstanding Balance:</strong> This contract has an outstanding amount of @CurrencyFormatter.Format(Model.OutstandingAmount, Model.Currency).</li>
+                            }
+                            @if (Model.Installments.Any())
+                            {
+                                <li><strong>Installments:</strong> This contract has @Model.Installments.Count() installments. @(Model.Installments.Any(i => i.Status == InstallmentStatus.Paid) ? "Some installments have been paid." : "No installments have been paid yet.")</li>
+                            }
+                            @if (Model.Payments.Any())
+                            {
+                                <li><strong>Payments:</strong> This contract has @Model.Payments.Count() payment records totaling @Tracker_Money.Helpers.CurrencyFormatter.Format(Model.Payments.Sum(p => p.Amount), Model.Currency).</li>
+                            }
+                            <li><strong>Status:</strong> Current status is <status-badge value="@Model.Status"></status-badge></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contract Summary -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-file-contract me-2"></i>Contract Summary</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td class="fw-bold" style="width: 40%;">Contract Number:</td>
+                                            <td>@Model.ContractNumber</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Customer:</td>
+                                            <td><a asp-controller="Customer" asp-action="Details" asp-route-id="@Model.CustomerId">@Model.CustomerName</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Contract Type:</td>
+                                            <td>@Model.ContractType</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Total Amount:</td>
+                                            <td class="fw-bold">@Tracker_Money.Helpers.CurrencyFormatter.Format(Model.TotalAmount, Model.Currency)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td class="fw-bold" style="width: 40%;">Status:</td>
+                                            <td>
+                                                <status-badge value="@Model.Status" class="fs-6"></status-badge>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Outstanding Amount:</td>
+                                            <td class="@(Model.OutstandingAmount > 0 ? "text-danger fw-bold" : "text-success")">
+@Tracker_Money.Helpers.CurrencyFormatter.Format(Model.OutstandingAmount, Model.Currency)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Start Date:</td>
+                                            <td>@Model.StartDate.ToString("MMM dd, yyyy")</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Created:</td>
+                                            <td>@Model.CreatedAt.ToString("MMM dd, yyyy HH:mm")</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <form asp-action="Delete" method="post" class="delete-form">
+                        <input type="hidden" asp-for="Id" />
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <div class="form-check futuristic-checkbox">
+                                <input class="form-check-input" type="checkbox" id="confirmDelete" required>
+                                <label class="form-check-label" for="confirmDelete">
+                                    I understand that this action cannot be undone.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-futuristic btn-outline-secondary">
+                                <i class="fas fa-times-circle"></i> Cancel
+                            </a>
+                            <button type="submit" class="btn btn-futuristic btn-danger" id="deleteButton" disabled>
+                                <i class="fas fa-trash"></i> @(Model.Status == ContractStatus.Draft ? "Delete Contract" : "Cancel Contract")
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="futuristic-card">
+                <div class="card-header">
+                    <h5 class="card-title">Action Impact</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.Status == ContractStatus.Draft)
+                    {
+                        <p>This will permanently delete the draft contract and all its related data.</p>
+                    }
+                    else
+                    {
+                        <p>This will change the contract status to 'Cancelled' and may have the following effects:</p>
+                        <ul class="impact-list">
+                            <li>All future payments will be suspended.</li>
+                            <li>This may affect the customer's credit history.</li>
+                            <li>Any outstanding balance will require manual settlement.</li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Enable/disable delete button based on checkbox
+            $('#confirmDelete').change(function() {
+                $('#deleteButton').prop('disabled', !this.checked);
+            });
+
+            // Confirm deletion on form submit
+            $('form').submit(function(e) {
+                if (!$('#confirmDelete').is(':checked')) {
+                    e.preventDefault();
+                    alert('Please check the confirmation checkbox before proceeding.');
+                    return false;
+                }
+
+                const action = '@(Model.Status == ContractStatus.Draft ? "delete" : "cancel")';
+                const message = `Are you absolutely sure you want to ${action} this contract? This action cannot be undone.`;
+                
+                if (!confirm(message)) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        });
+    </script>
+}

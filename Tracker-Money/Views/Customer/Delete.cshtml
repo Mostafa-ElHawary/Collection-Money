@@ -1,0 +1,297 @@
+@model CollectionApp.Application.ViewModels.CustomerDetailVM
+
+@{
+    ViewData["Title"] = $"Delete Customer - {Model.FullName}";
+}
+
+@section Styles {
+    <link href="~/css/Customer/Delete.css" rel="stylesheet" />
+}
+
+<div class="dashboard-content">
+    <!-- Enhanced dashboard header with warning theme -->
+    <div class="dashboard-header warning">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="dashboard-title">Delete Customer</h1>
+                <p class="dashboard-subtitle">Permanently remove customer from the system</p>
+            </div>
+            <div class="d-flex gap-3">
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i> View Details
+                </a>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warning Banner -->
+    <div class="warning-banner">
+        <div class="warning-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div class="warning-content">
+            <h3 class="warning-title">Permanent Action Warning</h3>
+            <p class="warning-message">
+                You are about to permanently delete this customer and all associated data.
+                This action cannot be undone and will affect all related contracts and financial records.
+            </p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Customer Information Review -->
+        <div class="col-lg-8">
+            <div class="review-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-user-times"></i>
+                        Customer to be Deleted
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <!-- Customer Summary -->
+                    <div class="customer-summary">
+                        <div class="customer-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="customer-info">
+                            <h4 class="customer-name">@Model.FullName</h4>
+                            <p class="customer-details">ID: @Model.NationalId | Customer #@Model.Id</p>
+                        </div>
+                    </div>
+
+                    <!-- Information Grid -->
+                    <div class="info-sections">
+                        <div class="info-section">
+                            <h6 class="section-title">Contact Information</h6>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Email:</span>
+                                    <span class="info-value">@Model.Email</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Phone:</span>
+                                    <span class="info-value">@Model.PhoneDisplay</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Address:</span>
+                                    <span class="info-value">@Model.AddressDisplay</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h6 class="section-title">Financial Summary</h6>
+                            <div class="financial-summary">
+                                <div class="financial-item">
+                                    <span class="financial-label">Total Contract Value:</span>
+                                    <span class="financial-value">@Model.TotalContractValue.ToString("C")</span>
+                                </div>
+                                <div class="financial-item">
+                                    <span class="financial-label">Outstanding Amount:</span>
+                                    <span class="financial-value outstanding">@Model.TotalOutstandingAmount.ToString("C")</span>
+                                </div>
+                                <div class="financial-item">
+                                    <span class="financial-label">Active Contracts:</span>
+                                    <span class="financial-value">@Model.ActiveContractsCount</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Impact Warning -->
+                    @if (Model.ActiveContractsCount > 0 || Model.TotalOutstandingAmount > 0)
+                    {
+                        <div class="impact-warning">
+                            <div class="impact-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="impact-content">
+                                <h6 class="impact-title">Deletion Impact</h6>
+                                <ul class="impact-list">
+                                    @if (Model.ActiveContractsCount > 0)
+                                    {
+                                        <li>@Model.ActiveContractsCount active contract(s) will be permanently deleted</li>
+                                    }
+                                    @if (Model.TotalOutstandingAmount > 0)
+                                    {
+                                        <li>Outstanding amount of @Model.TotalOutstandingAmount.ToString("C") will be lost</li>
+                                    }
+                                    <li>All payment history and financial records will be removed</li>
+                                    <li>Customer communication history will be deleted</li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Panel -->
+        <div class="col-lg-4">
+            <div class="confirmation-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Confirmation Required
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Delete" method="post" class="delete-form">
+                        <input type="hidden" asp-for="Id" />
+
+                        <!-- Confirmation Steps -->
+                        <div class="confirmation-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-text">Review customer information above</p>
+                                    <div class="step-status" id="step1">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-text">Type customer name to confirm</p>
+                                    <input type="text" class="form-control confirmation-input"
+                                           placeholder="Enter: @Model.FullName"
+                                           id="nameConfirmation" />
+                                    <div class="step-status" id="step2">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="confirmDeletion">
+                                        <label class="form-check-label" for="confirmDeletion">
+                                            I understand this action is permanent and cannot be undone
+                                        </label>
+                                    </div>
+                                    <div class="step-status" id="step3">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-danger" id="deleteButton" disabled>
+                                <i class="fas fa-trash"></i>
+                                Delete Customer
+                            </button>
+                            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">
+                                <i class="fas fa-times"></i>
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Alternative Actions -->
+            <div class="alternatives-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-lightbulb"></i>
+                        Consider Alternatives
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="alternatives-intro">Instead of deleting, you might want to:</p>
+                    <div class="alternative-actions">
+                        <a href="#" class="alternative-btn">
+                            <i class="fas fa-archive"></i>
+                            <span>Archive Customer</span>
+                        </a>
+                        <a href="#" class="alternative-btn">
+                            <i class="fas fa-pause"></i>
+                            <span>Suspend Account</span>
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="alternative-btn">
+                            <i class="fas fa-edit"></i>
+                            <span>Update Information</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Enhanced delete confirmation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const nameConfirmation = document.getElementById('nameConfirmation');
+            const confirmCheckbox = document.getElementById('confirmDeletion');
+            const deleteButton = document.getElementById('deleteButton');
+            const expectedName = '@Model.FullName';
+
+            const step2Status = document.getElementById('step2');
+            const step3Status = document.getElementById('step3');
+
+            function updateDeleteButton() {
+                const nameMatches = nameConfirmation.value.trim() === expectedName;
+                const checkboxChecked = confirmCheckbox.checked;
+
+                // Update step 2 status
+                if (nameMatches) {
+                    step2Status.innerHTML = '<i class="fas fa-check"></i>';
+                    step2Status.classList.add('valid');
+                    step2Status.classList.remove('invalid');
+                } else {
+                    step2Status.innerHTML = '<i class="fas fa-times"></i>';
+                    step2Status.classList.add('invalid');
+                    step2Status.classList.remove('valid');
+                }
+
+                // Update step 3 status
+                if (checkboxChecked) {
+                    step3Status.innerHTML = '<i class="fas fa-check"></i>';
+                    step3Status.classList.add('valid');
+                    step3Status.classList.remove('invalid');
+                } else {
+                    step3Status.innerHTML = '<i class="fas fa-times"></i>';
+                    step3Status.classList.add('invalid');
+                    step3Status.classList.remove('valid');
+                }
+
+                // Enable/disable delete button
+                deleteButton.disabled = !(nameMatches && checkboxChecked);
+
+                if (nameMatches && checkboxChecked) {
+                    deleteButton.classList.add('enabled');
+                } else {
+                    deleteButton.classList.remove('enabled');
+                }
+            }
+
+            nameConfirmation.addEventListener('input', updateDeleteButton);
+            confirmCheckbox.addEventListener('change', updateDeleteButton);
+
+            // Add confirmation dialog
+            document.querySelector('.delete-form').addEventListener('submit', function(e) {
+                if (!confirm('Are you absolutely sure you want to delete this customer? This action cannot be undone.')) {
+                    e.preventDefault();
+                }
+            });
+
+            // Add warning animations
+            const warningElements = document.querySelectorAll('.warning-banner, .impact-warning');
+            warningElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
+}

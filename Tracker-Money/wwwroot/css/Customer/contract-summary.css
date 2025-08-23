@@ -1,0 +1,409 @@
+﻿/* Contract Summary Partial View - Financial Dashboard Styling */
+
+.contract-summary-card {
+    background: rgba(22, 33, 62, 0.8);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+    .contract-summary-card:hover {
+        border-color: rgba(0, 255, 255, 0.4);
+        box-shadow: 0 8px 25px rgba(0, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+
+/* Contract Header */
+.contract-header {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 128, 255, 0.1));
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contract-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contract-number {
+    color: #00ffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.contract-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+    .contract-status.status-active {
+        background: rgba(0, 255, 136, 0.2);
+        color: #00ff88;
+        border: 1px solid rgba(0, 255, 136, 0.3);
+    }
+
+    .contract-status.status-inactive {
+        background: rgba(255, 170, 0, 0.2);
+        color: #ffaa00;
+        border: 1px solid rgba(255, 170, 0, 0.3);
+    }
+
+.contract-actions .dropdown-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+    .contract-actions .dropdown-toggle:hover {
+        background: rgba(0, 255, 255, 0.1);
+        border-color: rgba(0, 255, 255, 0.3);
+    }
+
+/* Contract Body */
+.contract-body {
+    padding: 1.5rem;
+}
+
+/* Timeline */
+.contract-timeline {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.timeline-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #ffffff;
+}
+
+    .timeline-icon.start {
+        background: linear-gradient(135deg, #00ff88, #00cc6a);
+    }
+
+    .timeline-icon.end {
+        background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    }
+
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.timeline-value {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.timeline-connector {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #00ff88, #ff6b6b);
+    margin: 0 1rem;
+}
+
+/* Financial Grid */
+.financial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.financial-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+    .financial-item:hover {
+        background: rgba(0, 255, 255, 0.02);
+        border-color: rgba(0, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .financial-item.total {
+        border-left: 3px solid #00ffff;
+    }
+
+    .financial-item.paid {
+        border-left: 3px solid #00ff88;
+    }
+
+    .financial-item.remaining {
+        border-left: 3px solid #ffaa00;
+    }
+
+.financial-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.financial-item.total .financial-icon {
+    background: rgba(0, 255, 255, 0.2);
+    color: #00ffff;
+}
+
+.financial-item.paid .financial-icon {
+    background: rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+}
+
+.financial-item.remaining .financial-icon {
+    background: rgba(255, 170, 0, 0.2);
+    color: #ffaa00;
+}
+
+.financial-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.financial-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.financial-value {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* Payment Due */
+.payment-due {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 170, 0, 0.05);
+    border: 1px solid rgba(255, 170, 0, 0.2);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.due-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 170, 0, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffaa00;
+    font-size: 1rem;
+}
+
+.due-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.due-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.due-date {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.due-warning {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 107, 107, 0.2);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 15px;
+    color: #ff6b6b;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Payment Progress */
+.payment-progress {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.progress-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.progress-percentage {
+    color: #00ffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.progress-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff88, #00ffff);
+    border-radius: 3px;
+    transition: width 0.8s ease-in-out;
+    position: relative;
+}
+
+    .progress-fill::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        animation: progressShimmer 2s infinite;
+    }
+
+@keyframes progressShimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Contract Footer */
+.contract-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00ffff, #0080ff);
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+        color: #000;
+        text-decoration: none;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contract-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .financial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contract-timeline {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .timeline-connector {
+        width: 2px;
+        height: 20px;
+        margin: 0.5rem 0;
+    }
+
+    .payment-due {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

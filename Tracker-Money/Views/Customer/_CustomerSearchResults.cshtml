@@ -1,0 +1,177 @@
+@model Tracker_Money.Models.PagedViewModel<CollectionApp.Application.ViewModels.CustomerListVM>
+
+@section Styles {
+    <link href="~/css/Customer/Customer-Search-Result.css" rel="stylesheet" />
+}
+
+<div class="search-results-container">
+    @if (!Model.Items.Any())
+    {
+        <div class="no-results">
+            <div class="no-results-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <h4 class="no-results-title">No customers found</h4>
+            <p class="no-results-message">Try adjusting your search criteria or browse all customers.</p>
+            <a asp-action="Index" class="btn btn-primary">
+                <i class="fas fa-list"></i> View All Customers
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="results-header">
+            <div class="results-count">
+                <i class="fas fa-users"></i>
+                <span>Found @Model.TotalCount customer(s)</span>
+            </div>
+            <div class="results-actions">
+                <div class="view-toggle">
+                    <button class="toggle-btn active" data-view="grid">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="toggle-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-results grid-view" id="searchResults">
+            @foreach (var customer in Model.Items)
+            {
+                <div class="customer-result-card">
+                    <div class="customer-header">
+                        <div class="customer-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="customer-basic-info">
+                            <h5 class="customer-name">@customer.FullName</h5>
+                            <p class="customer-id">ID: @customer.NationalId</p>
+                        </div>
+                        <div class="customer-status">
+                            @if (customer.ActiveContractsCount > 0)
+                            {
+                                <span class="status-badge active">
+                                    <i class="fas fa-check-circle"></i>
+                                    Active
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="status-badge inactive">
+                                    <i class="fas fa-pause-circle"></i>
+                                    Inactive
+                                </span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="customer-details">
+                        <div class="detail-section">
+                            <h6 class="section-title">Contact Information</h6>
+                            <div class="contact-items">
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>@customer.Email</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span>@customer.PhoneDisplay</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>@customer.AddressDisplay</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h6 class="section-title">Contract Summary</h6>
+                            <div class="contract-summary">
+                                <div class="summary-item">
+                                    <span class="summary-label">Active Contracts:</span>
+                                    <span class="summary-value">@customer.ActiveContractsCount</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="customer-actions">
+                        <a asp-action="Details" asp-route-id="@customer.Id" class="action-btn primary" title="View Details">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@customer.Id" class="action-btn secondary" title="Edit Customer">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="#" class="action-btn info" title="View Contracts">
+                            <i class="fas fa-file-contract"></i>
+                        </a>
+                        <div class="dropdown">
+                            <button class="action-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" title="More Actions">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-credit-card"></i> Record Payment
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-envelope"></i> Send Message
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item text-danger" asp-action="Delete" asp-route-id="@customer.Id">
+                                        <i class="fas fa-trash"></i> Delete Customer
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Pagination -->
+        @if (Model.TotalPages > 1)
+        {
+            <div class="search-pagination">
+                <partial name="_Pager" model="Model" />
+            </div>
+        }
+    }
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+<script>
+    // View toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        const resultsContainer = document.getElementById('searchResults');
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const view = this.dataset.view;
+
+                // Update active button
+                toggleButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update view
+                resultsContainer.className = `search-results ${view}-view`;
+            });
+        });
+
+        // Add animation delays to cards
+        const cards = document.querySelectorAll('.customer-result-card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    });
+</script>
+}

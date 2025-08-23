@@ -1,0 +1,132 @@
+@using CollectionApp.Application.ViewModels
+@model object
+
+<div class="modal fade" id="installmentActionsModal" tabindex="-1" aria-labelledby="installmentActionsModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="installmentActionsModalLabel">Installment Actions</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<ul class="nav nav-tabs" id="installmentActionsTabs" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="waive-tab" data-bs-toggle="tab" data-bs-target="#waiveTab" type="button" role="tab">Waive</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="reschedule-tab" data-bs-toggle="tab" data-bs-target="#rescheduleTab" type="button" role="tab">Reschedule</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="split-tab" data-bs-toggle="tab" data-bs-target="#splitTab" type="button" role="tab">Split</button>
+					</li>
+				</ul>
+				<div class="tab-content mt-3">
+					<div class="tab-pane fade show active" id="waiveTab" role="tabpanel">
+						@{
+							var waiveModel = ViewData["WaiveModel"] as WaiveInstallmentVM;
+						}
+						<form id="waiveForm" asp-action="WaiveInstallment" asp-controller="Contract" method="post">
+							@Html.AntiForgeryToken()
+							<input type="hidden" name="InstallmentId" value="@waiveModel?.InstallmentId" />
+							<div class="mb-2 text-muted">Installment #@waiveModel?.InstallmentNumber - Amount: @waiveModel?.InstallmentAmount</div>
+							<div class="mb-3">
+								<label class="form-label">Reason</label>
+								<textarea name="Reason" class="form-control" required rows="3"></textarea>
+							</div>
+							<div class="form-check mb-3">
+								<input class="form-check-input" type="checkbox" value="true" id="confirmWaive">
+								<label class="form-check-label" for="confirmWaive">I understand this action is irreversible.</label>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="rescheduleTab" role="tabpanel">
+						@{
+							var resModel = ViewData["RescheduleModel"] as RescheduleInstallmentVM;
+						}
+						<form id="rescheduleForm" asp-action="RescheduleInstallment" asp-controller="Contract" method="post">
+							@Html.AntiForgeryToken()
+							<input type="hidden" name="InstallmentId" value="@resModel?.InstallmentId" />
+							<div class="row g-3">
+								<div class="col-sm-6">
+									<label class="form-label">Current Due Date</label>
+									<input class="form-control" value="@resModel?.CurrentDueDate.ToString("yyyy-MM-dd")" readonly />
+								</div>
+								<div class="col-sm-6">
+									<label class="form-label">New Due Date</label>
+									<input name="NewDueDate" type="date" class="form-control" required />
+								</div>
+								<div class="col-12">
+									<label class="form-label">Reason</label>
+									<input name="Reason" class="form-control" />
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="splitTab" role="tabpanel">
+						<div class="mb-2 text-muted">Enter split amounts that sum to the original.</div>
+						<form id="splitForm" method="post">
+							@Html.AntiForgeryToken()
+							<div id="splitRows"></div>
+							<button class="btn btn-sm btn-outline-primary" type="button" id="addSplitRow">Add Split</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger" id="btnConfirmWaive">Waive</button>
+				<button type="button" class="btn btn-primary" id="btnConfirmReschedule">Reschedule</button>
+				<button type="button" class="btn btn-warning" id="btnConfirmSplit">Split</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+    (function(){
+        function postForm(form, success){
+            const data = new FormData(form);
+            $.ajax({
+                url: form.getAttribute('action'),
+                type: 'POST',
+                data: data,
+                processData: false,
+                contentType: false,
+                headers: { 'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val() },
+                success: function(res){ if (res && res.success) { success && success(res); $('#installmentActionsModal').modal('hide'); if (window.refreshInstallmentTable) window.refreshInstallmentTable(); } else { window.showErrorMessage && window.showErrorMessage(res.message || 'Operation failed'); } },
+                error: function(){ window.showErrorMessage && window.showErrorMessage('Request failed'); }
+            });
+        }
+
+        $('#btnConfirmWaive').on('click', function(){
+            if (!$('#confirmWaive').is(':checked')) { window.showErrorMessage && window.showErrorMessage('Please confirm waive action'); return; }
+            postForm(document.getElementById('waiveForm'));
+        });
+
+        $('#btnConfirmReschedule').on('click', function(){
+            postForm(document.getElementById('rescheduleForm'));
+        });
+
+        $('#addSplitRow').on('click', function(){
+            const row = $('<div class="input-group mb-2">\n  <input type="number" step="0.01" class="form-control split-amount" placeholder="Amount"/>\n  <input type="date" class="form-control split-date"/>\n  <button class="btn btn-outline-danger" type="button">Remove</button>\n</div>');
+            row.find('button').on('click', function(){ row.remove(); });
+            $('#splitRows').append(row);
+        });
+
+        $('#btnConfirmSplit').on('click', function(){
+            const amounts = []; $('#splitRows .split-amount').each(function(){ const v = parseFloat(this.value); if (!isNaN(v) && v > 0) amounts.push(v); });
+            const installmentId = $('input[name="InstallmentId"]').first().val();
+            if (!installmentId || amounts.length === 0) { window.showErrorMessage && window.showErrorMessage('Please add at least one valid split amount'); return; }
+            $.ajax({
+                url: '@Url.Action("SplitInstallment","Contract")?installmentId=' + encodeURIComponent(installmentId),
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(amounts),
+                headers: { 'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val() },
+                success: function(res){ if (res && res.success) { $('#installmentActionsModal').modal('hide'); window.refreshInstallmentTable && window.refreshInstallmentTable(); } else { window.showErrorMessage && window.showErrorMessage(res.message || 'Split failed'); } },
+                error: function(){ window.showErrorMessage && window.showErrorMessage('Split request failed'); }
+            });
+        });
+    })();
+</script>
+

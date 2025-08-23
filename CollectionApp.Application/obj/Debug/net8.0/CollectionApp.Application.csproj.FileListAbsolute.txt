@@ -1,0 +1,16 @@
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\CollectionApp.Application.csproj.AssemblyReference.cache
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\CollectionApp.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\CollectionApp.Application.AssemblyInfoInputs.cache
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\CollectionApp.Application.AssemblyInfo.cs
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\CollectionApp.Application.csproj.CoreCompileInputs.cache
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\CollectionApp.Application.sourcelink.json
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\bin\Debug\net8.0\CollectionApp.Application.deps.json
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\bin\Debug\net8.0\CollectionApp.Application.dll
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\bin\Debug\net8.0\CollectionApp.Application.pdb
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\bin\Debug\net8.0\CollectionApp.Domain.dll
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\bin\Debug\net8.0\CollectionApp.Domain.pdb
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\Collecti.C176005C.Up2Date
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\CollectionApp.Application.dll
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\refint\CollectionApp.Application.dll
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\CollectionApp.Application.pdb
+C:\Users\welcome\source\repos\Tracker-Money\CollectionApp.Application\obj\Debug\net8.0\ref\CollectionApp.Application.dll

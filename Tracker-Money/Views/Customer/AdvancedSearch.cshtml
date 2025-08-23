@@ -1,0 +1,181 @@
+@model CollectionApp.Application.ViewModels.AdvancedCustomerSearchCriteriaVM
+@{
+    ViewData["Title"] = "Advanced Customer Search";
+}
+
+<div class="container advanced-search">
+    <h2>@ViewData["Title"]</h2>
+
+    <form asp-action="AdvancedSearch" method="post" id="advanced-search-form">
+        <div class="card mb-3">
+            <div class="card-header">Basic Info</div>
+            <div class="card-body row g-3">
+                <div class="col-md-3">
+                    <label asp-for="FirstName" class="form-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="LastName" class="form-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="NationalId" class="form-label"></label>
+                    <input asp-for="NationalId" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">Demographics</div>
+            <div class="card-body row g-3">
+                <div class="col-md-3">
+                    <label asp-for="Gender" class="form-label"></label>
+                    <input asp-for="Gender" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="Occupation" class="form-label"></label>
+                    <input asp-for="Occupation" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="DateOfBirthFrom" class="form-label"></label>
+                    <input asp-for="DateOfBirthFrom" type="date" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="DateOfBirthTo" class="form-label"></label>
+                    <input asp-for="DateOfBirthTo" type="date" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">Financial Criteria</div>
+            <div class="card-body row g-3">
+                <div class="col-md-3">
+                    <label asp-for="MonthlyIncomeFrom" class="form-label"></label>
+                    <input asp-for="MonthlyIncomeFrom" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="MonthlyIncomeTo" class="form-label"></label>
+                    <input asp-for="MonthlyIncomeTo" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="CreditScoreFrom" class="form-label"></label>
+                    <input asp-for="CreditScoreFrom" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="CreditScoreTo" class="form-label"></label>
+                    <input asp-for="CreditScoreTo" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">Location</div>
+            <div class="card-body row g-3">
+                <div class="col-md-4">
+                    <label asp-for="City" class="form-label"></label>
+                    <input asp-for="City" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="State" class="form-label"></label>
+                    <input asp-for="State" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="Country" class="form-label"></label>
+                    <input asp-for="Country" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">Contracts</div>
+            <div class="card-body row g-3">
+                <div class="col-md-3">
+                    <label asp-for="ActiveContractsCountFrom" class="form-label"></label>
+                    <input asp-for="ActiveContractsCountFrom" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="ActiveContractsCountTo" class="form-label"></label>
+                    <input asp-for="ActiveContractsCountTo" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="TotalContractValueFrom" class="form-label"></label>
+                    <input asp-for="TotalContractValueFrom" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="TotalContractValueTo" class="form-label"></label>
+                    <input asp-for="TotalContractValueTo" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">Dates</div>
+            <div class="card-body row g-3">
+                <div class="col-md-3">
+                    <label asp-for="CreatedAtFrom" class="form-label"></label>
+                    <input asp-for="CreatedAtFrom" type="date" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="CreatedAtTo" class="form-label"></label>
+                    <input asp-for="CreatedAtTo" type="date" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="UpdatedAtFrom" class="form-label"></label>
+                    <input asp-for="UpdatedAtFrom" type="date" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="UpdatedAtTo" class="form-label"></label>
+                    <input asp-for="UpdatedAtTo" type="date" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2 mb-3">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="reset" class="btn btn-secondary" id="btn-clear">Clear</button>
+        </div>
+    </form>
+
+    <div id="advanced-search-results">
+        @{
+            var results = ViewData["Results"] as Tracker_Money.Models.PagedViewModel<CollectionApp.Application.ViewModels.CustomerListVM>;
+        }
+        @if (results != null)
+        {
+            @await Html.PartialAsync("_AdvancedSearchResults", results)
+        }
+        else
+        {
+            @await Html.PartialAsync("_AdvancedSearchResults", new Tracker_Money.Models.PagedViewModel<CollectionApp.Application.ViewModels.CustomerListVM>(new CollectionApp.Application.Common.PagedResult<CollectionApp.Application.ViewModels.CustomerListVM>(Array.Empty<CollectionApp.Application.ViewModels.CustomerListVM>(), 0, Model.Page, Model.PageSize)))
+        }
+    </div>
+</div>
+
+@section Scripts{
+<script>
+(function(){
+    const form = document.getElementById('advanced-search-form');
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch('@Url.Action("AdvancedSearchResults", "Customer")', {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(r => r.text())
+        .then(html => {
+            document.getElementById('advanced-search-results').innerHTML = html;
+        })
+        .catch(() => {
+            // no-op
+        });
+    });
+})();
+</script>
+}

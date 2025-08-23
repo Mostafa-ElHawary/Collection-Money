@@ -1,0 +1,5 @@
+/* Advanced Search Styles */
+.advanced-search .card-header { font-weight: 600; }
+.advanced-search #advanced-search-results { margin-top: 1rem; }
+.advanced-results table td, .advanced-results table th { vertical-align: middle; }
+.advanced-results #select-all { cursor: pointer; }

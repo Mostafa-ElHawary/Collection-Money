@@ -1,0 +1,104 @@
+@model CollectionApp.Application.ViewModels.PaymentModalVM
+
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="paymentModalLabel">Record Payment</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form id="paymentForm" asp-action="PayInstallment" asp-controller="Contract" method="post">
+					@Html.AntiForgeryToken()
+					<input type="hidden" asp-for="ContractId" />
+					<input type="hidden" asp-for="InstallmentId" />
+					<input type="hidden" asp-for="ProcessedByStaffId" />
+
+					<div class="mb-3">
+						<label class="form-label">Installment</label>
+						<input class="form-control" value="@Model.InstallmentNumber" readonly />
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">Due Amount</label>
+						<input class="form-control" value="@Model.InstallmentAmount @Model.Currency" readonly />
+					</div>
+
+					<div class="row g-3">
+						<div class="col-12">
+							<label asp-for="Amount" class="form-label"></label>
+							<input asp-for="Amount" class="form-control" />
+							<span asp-validation-for="Amount" class="text-danger"></span>
+						</div>
+						<div class="col-sm-6">
+							<label asp-for="PaymentDate" class="form-label"></label>
+							<input asp-for="PaymentDate" type="date" class="form-control" />
+							<span asp-validation-for="PaymentDate" class="text-danger"></span>
+						</div>
+						<div class="col-sm-6">
+							<label asp-for="PaymentMethod" class="form-label"></label>
+							<select asp-for="PaymentMethod" class="form-select">
+								<option value="">Select method</option>
+								<option value="0">Cash</option>
+								<option value="1">BankTransfer</option>
+								<option value="2">Check</option>
+								<option value="3">CreditCard</option>
+							</select>
+							<span asp-validation-for="PaymentMethod" class="text-danger"></span>
+						</div>
+					</div>
+
+					<div class="row g-3 mt-1">
+						<div class="col-sm-6">
+							<label asp-for="ReferenceNumber" class="form-label"></label>
+							<input asp-for="ReferenceNumber" class="form-control" />
+						</div>
+						<div class="col-12">
+							<label asp-for="Notes" class="form-label"></label>
+							<textarea asp-for="Notes" rows="3" class="form-control"></textarea>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary" id="btnProcessPayment">Process Payment</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+    (function () {
+        const form = document.getElementById('paymentForm');
+        const submitBtn = document.getElementById('btnProcessPayment');
+        if (!form || !submitBtn) return;
+
+        submitBtn.addEventListener('click', function () {
+            const formData = new FormData(form);
+            $.ajax({
+                url: form.getAttribute('action') || '@Url.Action("PayInstallment","Contract")',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: { 'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val() },
+                beforeSend: function () { submitBtn.disabled = true; },
+                complete: function () { submitBtn.disabled = false; },
+                success: function (res) {
+                    if (res && res.success) {
+                        $('#paymentModal').modal('hide');
+                        if (window.handlePaymentSuccess) window.handlePaymentSuccess(res);
+                    } else {
+                        const msg = (res && res.message) || 'Failed to process payment';
+                        if (window.showErrorMessage) window.showErrorMessage(msg);
+                    }
+                },
+                error: function () {
+                    if (window.showErrorMessage) window.showErrorMessage('An error occurred while processing the payment');
+                }
+            });
+        });
+    })();
+</script>
+

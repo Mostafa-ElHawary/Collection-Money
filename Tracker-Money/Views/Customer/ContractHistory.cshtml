@@ -1,0 +1,44 @@
+@model System.Collections.Generic.List<CollectionApp.Application.ViewModels.CustomerContractSummaryVM>
+@{
+    ViewData["Title"] = "Contract History";
+}
+
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Contract #</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th>Paid</th>
+                    <th>Remaining</th>
+                    <th>Start</th>
+                    <th>End</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.ContractNumber</td>
+                    <td>@c.Status</td>
+                    <td>@c.TotalAmount @c.Currency</td>
+                    <td>@c.PaidAmount</td>
+                    <td>@c.RemainingAmount</td>
+                    <td>@c.StartDate.ToShortDateString()</td>
+                    <td>@(c.EndDate?.ToShortDateString() ?? "-")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info">No contract history.</div>
+    }
+</div>
+

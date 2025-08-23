@@ -1,0 +1,276 @@
+@model CollectionApp.Application.ViewModels.PaymentModalVM
+
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="paymentModalLabel">
+                    <i class="fas fa-credit-card me-2"></i>Process Payment
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="paymentModalForm">
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Payment Details -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="modalAmount" class="form-label">Payment Amount *</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="modalAmount" name="Amount" 
+                                           step="0.01" min="0.01" required />
+                                    <select class="form-select" id="modalCurrency" name="Currency" style="max-width: 100px;">
+                                        <option value="USD">USD</option>
+                                        <option value="EUR">EUR</option>
+                                        <option value="GBP">GBP</option>
+                                        <option value="JPY">JPY</option>
+                                    </select>
+                                </div>
+                                <div class="form-text">Enter the payment amount</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="modalPaymentDate" class="form-label">Payment Date *</label>
+                                <input type="date" class="form-control" id="modalPaymentDate" name="PaymentDate" required />
+                                <div class="form-text">Date when the payment was received</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="modalPaymentMethod" class="form-label">Payment Method *</label>
+                                <select class="form-select" id="modalPaymentMethod" name="PaymentMethod" required>
+                                    <option value="">Select payment method...</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="BankTransfer">Bank Transfer</option>
+                                    <option value="CreditCard">Credit Card</option>
+                                    <option value="DebitCard">Debit Card</option>
+                                    <option value="Check">Check</option>
+                                    <option value="MobilePayment">Mobile Payment</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Installment Information -->
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-header">
+                                    <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Installment Details</h6>
+                                </div>
+                                <div class="card-body">
+                                    <dl class="row">
+                                        <dt class="col-sm-4">Installment:</dt>
+                                        <dd class="col-sm-8">
+                                            <span id="modalInstallmentNumber" class="badge bg-info"></span>
+                                        </dd>
+
+                                        <dt class="col-sm-4">Amount Due:</dt>
+                                        <dd class="col-sm-8">
+                                            <span id="modalAmountDue" class="fw-bold text-success"></span>
+                                        </dd>
+
+                                        <dt class="col-sm-4">Due Date:</dt>
+                                        <dd class="col-sm-8">
+                                            <span id="modalDueDate" class="text-muted"></span>
+                                        </dd>
+
+                                        <dt class="col-sm-4">Status:</dt>
+                                        <dd class="col-sm-8">
+                                            <span id="modalStatus" class="badge"></span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="modalReferenceNumber" class="form-label">Reference Number</label>
+                                <input type="text" class="form-control" id="modalReferenceNumber" name="ReferenceNumber" 
+                                       placeholder="e.g., Check number, transaction ID" />
+                                <div class="form-text">Optional reference number for tracking</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="modalNotes" class="form-label">Notes</label>
+                                <textarea class="form-control" id="modalNotes" name="Notes" rows="2" 
+                                          placeholder="Additional notes about this payment..."></textarea>
+                                <div class="form-text">Optional notes about the payment</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hidden Fields -->
+                    <input type="hidden" id="modalContractId" name="ContractId" />
+                    <input type="hidden" id="modalInstallmentId" name="InstallmentId" />
+                    <input type="hidden" id="modalInstallmentAmount" name="InstallmentAmount" />
+                    <input type="hidden" id="modalProcessedByStaffId" name="ProcessedByStaffId" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="modalSubmitBtn">
+                        <i class="fas fa-save me-1"></i>Process Payment
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Set default payment date to today
+        $('#modalPaymentDate').val(new Date().toISOString().split('T')[0]);
+
+        // Amount validation
+        $('#modalAmount').on('input', function() {
+            validateModalPaymentAmount();
+        });
+
+        // Form submission
+        $('#paymentModalForm').submit(function(e) {
+            e.preventDefault();
+            
+            if (!validateModalForm()) {
+                return false;
+            }
+
+            // Disable submit button
+            $('#modalSubmitBtn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>Processing...');
+
+            // Collect form data
+            const formData = {
+                contractId: $('#modalContractId').val(),
+                installmentId: $('#modalInstallmentId').val(),
+                amount: parseFloat($('#modalAmount').val()),
+                currency: $('#modalCurrency').val(),
+                paymentDate: $('#modalPaymentDate').val(),
+                paymentMethod: $('#modalPaymentMethod').val(),
+                referenceNumber: $('#modalReferenceNumber').val(),
+                notes: $('#modalNotes').val(),
+                processedByStaffId: $('#modalProcessedByStaffId').val()
+            };
+
+            // Submit payment
+            $.ajax({
+                url: '/api/payments',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function(response) {
+                    if (response.success) {
+                        showModalAlert('Payment processed successfully!', 'success');
+                        $('#paymentModal').modal('hide');
+                        
+                        // Refresh the page or update the UI
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        showModalAlert(response.message || 'Failed to process payment', 'danger');
+                    }
+                },
+                error: function(xhr) {
+                    let errorMessage = 'An error occurred while processing the payment';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMessage = xhr.responseJSON.message;
+                    }
+                    showModalAlert(errorMessage, 'danger');
+                },
+                complete: function() {
+                    // Re-enable submit button
+                    $('#modalSubmitBtn').prop('disabled', false).html('<i class="fas fa-save me-1"></i>Process Payment');
+                }
+            });
+        });
+    });
+
+    function showPaymentModal(contractId, installmentId, installmentNumber, amount, dueDate, status) {
+        // Populate modal fields
+        $('#modalContractId').val(contractId);
+        $('#modalInstallmentId').val(installmentId);
+        $('#modalInstallmentAmount').val(amount);
+        $('#modalAmount').val(amount);
+        $('#modalInstallmentNumber').text('#' + installmentNumber);
+        $('#modalAmountDue').text('$' + amount);
+        $('#modalDueDate').text(new Date(dueDate).toLocaleDateString());
+        
+        // Set status badge
+        const statusBadge = $('#modalStatus');
+        statusBadge.removeClass().addClass('badge');
+        switch (status) {
+            case 'Pending':
+                statusBadge.addClass('bg-warning').text('Pending');
+                break;
+            case 'Overdue':
+                statusBadge.addClass('bg-danger').text('Overdue');
+                break;
+            case 'Paid':
+                statusBadge.addClass('bg-success').text('Paid');
+                break;
+            default:
+                statusBadge.addClass('bg-secondary').text(status);
+        }
+
+        // Clear optional fields
+        $('#modalReferenceNumber').val('');
+        $('#modalNotes').val('');
+
+        // Show modal
+        $('#paymentModal').modal('show');
+    }
+
+    function validateModalPaymentAmount() {
+        const amount = parseFloat($('#modalAmount').val());
+        const installmentAmount = parseFloat($('#modalInstallmentAmount').val());
+        
+        if (amount > installmentAmount) {
+            $('#modalAmount').addClass('is-invalid');
+            if (!$('#modalAmount').next('.invalid-feedback').length) {
+                $('<div class="invalid-feedback">Payment amount cannot exceed installment amount</div>').insertAfter('#modalAmount');
+            }
+        } else {
+            $('#modalAmount').removeClass('is-invalid');
+            $('#modalAmount').next('.invalid-feedback').remove();
+        }
+    }
+
+    function validateModalForm() {
+        let isValid = true;
+        
+        // Basic validation
+        if (!$('#modalAmount').val() || parseFloat($('#modalAmount').val()) <= 0) {
+            showModalAlert('Please enter a valid payment amount', 'warning');
+            isValid = false;
+        }
+        
+        if (!$('#modalPaymentDate').val()) {
+            showModalAlert('Please select a payment date', 'warning');
+            isValid = false;
+        }
+        
+        if (!$('#modalPaymentMethod').val()) {
+            showModalAlert('Please select a payment method', 'warning');
+            isValid = false;
+        }
+        
+        return isValid;
+    }
+
+    function showModalAlert(message, type) {
+        // Remove existing alerts
+        $('.modal-alert').remove();
+        
+        const alertHtml = `
+            <div class="modal-alert alert alert-${type} alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-triangle me-2"></i>${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+        
+        $('.modal-body').prepend(alertHtml);
+        
+        // Auto-hide after 5 seconds
+        setTimeout(function() {
+            $('.modal-alert').alert('close');
+        }, 5000);
+    }
+</script> 

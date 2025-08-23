@@ -1,0 +1,76 @@
+/* RTL Layout Fixes for Financial Dashboard */
+
+/* Fix for financial-main-content in RTL mode */
+html[dir="rtl"] .financial-main-content {
+    margin-left: 0 !important;
+    margin-right: 250px !important;
+    transition: margin 0.3s ease;
+}
+
+/* Fix for sidebar toggle in RTL mode */
+@media (max-width: 1024px) {
+    html[dir="rtl"] .financial-main-content {
+        margin-right: 0 !important;
+    }
+    
+    html[dir="rtl"] .financial-sidebar {
+        transform: translateX(100%);
+    }
+    
+    html[dir="rtl"] .sidebar-visible .financial-sidebar {
+        transform: translateX(0);
+    }
+}
+
+/* Fix for financial grid items in RTL mode */
+html[dir="rtl"] .financial-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .financial-item {
+    text-align: right;
+}
+
+html[dir="rtl"] .financial-icon {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+/* Fix for financial details in RTL mode */
+html[dir="rtl"] .financial-details {
+    align-items: flex-start;
+}
+
+/* Fix for progress bars in RTL mode */
+html[dir="rtl"] .progress-header {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .progress-bar .progress-fill {
+    float: right;
+}
+
+/* Fix for card headers in RTL mode */
+html[dir="rtl"] .card-header {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .card-actions {
+    flex-direction: row-reverse;
+}
+
+/* Fix for form controls in RTL mode */
+html[dir="rtl"] .form-group-futuristic label {
+    text-align: right;
+}
+
+html[dir="rtl"] .form-control-futuristic {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Fix for buttons in RTL mode */
+html[dir="rtl"] .btn i {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
